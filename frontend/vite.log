@@ -1,0 +1,28 @@
+
+> ashokksoft-tech-frontend@1.0.0 dev
+> vite --host 127.0.0.1
+
+
+  [32m[1mVITE[22m v4.5.14[39m  [2mready in [0m[1m367[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[2m12:59:59 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Contact.jsx, /src/index.css[22m
+[2m1:05:01 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m1:05:12 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Button.jsx, /src/index.css[22m
+[2m1:05:21 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/SectionTitle.jsx, /src/index.css[22m
+[2m1:07:47 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/index.css[22m
+[2m1:07:47 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/index.css[22m
+[2m1:10:20 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/About.jsx, /src/index.css[22m
+[2m1:10:33 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx, /src/index.css[22m
+[2m1:10:46 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Register.jsx, /src/index.css[22m
+[2m1:18:23 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ServiceCard.jsx, /src/index.css[22m
+[2m1:19:14 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m1:21:15 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/index.css[22m
+[2m1:37:48 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/index.css[22m
+[2m1:38:05 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Pricing.jsx, /src/index.css[22m
+[2m1:38:22 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/PricingCard.jsx, /src/index.css[22m
+[2m1:38:36 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ServiceDetail.jsx, /src/index.css[22m
+[2m1:38:55 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Contact.jsx, /src/index.css[22m
+[2m1:41:49 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/index.css[22m
+[2m1:42:01 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Pricing.jsx, /src/index.css[22m
+[2m1:42:01 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Pricing.jsx, /src/index.css[22m
