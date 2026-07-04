@@ -255,9 +255,9 @@ const faqItems = [
   return (
     <div className="min-h-screen bg-white text-brand-heading overflow-hidden">
       <section className="relative min-h-screen overflow-hidden bg-white">
-        {/* Background */}
+        
         <div className="absolute inset-0">
-          {/* Purple Glow */}
+        
           <motion.div
             className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-brand-primary/10 blur-[140px]"
             animate={{
