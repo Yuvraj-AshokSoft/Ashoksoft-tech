@@ -221,17 +221,17 @@ const Home = () => {
   ];
 
   return (
-   <div className="min-h-screen bg-gradient-to-br from-white via-[#F8F5FF] to-[#F3F8FF] text-gray-900 overflow-hidden">
+   <div className="min-h-screen bg-white text-brand-heading overflow-hidden">
           
 
-     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#F8F5FF] to-[#EEF4FF]">
+   <section className="relative min-h-screen overflow-hidden bg-white">
 
         {/* Background */}
         <div className="absolute inset-0">
 
           {/* Purple Glow */}
           <motion.div
-            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-violet-600/20 blur-[140px]"
+            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-brand-primary/10 blur-[140px]"
             animate={{
               x: [0, 80, 0],
               y: [0, 60, 0],
@@ -244,7 +244,7 @@ const Home = () => {
 
           {/* Blue Glow */}
           <motion.div
-            className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-cyan-500/20 blur-[140px]"
+            className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-brand-secondary/10 blur-[140px]"
             animate={{
               x: [0, -60, 0],
               y: [0, -40, 0],
@@ -274,15 +274,15 @@ const Home = () => {
 
               
 
-                <h1 className="text-white text-5xl md:text-7xl xl:text-8xl font-black leading-[1.05]">
+                <h1 className="text-brand-heading text-5xl md:text-7xl xl:text-8xl font-black leading-[1.05]">
              Welcome to
 
-           <span className="block mt-3 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">
+           <span className="block mt-3 bg-gradient-to-rfrom-brand-primary to-brand-secondary bg-clip-text text-transparent">
            AshokSoft Technologies
            </span>
           </h1>
 
-              <p className="mt-8 text-lg md:text-xl text-slate-300 leading-9 max-w-2xl">
+              <p className="mt-8 text-lg md:text-xl text-brand-text leading-9 max-w-2xl">
 
                 Transform your vision into reality with cutting-edge digital
                 solutions. We build extraordinary digital experiences for
@@ -345,16 +345,19 @@ const Home = () => {
                     whileHover={{
                       y: -8,
                     }}
-                    className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6"
+                    className="rounded-3xl border bg-white
+border
+border-brand-border
+shadow-card p-6"
                   >
 
-                    <h2 className="text-4xl font-bold text-violet-400">
+                    <h2 className="text-4xl font-bold text-brand-primary">
 
                       {stat.value}
 
                     </h2>
 
-                    <p className="text-slate-400 mt-2 text-sm">
+                    <p className="text-brand-text mt-2 text-sm">
 
                       {stat.label}
 
@@ -387,11 +390,14 @@ const Home = () => {
 
               {/* Glow */}
 
-              <div className="absolute -inset-6 rounded-[40px] bg-gradient-to-r from-violet-600 via-cyan-500 to-violet-600 blur-3xl opacity-25"></div>
+              <div className="absolute -inset-6 rounded-[40px] bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary blur-3xl opacity-25"></div>
 
               {/* Glass Card */}
 
-              <div className="relative rounded-[36px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_25px_80px_rgba(0,0,0,.45)]">
+              <div className="relative rounded-[36px] overflow-hidden border bg-white
+border
+border-brand-border
+shadow-card shadow-[0_25px_80px_rgba(0,0,0,.45)]">
 
                 <img
                   src={h2}
@@ -411,16 +417,19 @@ const Home = () => {
                   duration: 3,
                   repeat: Infinity,
                 }}
-                className="absolute -bottom-8 -left-8 bg-[#0F172A]/90 backdrop-blur-xl border border-white/10 rounded-3xl px-6 py-5 shadow-xl"
+                className="absolute -bottom-8 -left-8  bg-white
+border
+border-brand-border
+shadow-card rounded-3xl px-6 py-5 shadow-xl"
               >
 
-                <p className="text-violet-400 font-bold">
+                <p className="text-brand-primary font-bold">
 
                   Modern Solutions
 
                 </p>
 
-                <p className="text-sm text-slate-400 mt-1">
+                <p className="text-sm text-brand-text mt-1">
 
                   Web • Mobile • AI • Branding
 
@@ -435,6 +444,10 @@ const Home = () => {
         </div>
 
       </section>
+
+
+
+    
             {/* ===================== SERVICES ===================== */}
 
       <section className="relative py-32 overflow-hidden">
@@ -443,9 +456,9 @@ const Home = () => {
 
         <div className="absolute inset-0">
 
-          <div className="absolute top-20 left-20 w-72 h-72 bg-violet-600/10 rounded-full blur-[120px]" />
+          <div className="absolute top-20 left-20 w-72 h-72 bg-brand-primary/10 rounded-full blur-[120px]" />
 
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px]" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/10 rounded-full blur-[140px]" />
 
         </div>
 
@@ -468,87 +481,21 @@ const Home = () => {
           {/* Service Cards */}
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-20">
+          {ourServices.map((service, index) => {
+            const Icon = service.icon;
 
-            {ourServices.map((service, index) => {
-              const Icon = service.icon;
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.7,
-                    delay: index * 0.15,
-                  }}
-                  viewport={{ once: true }}
-                  whileHover={{
-                    y: -10,
-                  }}
-                  className="group"
-                >
-                  <div className="relative bg-white rounded-[28px] px-10 pt-12 pb-10 min-h-[680px] shadow-[0_15px_45px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
-
-                    {/* Icon */}
-                    <motion.div
-                      initial={{ x: -80, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.8,
-                        delay: index * 0.2,
-                      }}
-                      viewport={{ once: true }}
-                      className="w-20 h-20 rounded-full bg-gradient-to-b from-[#ff7676] to-[#ff3d3d] flex items-center justify-center text-white text-4xl shadow-[0_18px_35px_rgba(255,70,70,.35)]"
-                    >
-                      <Icon size={38} />
-                    </motion.div>
-
-                    {/* Title */}
-                    <h3 className="mt-10 text-[28px] font-bold leading-snug text-[#161C2D]">
-                      {service.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="mt-8 text-[18px] leading-10 text-[#555]">
-                      {service.description}
-                    </p>
-
-                    {/* List */}
-                    <div className="mt-10">
-
-                      {service.items.map((item, i) => (
-
-                        <motion.div
-                          key={i}
-                          initial={{ x: -40, opacity: 0 }}
-                          whileInView={{ x: 0, opacity: 1 }}
-                          transition={{
-                            duration: 0.45,
-                            delay: 0.35 + i * 0.1,
-                          }}
-                          viewport={{ once: true }}
-                          className="flex items-center gap-4 py-5 border-b border-[#E8EEFF]"
-                        >
-
-                          <FiArrowRight
-                            size={18}
-                            className="text-black flex-shrink-0"
-                          />
-
-                          <span className="text-[18px] font-semibold text-[#111]">
-                            {item}
-                          </span>
-
-                        </motion.div>
-
-                      ))}
-
-                    </div>
-
-                  </div>
-                </motion.div>
-              );
-            })}
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                {/* Your card */}
+              </motion.div>
+            );
+          })}
 
           </div>
 
@@ -723,12 +670,10 @@ const Home = () => {
               transition={{ duration: .8 }}
               viewport={{ once: true }}
             >
-
-              <img
-                src="../assets/consultation.svg"
-                alt="Consultation"
-                className="w-full"
-              />
+            <img
+              src={consultationImg}
+              alt="Consultation"
+            />
 
             </motion.div>
 
@@ -846,9 +791,9 @@ const Home = () => {
 
         <div className="absolute inset-0">
 
-          <div className="absolute left-0 top-0 w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[160px]" />
+          <div className="absolute left-0 top-0 w-[450px] h-[450px] rounded-full bg-brand-primary/10 blur-[160px]" />
 
-          <div className="absolute right-0 bottom-0 w-[400px] h-[400px] rounded-full bg-cyan-500/10 blur-[160px]" />
+          <div className="absolute right-0 bottom-0 w-[400px] h-[400px] rounded-full bg-brand-secondary/10 blur-[160px]" />
 
         </div>
 
@@ -928,27 +873,30 @@ const Home = () => {
 
                 {/* Gradient Border */}
 
-                <div className="absolute -inset-[1px] rounded-[32px] bg-gradient-to-r from-violet-500 via-cyan-500 to-violet-500 opacity-0 group-hover:opacity-100 blur-sm transition duration-500"></div>
+                <div className="absolute -inset-[1px] rounded-[32px] bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary  opacity-0 group-hover:opacity-100 blur-sm transition duration-500"></div>
 
                 {/* Card */}
 
-                <div className="relative h-full rounded-[32px] border border-white/10 bg-[#101828]/80 backdrop-blur-xl p-8 transition-all duration-500">
+                <div className="relative h-full rounded-[32px] bg-white
+border
+border-brand-border
+shadow-card p-8 transition-all duration-500">
 
                   {/* Number */}
 
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-violet-500/20">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-secondary  flex items-center justify-center text-2xl font-bold text-brand-heading shadow-lg shadow-violet-500/20">
 
                     0{index + 1}
 
                   </div>
 
-                  <h3 className="mt-8 text-2xl font-bold text-white">
+                  <h3 className="mt-8 text-2xl font-bold text-brand-heading">
 
                     {item.title}
 
                   </h3>
 
-                  <p className="mt-5 text-slate-300 leading-8">
+                  <p className="mt-5 text-brand-text leading-8">
 
                     {item.description}
 
@@ -977,9 +925,9 @@ const Home = () => {
 
         <div className="absolute inset-0">
 
-          <div className="absolute top-20 left-0 w-[350px] h-[350px] rounded-full bg-violet-600/10 blur-[140px]" />
+          <div className="absolute top-20 left-0 w-[350px] h-[350px] rounded-full bg-brand-primary/10 blur-[140px]" />
 
-          <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full bg-cyan-500/10 blur-[140px]" />
+          <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full bg-brand-secondary/10 blur-[140px]" />
 
         </div>
 
@@ -1027,7 +975,10 @@ const Home = () => {
 
                 <div className="absolute -inset-[1px] rounded-[30px] bg-gradient-to-r from-violet-500 via-cyan-400 to-violet-500 opacity-0 group-hover:opacity-100 blur-sm transition duration-500"></div>
 
-                <div className="relative rounded-[30px] border border-white/10 bg-[#0F172A]/80 backdrop-blur-xl p-3">
+                <div className="relative rounded-[30px]bg-white
+               border
+border-brand-border
+shadow-card p-3">
 
                   <TestimonialCard
                     {...testimonial}
@@ -1098,7 +1049,7 @@ const Home = () => {
             className="mt-16"
           >
 
-            <div className="rounded-[35px] border border-white/10 bg-[#101828]/80 backdrop-blur-2xl p-8 md:p-10 shadow-[0_25px_80px_rgba(0,0,0,.35)]">
+            <div className="rounded-[35px] border border-brand-border bg-white backdrop-blur-2xl p-8 md:p-10 shadow-[0_25px_80px_rgba(0,0,0,.35)]">
 
               <FAQ items={faqItems} />
 
@@ -1143,13 +1094,13 @@ const Home = () => {
           className="relative max-w-7xl mx-auto px-6 lg:px-8"
         >
 
-          <div className="relative overflow-hidden rounded-[40px] border border-white/10">
+          <div className="relative overflow-hidden rounded-[40px] border border-brand-border">
 
             {/* Gradient */}
 
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-700 via-indigo-600 to-cyan-600"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary"></div>
 
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-xl"></div>
+            <div className="absolute inset-0  backdrop-blur-xl"></div>
 
             <div className="relative px-10 py-24 text-center">
 
@@ -1168,7 +1119,7 @@ const Home = () => {
                 viewport={{
                   once: true,
                 }}
-                className="text-4xl md:text-6xl font-black text-white"
+                className="text-4xl md:text-6xl font-black text-brand-heading"
               >
 
                 Ready to Start Your Project?
@@ -1188,7 +1139,7 @@ const Home = () => {
                 viewport={{
                   once: true,
                 }}
-                className="mt-8 text-lg md:text-xl text-slate-100 max-w-3xl mx-auto leading-9"
+                className="mt-8 text-lg md:text-xl text-brand-text max-w-3xl mx-auto leading-9"
               >
 
                 Let's work together to bring your ideas to life.
