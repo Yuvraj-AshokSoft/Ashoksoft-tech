@@ -8,8 +8,13 @@ import SectionTitle from "../components/SectionTitle";
 import TestimonialCard from "../components/TestimonialCard";
 import FAQ from "../components/FAQ";
 import Button from "../components/Button";
+
+
+
 import { serviceService } from "../services/api";
-import h2 from "../assets/h2.jpg";
+
+
+
 import {
   FiArrowRight,
   FiCode,
@@ -18,10 +23,11 @@ import {
   FiPenTool,
   FiCpu,
   FiBarChart,
-  FiCheckCircle,
-  FiAward,
-  FiUsers,
-  FiTrendingUp,
+  FiHeart,
+  FiBookOpen,
+  FiShoppingBag,
+  FiBriefcase,
+  FiTruck,
 } from "react-icons/fi";
 
 import {
@@ -57,6 +63,47 @@ const iconMap = {
   cpu: FiCpu,
   chart: FiBarChart,
 };
+
+
+const industries = [
+  {
+    icon: <FiHeart />,
+    title: "Healthcare",
+    description:
+      "Secure healthcare management systems, patient portals, telemedicine solutions, and hospital management software.",
+  },
+  {
+    icon: <FiBookOpen />,
+    title: "Education",
+    description:
+      "Learning Management Systems, Campus to Corporate platforms, online examinations, and student ERP solutions.",
+  },
+  {
+    icon: <FiShoppingBag />,
+    title: "E-Commerce",
+    description:
+      "Scalable online stores, payment gateway integration, inventory management, and customer engagement platforms.",
+  },
+  {
+    icon: <FiBriefcase />,
+    title: "Enterprise",
+    description:
+      "ERP, CRM, HRMS, payroll management, workflow automation, and enterprise digital transformation.",
+  },
+  {
+    icon: <FiTruck />,
+    title: "Logistics",
+    description:
+      "Fleet management, shipment tracking, warehouse management, and transportation automation solutions.",
+  },
+  {
+    icon: <FiBriefcase />,
+    title: "Finance",
+    description:
+      "Accounting software, financial reporting, invoicing systems, and secure fintech applications.",
+  },
+];
+
 
 const fallbackServices = [
   {
@@ -205,44 +252,39 @@ const faqItems = [
   },
 ];
 
-const Home = () => {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    const loadServices = async () => {
-      try {
-        const response = await serviceService.getServices();
-        setServices(response.data.services || []);
-      } catch (error) {
-        setServices([]);
-      }
-    };
-
-    loadServices();
-  }, []);
-
-  const displayServices =
-    services.length > 0
-      ? services
-      : ourServices.map((service) => ({
-          ...service,
-          serviceList: service.items,
-        }));
-
   return (
-    <div className="min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#F8F5FF] to-[#F3F8FF] text-gray-900">
-      <section className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <video
-            src="/hero-NT-Video .mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-full w-full object-cover"
+    <div className="min-h-screen bg-white text-brand-heading overflow-hidden">
+      <section className="relative min-h-screen overflow-hidden bg-white">
+        {/* Background */}
+        <div className="absolute inset-0">
+          {/* Purple Glow */}
+          <motion.div
+            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-brand-primary/10 blur-[140px]"
+            animate={{
+              x: [0, 80, 0],
+              y: [0, 60, 0],
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+            }}
           />
-          <div className="absolute inset-0 bg-slate-950/65" />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/40 to-slate-950/75" />
+
+          {/* Blue Glow */}
+          <motion.div
+            className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-brand-secondary/10 blur-[140px]"
+            animate={{
+              x: [0, -60, 0],
+              y: [0, -40, 0],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+            }}
+          />
+
+          {/* Grid */}
+          <div className="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>
 
         <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-center px-4 pb-48 pt-32 sm:px-6 lg:px-8">
@@ -319,136 +361,23 @@ const Home = () => {
               </div>
 
               <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -bottom-8 -left-8 rounded-3xl border border-white/10 bg-[#0F172A]/90 px-6 py-5 shadow-xl backdrop-blur-xl"
+                animate={{
+                  y: [0, -12, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                }}
+                className="absolute -bottom-8 -left-8 bg-white border border-brand-border shadow-card rounded-3xl px-6 py-5 shadow-xl"
               >
-                <p className="font-bold text-violet-300">Modern Solutions</p>
-                <p className="mt-1 text-sm text-slate-400">
+                <p className="text-brand-primary font-bold">
+                  Modern Solutions
+                </p>
+
+                <p className="text-sm text-brand-text mt-1">
                   Web • Mobile • AI • Branding
                 </p>
               </motion.div>
-            </motion.div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 z-20 hidden w-full translate-y-1/2 lg:block">
-          <div className="mx-auto max-w-7xl px-8">
-            <div className="grid grid-cols-4 gap-6">
-              {[
-                { icon: <FiCpu size={24} />, title: "Time Zone Advantages" },
-                { icon: <FiBarChart size={24} />, title: "Better ROI" },
-                { icon: <FiPenTool size={24} />, title: "Cost Benefits" },
-                { icon: <FiCode size={24} />, title: "Continuity Of Business" },
-              ].map((card, index) => (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                  className="group flex cursor-pointer items-center space-x-4 rounded-xl border border-white/10 bg-black/40 p-5 shadow-xl backdrop-blur-md transition-all hover:border-white/20 hover:bg-black/60"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-cyan-300 transition-transform group-hover:scale-110">
-                    {card.icon}
-                  </div>
-                  <span className="text-sm font-semibold leading-tight text-white">
-                    {card.title}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-brand-light py-28">
-        <div className="absolute inset-0">
-          <div className="absolute -left-32 top-10 h-96 w-96 rounded-full bg-brand-primary/10 blur-[140px]" />
-          <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-brand-secondary/10 blur-[120px]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionTitle
-            title="About Us"
-            subtitle="Empowering businesses with innovative digital solutions that drive growth, efficiency, and long-term success."
-          />
-
-          <div className="mt-20 grid items-center gap-16 lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-            >
-              <div className="rounded-[32px] border border-brand-border bg-white p-10 shadow-card">
-                <span className="inline-block rounded-full bg-brand-primary/10 px-4 py-2 text-sm font-semibold text-brand-primary">
-                  Who We Are
-                </span>
-                <h2 className="mt-6 text-4xl font-black leading-tight text-brand-heading">
-                  Building Digital Experiences That Inspire Growth
-                </h2>
-                <p className="mt-6 leading-8 text-brand-text">
-                  AshokSoft Technologies helps businesses transform ideas into
-                  powerful digital products. From modern websites and scalable
-                  applications to AI-driven solutions and branding, we deliver
-                  technology that creates real business value.
-                </p>
-                <p className="mt-5 leading-8 text-brand-text">
-                  Our experienced team combines creativity, innovation, and
-                  technical expertise to develop solutions that are fast,
-                  secure, scalable, and designed for long-term success.
-                </p>
-
-                <div className="mt-10 grid gap-5 sm:grid-cols-2">
-                  {[
-                    { icon: FiCheckCircle, title: "Quality Driven", text: "Every project follows modern development standards." },
-                    { icon: FiAward, title: "Industry Expertise", text: "Experienced professionals delivering premium solutions." },
-                    { icon: FiUsers, title: "Client First", text: "We collaborate closely with every client." },
-                    { icon: FiTrendingUp, title: "Growth Focused", text: "Helping businesses scale with technology." },
-                  ].map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.title} className="flex items-start gap-4">
-                        <Icon className="mt-1 text-2xl text-brand-primary" />
-                        <div>
-                          <h4 className="font-semibold text-brand-heading">{item.title}</h4>
-                          <p className="mt-1 text-sm text-brand-text">{item.text}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -inset-6 rounded-[36px] bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary opacity-20 blur-3xl" />
-
-              <div className="relative rounded-[36px] border border-brand-border bg-white p-10 shadow-card">
-                <div className="grid grid-cols-2 gap-6">
-                  {[["50+", "Projects Completed"], ["40+", "Happy Clients"], ["5+", "Years Experience"], ["24/7", "Technical Support"]].map(([value, label]) => (
-                    <div key={label} className="rounded-3xl bg-brand-light p-8 text-center">
-                      <h3 className="text-5xl font-black text-brand-primary">{value}</h3>
-                      <p className="mt-3 text-brand-text">{label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-10 rounded-3xl bg-gradient-to-r from-brand-primary to-brand-secondary p-[1px]">
-                  <div className="rounded-3xl bg-white p-8">
-                    <h3 className="text-2xl font-bold text-brand-heading">Our Mission</h3>
-                    <p className="mt-4 leading-8 text-brand-text">
-                      To empower startups, enterprises, and growing businesses with innovative digital solutions that improve efficiency, enhance customer experiences, and accelerate sustainable growth.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -473,100 +402,47 @@ const Home = () => {
             />
           </motion.div>
 
-          <div className="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {displayServices.map((service, index) => {
-              const Icon = service.icon || ourServices[index]?.icon || FiCode;
-              const title = service.title || ourServices[index]?.title || "Service";
-              const description = service.description || ourServices[index]?.description || "";
-              const serviceItems = service.items || service.serviceList || ourServices[index]?.items || [];
+          {/* Service Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.slug || index}
+                initial={{
+                  opacity: 0,
+                  y: 50,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                whileHover={{
+                  y: -10,
+                }}
+                className="group relative"
+              >
+                {/* Glow Border */}
+                <div className="absolute -inset-[1px] rounded-[30px] bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary opacity-0 group-hover:opacity-100 blur-sm transition duration-500" />
 
-              return (
-                <motion.div
-                  key={service.slug || title || index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -10 }}
-                  className="group relative"
-                >
-                  <div className="absolute -inset-[1px] rounded-[30px] bg-gradient-to-r from-violet-500 via-cyan-500 to-violet-500 opacity-0 blur-sm transition duration-500 group-hover:opacity-100" />
-                  <div className="relative h-full rounded-[30px] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-xl transition-all duration-500">
-                    <div className="h-full rounded-[28px] border border-white/10 bg-[#101828]/80 p-8 text-white shadow-card">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 text-cyan-300">
-                        <Icon size={30} />
-                      </div>
-                      <h3 className="mt-6 text-2xl font-bold">{title}</h3>
-                      <p className="mt-4 leading-8 text-slate-300">{description}</p>
-                      {serviceItems.length > 0 && (
-                        <ul className="mt-6 space-y-3 text-sm text-slate-200">
-                          {serviceItems.map((item) => (
-                            <li key={item} className="flex items-start gap-3">
-                              <span className="mt-1 h-2 w-2 rounded-full bg-cyan-400" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                {/* Glass Container */}
+                <div className="relative h-full rounded-[30px] bg-white border border-brand-border shadow-card p-3 transition-all duration-500">
+                  <ServiceCard
+                    {...service}
+                    icon={iconMap[service.icon] || FiCode}
+                    delay={0}
+                  />
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      <section className="relative overflow-hidden bg-white py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <SectionTitle title="Technologies" subtitle="Our Technologies" />
-          </motion.div>
-
-          <div className="mt-16 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
-            {technologies.map((tech, index) => {
-              const Icon = tech.icon;
-              return (
-                <motion.div
-                  key={tech.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  className="group rounded-xl border border-dashed border-[#D8E8FF] bg-white p-4 transition-all duration-300 hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-4">
-                    <motion.div
-                      initial={{ x: -80, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.05 }}
-                      viewport={{ once: true }}
-                      className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-[#F3F9FF]"
-                    >
-                      <Icon size={34} className="text-[#2E3A63]" />
-                    </motion.div>
-                    <h4 className="text-[20px] font-medium text-[#2B2B2B]">{tech.name}</h4>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-white py-32">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 h-[350px] w-[350px] rounded-full bg-violet-100 blur-[140px]" />
-          <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-cyan-100 blur-[140px]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Bottom CTA */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -681,9 +557,17 @@ const Home = () => {
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-2xl font-bold text-white shadow-lg shadow-violet-500/20">
                     0{index + 1}
                   </div>
-                  <h3 className="mt-8 text-2xl font-bold">{item.title}</h3>
-                  <p className="mt-5 leading-8 text-slate-300">{item.description}</p>
-                  <div className="mt-8 h-[2px] w-0 bg-gradient-to-r from-violet-500 to-cyan-400 transition-all duration-500 group-hover:w-full" />
+
+                  <h3 className="mt-8 text-2xl font-bold text-brand-heading">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-5 text-brand-text leading-8">
+                    {item.description}
+                  </p>
+
+                  {/* Bottom Line */}
+                  <div className="mt-8 h-[2px] w-0 bg-gradient-to-r from-violet-500 to-cyan-400 transition-all duration-500 group-hover:w-full"></div>
                 </div>
               </motion.div>
             ))}
@@ -691,7 +575,88 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-32">
+      {/* ================= INDUSTRY EXPERIENCE ================= */}
+
+<section className="relative py-28 bg-white overflow-hidden" >
+
+  {/* Background Glow */}
+
+  <div className="absolute inset-0">
+
+    <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-brand-primary/10 blur-[140px]" />
+
+    <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-brand-secondary/10 blur-[140px]" />
+
+  </div>
+
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+
+    <SectionTitle
+      title="Industry Experience"
+      subtitle="Delivering innovative software solutions across diverse industries with deep domain expertise and modern technologies."
+    />
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
+
+      {industries.map((industry, index) => (
+
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -10 }}
+          className="group bg-white rounded-[28px] border border-brand-border shadow-card p-8 hover:shadow-hover transition-all duration-500 "
+        >
+
+          {/* Icon */}
+
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-secondary flex items-center justify-center text-white text-3xl group-hover:scale-110 transition">
+
+            {industry.icon}
+
+          </div>
+
+          {/* Title */}
+
+          <h3 className="mt-8 text-2xl font-bold text-brand-heading">
+
+            {industry.title}
+
+          </h3>
+
+          {/* Description */}
+
+          <p className="mt-5 text-brand-text leading-8">
+
+            {industry.description}
+
+          </p>
+
+          {/* Link */}
+
+          <button className="mt-8 flex items-center gap-2 font-semibold text-brand-primary group-hover:gap-4 transition-all">
+
+            Learn More
+
+            <FiArrowRight />
+
+          </button>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+      {/* ===================== TESTIMONIALS ===================== */}
+      <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-0 h-[350px] w-[350px] rounded-full bg-violet-600/10 blur-[140px]" />
           <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-cyan-500/10 blur-[140px]" />
