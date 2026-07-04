@@ -1,11 +1,12 @@
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================
+   GLOBAL
+========================== */
 
 :root {
   color-scheme: light;
@@ -18,21 +19,18 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, #f7f5fc 0%, #f3eefb 100%);
-  color: #111827;
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+  color: #1F2937;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
 }
 
 #root {
@@ -45,86 +43,87 @@ svg,
 video,
 canvas {
   max-width: 100%;
+  display: block;
 }
 
+<<<<<<< HEAD
 /* Removed the global text-white override so Tailwind's text-white works correctly */
+=======
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+>>>>>>> 2c0186120da9d58c548fa33de3b75fd52dde739d
 
-.light-theme .text-gray-300 {
-  color: #64748b !important;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.light-theme .text-gray-400 {
-  color: #64748b !important;
+/* ==========================
+   TEXT SELECTION
+========================== */
+
+::selection {
+  background: #0C8DA1;
+  color: white;
 }
 
-.light-theme .bg-dark-bg {
-  background-color: #f6f4fb !important;
+::-moz-selection {
+  background: #0C8DA1;
+  color: white;
 }
 
-.light-theme .bg-dark-card {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-}
-
-.light-theme .border-dark-border {
-  border-color: #e3ddf5 !important;
-}
-
-.light-theme .bg-brand-blue {
-  background-color: #7c3aed !important;
-}
-
-.light-theme .bg-brand-cyan {
-  background-color: #d946ef !important;
-}
-
-.light-theme .from-brand-blue {
-  --tw-gradient-from: #7c3aed !important;
-}
-
-.light-theme .to-brand-cyan {
-  --tw-gradient-to: #d946ef !important;
-}
-
-.light-theme .from-brand-blue\/10 {
-  --tw-gradient-from: rgba(124, 58, 237, 0.1) !important;
-}
-
-.light-theme .to-brand-cyan\/20 {
-  --tw-gradient-to: rgba(217, 70, 239, 0.2) !important;
-}
-
-.light-theme .text-white.bg-brand-blue,
-.light-theme .text-white.bg-brand-cyan,
-.light-theme .bg-gradient-to-r.from-brand-blue.to-brand-cyan.text-white,
-.light-theme .bg-gradient-to-br.from-brand-blue.to-brand-cyan.text-white,
-.light-theme .bg-gradient-to-r.from-brand-blue.to-brand-cyan .text-white,
-.light-theme .bg-gradient-to-br.from-brand-blue.to-brand-cyan .text-white,
-.light-theme .bg-gradient-to-r.from-red-500.to-red-600.text-white {
-  color: #ffffff !important;
-}
+/* ==========================
+   SCROLLBAR
+========================== */
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.06);
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(124, 58, 237, 0.18);
-  border-radius: 9999px;
+  background: #0C8DA1;
+  border-radius: 999px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #0A6E7E;
+}
+
+/* ==========================
+   SMOOTH TRANSITIONS
+========================== */
+
+button,
+a,
+svg,
+img {
+  transition: all 0.3s ease;
+}
+
+/* ==========================
+   FLOATING BLOB ANIMATION
+========================== */
+
 @keyframes blob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
+
   33% {
-    transform: translate(18px, -18px) scale(1.03);
+    transform: translate(18px, -18px) scale(1.05);
   }
+
   66% {
-    transform: translate(-18px, 18px) scale(0.97);
+    transform: translate(-18px, 18px) scale(0.95);
   }
 }
 
@@ -135,38 +134,28 @@ canvas {
 .animation-delay-2000 {
   animation-delay: 2s;
 }
-.light-theme .bg-dark-bg {
-  background-color: #f6f4fb !important;
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }
 
-.light-theme .bg-dark-card {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+/* ==========================
+   OPTIONAL UTILITY CLASSES
+========================== */
+
+.section-bg {
+  background: #F8FAFC;
 }
 
-.light-theme .border-dark-border {
-  border-color: #e3ddf5 !important;
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.light-theme .bg-brand-blue {
-  background-color: #7c3aed !important;
+.card-shadow-hover {
+  transition: 0.35s ease;
 }
 
-.light-theme .bg-brand-cyan {
-  background-color: #d946ef !important;
-}
-
-.light-theme .from-brand-blue {
-  --tw-gradient-from: #7c3aed !important;
-}
-
-.light-theme .to-brand-cyan {
-  --tw-gradient-to: #d946ef !important;
-}
-
-.light-theme .from-brand-blue\/10 {
-  --tw-gradient-from: rgba(124, 58, 237, 0.1) !important;
-}
-
-.light-theme .to-brand-cyan\/20 {
-  --tw-gradient-to: rgba(217, 70, 239, 0.2) !important;
+.card-shadow-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(12, 141, 161, 0.15);
 }
