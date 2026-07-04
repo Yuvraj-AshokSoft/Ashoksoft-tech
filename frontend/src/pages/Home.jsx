@@ -55,7 +55,7 @@ import {
   SiCodeigniter,
 } from "react-icons/si";
 
-import h2 from "../assets/h2.jpg";
+
 
 const iconMap = {
   code: FiCode,
@@ -354,7 +354,7 @@ const faqItems = [
 
               <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-white/5 shadow-[0_25px_80px_rgba(0,0,0,.45)] backdrop-blur-xl">
                 <img
-                  src={h2}
+                  
                   alt="Digital Solutions Showcase"
                   className="w-full object-cover transition duration-700 hover:scale-105"
                 />
