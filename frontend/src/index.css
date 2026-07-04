@@ -47,9 +47,7 @@ canvas {
   max-width: 100%;
 }
 
-.light-theme .text-white {
-  color: #111827 !important;
-}
+/* Removed the global text-white override so Tailwind's text-white works correctly */
 
 .light-theme .text-gray-300 {
   color: #64748b !important;

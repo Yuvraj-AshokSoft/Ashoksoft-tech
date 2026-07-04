@@ -58,18 +58,18 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`flex items-center space-x-1 px-2 py-2 rounded-lg transition-all duration-300 ${
+                className={`flex items-center space-x-1 px-2 py-2 rounded-lg transition-all duration-300 group ${
                   location.pathname === link.path
                     ? 'text-brand-blue font-semibold'
-                    : 'text-slate-600 hover:text-brand-blue'
+                    : isScrolled ? 'text-slate-600 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
                 }`}
               >
                 {link.isIcon ? (
-                  <FiHome className="text-brand-blue text-xl" />
+                  <FiHome className={`${isScrolled ? 'text-brand-blue' : 'text-white group-hover:text-brand-blue'} text-xl`} />
                 ) : (
                   <span className="text-sm xl:text-base font-medium whitespace-nowrap">{link.name}</span>
                 )}
-                {link.hasDropdown && <FiChevronDown className="text-slate-400 text-sm mt-0.5" />}
+                {link.hasDropdown && <FiChevronDown className={`${isScrolled ? 'text-slate-400' : 'text-white/80 group-hover:text-brand-blue'} text-sm mt-0.5`} />}
               </Link>
             ))}
           </div>
@@ -85,7 +85,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-slate-900 hover:text-brand-blue transition-colors"
+              className={`lg:hidden transition-colors ${isScrolled ? 'text-slate-900' : 'text-white'} hover:text-brand-blue`}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}

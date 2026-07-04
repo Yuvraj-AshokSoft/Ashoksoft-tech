@@ -20,8 +20,6 @@ import {
   FiBarChart,
 } from "react-icons/fi";
 
-import h2 from "../assets/h2.jpg";
-
 const iconMap = {
   code: FiCode,
   design: FiPenTool,
@@ -134,218 +132,88 @@ const Home = () => {
    <div className="min-h-screen bg-gradient-to-br from-white via-[#F8F5FF] to-[#F3F8FF] text-gray-900 overflow-hidden">
           
 
-     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#F8F5FF] to-[#EEF4FF]">
-
-        {/* Background */}
-        <div className="absolute inset-0">
-
-          {/* Purple Glow */}
-          <motion.div
-            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-violet-600/20 blur-[140px]"
-            animate={{
-              x: [0, 80, 0],
-              y: [0, 60, 0],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-            }}
+     <section className="relative min-h-screen flex items-center overflow-visible">
+        {/* Background Video & Overlay */}
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/hero-NT-Video .mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
           />
-
-          {/* Blue Glow */}
-          <motion.div
-            className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-cyan-500/20 blur-[140px]"
-            animate={{
-              x: [0, -60, 0],
-              y: [0, -40, 0],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-            }}
-          />
-
-          {/* Grid */}
-          <div className="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
-
+          {/* Uniform dark overlay to make white text pop (like the reference screenshot) */}
+          <div className="absolute inset-0 bg-slate-900/60 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28">
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-48">
+          <div className="max-w-3xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+            >
+              Offshore Development Company in India
+            </motion.h1>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[85vh]">
-
-            {/* LEFT SIDE */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-6 text-lg md:text-xl text-gray-200 leading-relaxed"
+            >
+              AshokSoft Solutions is a leading offshore development partner. Our deep understanding about offshore software outsourcing makes us a unique solution provider. With our high quality services, we provide you a cost-effective and highly flexible hiring models.
+            </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: .8 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-10 flex gap-4"
             >
-
-              
-
-                <h1 className="text-white text-5xl md:text-7xl xl:text-8xl font-black leading-[1.05]">
-             Welcome to
-
-           <span className="block mt-3 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent">
-           AshokSoft Technologies
-           </span>
-          </h1>
-
-              <p className="mt-8 text-lg md:text-xl text-slate-300 leading-9 max-w-2xl">
-
-                Transform your vision into reality with cutting-edge digital
-                solutions. We build extraordinary digital experiences for
-                ambitious businesses.
-
-              </p>
-
-              {/* Buttons */}
-
-              <div className="flex flex-wrap gap-5 mt-10">
-
-                <Link to="/contact">
-
-                  <Button size="lg">
-
-                    Start Your Project
-
-                    <FiArrowRight className="ml-2"/>
-
-                  </Button>
-
-                </Link>
-
-                <Link to="/services">
-
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                  >
-
-                    Explore Services
-
-                  </Button>
-
-                </Link>
-
-              </div>
-
-              {/* Statistics */}
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-16">
-
-                {[
-                  {
-                    value: "50+",
-                    label: "Projects Delivered",
-                  },
-                  {
-                    value: "40+",
-                    label: "Satisfied Clients",
-                  },
-                  {
-                    value: "5+",
-                    label: "Years Experience",
-                  },
-                ].map((stat, idx) => (
-
-                  <motion.div
-                    key={idx}
-                    whileHover={{
-                      y: -8,
-                    }}
-                    className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6"
-                  >
-
-                    <h2 className="text-4xl font-bold text-violet-400">
-
-                      {stat.value}
-
-                    </h2>
-
-                    <p className="text-slate-400 mt-2 text-sm">
-
-                      {stat.label}
-
-                    </p>
-
-                  </motion.div>
-
-                ))}
-
-              </div>
-
+              <Link to="/about">
+                <button className="px-8 py-3 bg-[#e21a22] hover:bg-[#c2151c] text-white rounded-full font-semibold transition-all duration-300 flex items-center shadow-lg shadow-red-900/30">
+                  Read More
+                  <FiArrowRight className="ml-2" />
+                </button>
+              </Link>
             </motion.div>
-
-            {/* RIGHT SIDE */}
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: .9,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-              }}
-              transition={{
-                duration: .8,
-              }}
-              className="relative"
-            >
-
-              {/* Glow */}
-
-              <div className="absolute -inset-6 rounded-[40px] bg-gradient-to-r from-violet-600 via-cyan-500 to-violet-600 blur-3xl opacity-25"></div>
-
-              {/* Glass Card */}
-
-              <div className="relative rounded-[36px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_25px_80px_rgba(0,0,0,.45)]">
-
-                <img
-                  src={h2}
-                  alt="Digital Solutions Showcase"
-                  className="w-full object-cover transition duration-700 hover:scale-105"
-                />
-
-              </div>
-
-              {/* Floating Badge */}
-
-              <motion.div
-                animate={{
-                  y: [0, -12, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                }}
-                className="absolute -bottom-8 -left-8 bg-[#0F172A]/90 backdrop-blur-xl border border-white/10 rounded-3xl px-6 py-5 shadow-xl"
-              >
-
-                <p className="text-violet-400 font-bold">
-
-                  Modern Solutions
-
-                </p>
-
-                <p className="text-sm text-slate-400 mt-1">
-
-                  Web • Mobile • AI • Branding
-
-                </p>
-
-              </motion.div>
-
-            </motion.div>
-
           </div>
-
         </div>
 
+        {/* Floating Bottom Cards */}
+        <div className="absolute bottom-0 left-0 w-full z-20 translate-y-1/2 hidden lg:block">
+          <div className="max-w-7xl mx-auto px-8">
+            <div className="grid grid-cols-4 gap-6">
+              {[
+                { icon: <FiCpu size={24} />, title: "Time Zone Advantages" },
+                { icon: <FiBarChart size={24} />, title: "Better ROI" },
+                { icon: <FiPenTool size={24} />, title: "Cost Benefits" },
+                { icon: <FiCode size={24} />, title: "Continuity Of Business" }
+              ].map((card, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 + idx * 0.1 }}
+                  className="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-5 flex items-center space-x-4 hover:bg-black/60 hover:border-white/20 transition-all cursor-pointer group shadow-xl"
+                >
+                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-brand-cyan group-hover:scale-110 transition-transform">
+                    {card.icon}
+                  </div>
+                  <span className="text-white font-semibold text-sm leading-tight">{card.title}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
-            {/* ===================== SERVICES ===================== */}
+
+      {/* ===================== SERVICES ===================== */}
 
       <section className="relative py-32 overflow-hidden">
 
