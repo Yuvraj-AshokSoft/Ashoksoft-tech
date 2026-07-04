@@ -447,7 +447,7 @@ const Home = () => {
 
             </motion.div>
 
->>>>>>> 2c0186120da9d58c548fa33de3b75fd52dde739d
+
           </div>
         </div>
         {/* Floating Bottom Cards */}
