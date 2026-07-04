@@ -1,3 +1,6 @@
+
+
+
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -20,19 +23,21 @@ import {
   FiUsers,
   FiTrendingUp,
 } from "react-icons/fi";
+
 import {
   FaAngular,
   FaPython,
   FaReact,
   FaVuejs,
+  FaPhp,
   FaBootstrap,
   FaNodeJs,
-  FaPhp,
   FaAndroid,
+  FaLaravel,
   FaApple,
   FaWordpress,
-  FaLaravel,
 } from "react-icons/fa";
+
 import {
   SiDotnet,
   SiCsharp,
@@ -44,6 +49,52 @@ import {
   SiCodeigniter,
 } from "react-icons/si";
 
+import h2 from "../assets/h2.jpg";
+
+const iconMap = {
+  code: FiCode,
+  design: FiPenTool,
+  cpu: FiCpu,
+  chart: FiBarChart,
+};
+
+const fallbackServices = [
+  {
+    icon: "code",
+    slug: "web-development",
+    title: "Web Development",
+    description:
+      "Create stunning, responsive websites that engage users and drive conversions with modern technologies.",
+  },
+  {
+    icon: "code",
+    slug: "app-development",
+    title: "App Development",
+    description:
+      "Build powerful mobile and web applications tailored to your business needs and user expectations.",
+  },
+  {
+    icon: "design",
+    slug: "ui-ux-design",
+    title: "UI/UX Design",
+    description:
+      "Design beautiful, intuitive interfaces that enhance user experience and boost engagement metrics.",
+  },
+  {
+    icon: "cpu",
+    slug: "ai-automation",
+    title: "AI Automation",
+    description:
+      "Leverage artificial intelligence to automate processes and unlock new business opportunities.",
+  },
+  {
+    icon: "chart",
+    slug: "branding",
+    title: "Branding",
+    description:
+      "Build a strong brand identity that resonates with your target audience and stands out.",
+  },
+];
 const ourServices = [
   {
     icon: FiSearch,
