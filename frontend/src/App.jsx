@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
 import Portfolio from './pages/Portfolio.jsx';
@@ -46,6 +47,7 @@ const App = () => (
         <Route path="*" element={<NotFound />} />
       </Routes>
     </ErrorBoundary>
+    <Footer />
   </div>
 );
 
