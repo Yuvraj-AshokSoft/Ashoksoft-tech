@@ -1,10 +1,8 @@
-
-
-
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle";
+import ServiceCard from "../components/ServiceCard";
 import TestimonialCard from "../components/TestimonialCard";
 import FAQ from "../components/FAQ";
 import Button from "../components/Button";
@@ -12,6 +10,7 @@ import Button from "../components/Button";
 
 
 import { serviceService } from "../services/api";
+import h2 from "../assets/consultation.svg";
 
 
 
@@ -251,73 +250,74 @@ const faqItems = [
       "We use modern, industry-standard technologies including React, Vue, Node.js, Python, and various cloud platforms. We choose the best tech stack for your specific needs.",
   },
 ];
+const Home = () => {
+  const [services, setServices] = useState(fallbackServices);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await serviceService.getAllServices();
+        if (response && response.data) {
+          setServices(response.data);
+        } else if (Array.isArray(response)) {
+          setServices(response);
+        }
+      } catch (error) {
+        console.error("Failed to fetch services:", error);
+      }
+    };
+    fetchServices();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-brand-heading overflow-hidden">
       <section className="relative min-h-screen overflow-hidden bg-white">
         
-        <div className="absolute inset-0">
-        
-          <motion.div
-            className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-brand-primary/10 blur-[140px]"
-            animate={{
-              x: [0, 80, 0],
-              y: [0, 60, 0],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-            }}
-          />
-
-          {/* Blue Glow */}
-          <motion.div
-            className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-brand-secondary/10 blur-[140px]"
-            animate={{
-              x: [0, -60, 0],
-              y: [0, -40, 0],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-            }}
-          />
-
-          {/* Grid */}
-          <div className="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-black">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* Dark Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
         <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-center px-4 pb-48 pt-32 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl font-black leading-[1.05] text-white md:text-7xl xl:text-8xl">
-                Welcome to
-                <span className="mt-3 block bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-300 bg-clip-text text-transparent">
-                  AshokSoft Technologies
+              <div className="mb-6 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
+                <span className="text-sm font-medium text-white/90">
+                  Modern Solutions: Web • Mobile • AI • Branding
                 </span>
+              </div>
+              <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl xl:text-[80px]">
+                Offshore <br />
+                Development <br />
+                Company in India
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-9 text-slate-200 md:text-xl">
-                Transform your vision into reality with cutting-edge digital
-                solutions. We build extraordinary digital experiences for
-                ambitious businesses.
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200 md:text-xl font-medium">
+                AshokSoft Solutions is a leading offshore development partner. Our deep
+                understanding about offshore software outsourcing makes us a unique
+                solution provider. With our high quality services, we provide you a cost-
+                effective and highly flexible hiring models.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-5">
-                <Link to="/contact">
-                  <Button size="lg">
-                    Start Your Project
-                    <FiArrowRight className="ml-2" />
-                  </Button>
-                </Link>
                 <Link to="/services">
-                  <Button variant="secondary" size="lg">
-                    Explore Services
-                  </Button>
+                  <button className="flex items-center rounded-full bg-red-600 px-8 py-3.5 text-lg font-bold text-white transition-all hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/30">
+                    Read More <FiArrowRight className="ml-2" />
+                  </button>
                 </Link>
               </div>
 
@@ -335,49 +335,13 @@ const faqItems = [
                     transition={{ delay: 0.6 + index * 0.1 }}
                     className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
                   >
-                    <h2 className="text-4xl font-bold text-violet-300">
+                    <h2 className="text-4xl font-bold text-[#0C8DA1]">
                       {stat.value}
                     </h2>
                     <p className="mt-2 text-sm text-slate-300">{stat.label}</p>
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="relative"
-            >
-              <div className="absolute -inset-6 rounded-[40px] bg-gradient-to-r from-violet-600 via-cyan-500 to-violet-600 opacity-25 blur-3xl" />
-
-              <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-white/5 shadow-[0_25px_80px_rgba(0,0,0,.45)] backdrop-blur-xl">
-                <img
-                  
-                  alt="Digital Solutions Showcase"
-                  className="w-full object-cover transition duration-700 hover:scale-105"
-                />
-              </div>
-
-              <motion.div
-                animate={{
-                  y: [0, -12, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                }}
-                className="absolute -bottom-8 -left-8 bg-white border border-brand-border shadow-card rounded-3xl px-6 py-5 shadow-xl"
-              >
-                <p className="text-brand-primary font-bold">
-                  Modern Solutions
-                </p>
-
-                <p className="text-sm text-brand-text mt-1">
-                  Web • Mobile • AI • Branding
-                </p>
-              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -552,22 +516,22 @@ const faqItems = [
                 whileHover={{ y: -12, scale: 1.02 }}
                 className="group relative"
               >
-                <div className="absolute -inset-[1px] rounded-[32px] bg-gradient-to-r from-violet-500 via-cyan-500 to-violet-500 opacity-0 blur-sm transition duration-500 group-hover:opacity-100" />
-                <div className="relative h-full rounded-[32px] border border-white/10 bg-[#101828]/80 p-8 text-white backdrop-blur-xl transition-all duration-500">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-2xl font-bold text-white shadow-lg shadow-violet-500/20">
+                <div className="absolute -inset-[1px] rounded-[32px] bg-[#0C8DA1] opacity-0 blur-sm transition duration-500 group-hover:opacity-40" />
+                <div className="relative h-full rounded-[32px] border border-gray-100 bg-white p-8 text-gray-800 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0C8DA1] text-2xl font-bold text-white shadow-lg shadow-[#0C8DA1]/30">
                     0{index + 1}
                   </div>
 
-                  <h3 className="mt-8 text-2xl font-bold text-brand-heading">
+                  <h3 className="mt-8 text-2xl font-bold text-gray-900">
                     {item.title}
                   </h3>
 
-                  <p className="mt-5 text-brand-text leading-8">
+                  <p className="mt-5 text-gray-600 leading-8">
                     {item.description}
                   </p>
 
                   {/* Bottom Line */}
-                  <div className="mt-8 h-[2px] w-0 bg-gradient-to-r from-violet-500 to-cyan-400 transition-all duration-500 group-hover:w-full"></div>
+                  <div className="mt-8 h-[2px] w-0 bg-[#0C8DA1] transition-all duration-500 group-hover:w-full"></div>
                 </div>
               </motion.div>
             ))}
@@ -712,7 +676,7 @@ const faqItems = [
             viewport={{ once: true }}
             className="mt-16"
           >
-            <div className="rounded-[35px] border border-white/10 bg-[#101828]/80 p-8 shadow-[0_25px_80px_rgba(0,0,0,.35)] backdrop-blur-2xl md:p-10">
+            <div className="rounded-[35px] border border-gray-200 bg-white p-8 shadow-xl md:p-10">
               <FAQ items={faqItems} />
             </div>
           </motion.div>
@@ -733,8 +697,8 @@ const faqItems = [
           className="relative mx-auto max-w-7xl px-6 lg:px-8"
         >
           <div className="relative overflow-hidden rounded-[40px] border border-white/10">
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-700 via-indigo-600 to-cyan-600" />
-            <div className="absolute inset-0 bg-black/20 backdrop-blur-xl" />
+            <div className="absolute inset-0 bg-[#0C8DA1]" />
+            <div className="absolute inset-0 bg-black/5 backdrop-blur-sm" />
 
             <div className="relative px-10 py-24 text-center">
               <motion.h2
@@ -765,10 +729,10 @@ const faqItems = [
                 className="mt-12 flex justify-center"
               >
                 <Link to="/contact">
-                  <Button size="lg" className="rounded-2xl px-10 shadow-2xl shadow-violet-900/40">
+                  <button className="flex items-center rounded-full bg-white px-10 py-4 text-lg font-bold text-[#0C8DA1] transition-all hover:bg-gray-100 shadow-2xl shadow-black/20">
                     Get Started Now
                     <FiArrowRight className="ml-2" />
-                  </Button>
+                  </button>
                 </Link>
               </motion.div>
             </div>
