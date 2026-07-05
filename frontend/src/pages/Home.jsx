@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle";
 import ServiceCard from "../components/ServiceCard";
@@ -253,6 +253,20 @@ const faqItems = [
 const Home = () => {
   const [services, setServices] = useState(fallbackServices);
 
+  const heroHeadlines = [
+    <>Offshore <br /> Development <br /> Company in India</>,
+    <>Build Your <br /> Dedicated Remote <br /> Development Team</>,
+    <>Scale Your <br /> Business with <br /> Expert IT Solutions</>
+  ];
+  const [headlineIndex, setHeadlineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeadlineIndex((prev) => (prev + 1) % heroHeadlines.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -281,7 +295,7 @@ const Home = () => {
             playsInline
             className="absolute inset-0 w-full h-full object-cover opacity-50"
           >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/hero-video .mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Dark Overlay for better text readability */}
@@ -300,10 +314,18 @@ const Home = () => {
                   Modern Solutions: Web • Mobile • AI • Branding
                 </span>
               </div>
-              <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl xl:text-[80px]">
-                Offshore <br />
-                Development <br />
-                Company in India
+              <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl xl:text-[80px] h-[180px] md:h-[240px] xl:h-[300px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={headlineIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {heroHeadlines[headlineIndex]}
+                  </motion.div>
+                </AnimatePresence>
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200 md:text-xl font-medium">
@@ -644,11 +666,10 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.12 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -12 }}
                 className="group relative"
               >
-                <div className="absolute -inset-[1px] rounded-[30px] bg-gradient-to-r from-violet-500 via-cyan-400 to-violet-500 opacity-0 blur-sm transition duration-500 group-hover:opacity-100" />
-                <div className="relative rounded-[30px] border border-white/10 bg-[#0F172A]/80 p-3 backdrop-blur-xl">
+                <div className="absolute -inset-[1px] rounded-2xl bg-[#0C8DA1] opacity-0 blur-md transition duration-500 group-hover:opacity-20" />
+                <div className="relative">
                   <TestimonialCard {...testimonial} delay={0} />
                 </div>
               </motion.div>
