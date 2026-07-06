@@ -21,6 +21,8 @@ export default {
           text: "#64748B",         // Paragraph
           light: "#F8FAFC",        // Section background
           border: "#E5E7EB",
+          blue: "#0C8DA1",
+          cyan: "#0A6E7E",
         },
       },
 

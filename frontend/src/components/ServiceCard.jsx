@@ -41,7 +41,7 @@ const ServiceCard = ({ icon: Icon, title, description, slug, delay = 0 }) => {
 
   return (
     <motion.div
-      className="group relative bg-gradient-to-br from-dark-card to-dark-card/50 border border-dark-border rounded-xl p-6 hover:border-brand-blue transition-all duration-300 cursor-pointer overflow-hidden"
+      className="group relative h-full bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#0C8DA1] shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}

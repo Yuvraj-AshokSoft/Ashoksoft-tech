@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiFilter, FiX, FiArrowRight } from 'react-icons/fi';
 import { portfolioService, serviceService } from '../services/api';
@@ -204,6 +204,135 @@ const Portfolio = () => {
           )}
         </div>
       </section>
+
+      {/* Modal for viewing portfolio details */}
+      <AnimatePresence>
+        {selectedItem && (
+          <motion.div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedItem(null)}
+          >
+            <motion.div
+              className="bg-white border border-gray-200 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="sticky top-0 z-10 flex justify-between items-center p-6 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+                <h2 className="text-2xl font-bold text-gray-900">{selectedItem.title}</h2>
+                <motion.button
+                  onClick={() => setSelectedItem(null)}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <FiX size={24} className="text-gray-600" />
+                </motion.button>
+              </div>
+
+              <div className="p-6 space-y-6">
+                {/* Image Carousel */}
+                {selectedItem.images && selectedItem.images.length > 0 && (
+                  <div className="space-y-4">
+                    <div className="relative bg-gray-100 rounded-xl overflow-hidden border border-gray-200">
+                      <img
+                        src={selectedItem.images[currentImageIndex].imageData}
+                        alt={`Portfolio ${currentImageIndex + 1}`}
+                        className="w-full h-96 object-cover"
+                      />
+                      {selectedItem.images.length > 1 && (
+                        <>
+                          <motion.button
+                            onClick={handlePrevImage}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white hover:bg-gray-100 text-gray-800 rounded-full transition-colors shadow-lg border border-gray-200"
+                            whileHover={{ scale: 1.1 }}
+                          >
+                            ←
+                          </motion.button>
+                          <motion.button
+                            onClick={handleNextImage}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white hover:bg-gray-100 text-gray-800 rounded-full transition-colors shadow-lg border border-gray-200"
+                            whileHover={{ scale: 1.1 }}
+                          >
+                            →
+                          </motion.button>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Thumbnails */}
+                    <div className="flex gap-2 overflow-x-auto pb-2">
+                      {selectedItem.images.map((img, idx) => (
+                        <motion.img
+                          key={idx}
+                          src={img.imageData}
+                          alt={`Thumbnail ${idx + 1}`}
+                          className={`w-20 h-20 object-cover rounded-lg cursor-pointer transition-all ${
+                            currentImageIndex === idx
+                              ? 'ring-2 ring-[#0C8DA1]'
+                              : 'opacity-60 hover:opacity-100'
+                          }`}
+                          onClick={() => setCurrentImageIndex(idx)}
+                          whileHover={{ scale: 1.05 }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Details */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase mb-2">Description</h3>
+                    <p className="text-gray-600 leading-relaxed">{selectedItem.description}</p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase mb-2">Details</h3>
+                    <div className="space-y-2 text-sm text-gray-600">
+                      <p><span className="text-gray-500 font-medium">Category:</span> {selectedItem.category}</p>
+                      {selectedItem.price > 0 && (
+                        <p><span className="text-gray-500 font-medium">Price:</span> <span className="text-[#0C8DA1] font-bold">₹{selectedItem.price}</span></p>
+                      )}
+                      {selectedItem.technologies && selectedItem.technologies.length > 0 && (
+                        <p><span className="text-gray-500 font-medium">Technologies:</span> {selectedItem.technologies.join(', ')}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                {selectedItem.tags && selectedItem.tags.length > 0 && (
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase mb-2">Tags</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedItem.tags.map(tag => (
+                        <span key={tag} className="px-3 py-1 bg-gray-100 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA */}
+                <Link to="/contact" className="block">
+                  <motion.button
+                    className="w-full px-6 py-4 bg-[#0C8DA1] text-white font-bold rounded-full hover:bg-[#0a7586] hover:shadow-lg hover:shadow-[#0C8DA1]/30 transition-all text-lg"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Discuss Similar Project
+                  </motion.button>
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
