@@ -21,8 +21,11 @@ export default {
           text: "#64748B",         // Paragraph
           light: "#F8FAFC",        // Section background
           border: "#E5E7EB",
+<<<<<<< HEAD
           blue: "#0C8DA1",
           cyan: "#0A6E7E",
+=======
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
         },
       },
 

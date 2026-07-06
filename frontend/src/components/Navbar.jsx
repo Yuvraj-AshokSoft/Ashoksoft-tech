@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+<<<<<<< HEAD
 import { motion, AnimatePresence } from 'framer-motion';
+=======
+import { motion } from 'framer-motion';
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
 import { FiMenu, FiX, FiHome, FiChevronDown } from 'react-icons/fi';
 import { useAuth } from '../context/AuthContext';
 
@@ -92,6 +96,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
 
       {/* Mobile Menu Drawer */}
@@ -166,6 +171,42 @@ const Navbar = () => {
           </>
         )}
       </AnimatePresence>
+=======
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <motion.div
+            className="lg:hidden pb-4 pt-2 border-t border-dark-border bg-dark-bg absolute w-full left-0 px-4 sm:px-6 shadow-2xl rounded-b-2xl"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="flex items-center justify-between px-4 py-3 text-slate-600 hover:text-brand-blue hover:bg-white rounded-lg mb-1"
+                onClick={() => setIsOpen(false)}
+              >
+                <div className="flex items-center space-x-2">
+                  {link.isIcon && <FiHome className="text-brand-blue text-lg" />}
+                  <span className="font-medium">{link.name}</span>
+                </div>
+                {link.hasDropdown && <FiChevronDown />}
+              </Link>
+            ))}
+            <div className="mt-4 px-4">
+              <Link
+                to="/contact"
+                className="block w-full text-center px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-cyan text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                Get In Touch
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </div>
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
     </motion.nav>
   );
 };

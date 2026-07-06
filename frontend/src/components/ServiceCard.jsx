@@ -40,15 +40,29 @@ const ServiceCard = ({ icon: Icon, title, description, slug, delay = 0 }) => {
   );
 
   return (
+<<<<<<< HEAD
     <div
       className="group relative h-full bg-gradient-to-br from-dark-card to-dark-card/50 border border-dark-border rounded-2xl p-6 hover:border-brand-blue transition-all duration-300 cursor-pointer overflow-hidden"
+=======
+    <motion.div
+      className="group relative bg-gradient-to-br from-dark-card to-dark-card/50 border border-dark-border rounded-xl p-6 hover:border-brand-blue transition-all duration-300 cursor-pointer overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true }}
+      whileHover={{ y: -5 }}
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
     >
       {slug ? (
         <Link to={`/service/${slug}`} className="block h-full">
           {content}
         </Link>
       ) : content}
+<<<<<<< HEAD
     </div>
+=======
+    </motion.div>
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
   );
 };
 

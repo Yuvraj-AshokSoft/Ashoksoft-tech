@@ -3,11 +3,19 @@ import SectionTitle from '../components/SectionTitle.jsx';
 import { motion } from 'framer-motion';
 
 const About = () => (
+<<<<<<< HEAD
   <div className="min-h-screen pt-24 sm:pt-28 bg-dark-bg px-4 sm:px-6 lg:px-8 text-slate-800">
     <div className="max-w-6xl mx-auto space-y-8 sm:space-y-14">
       <section className="bg-dark-card/80 border border-dark-border rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-brand-blue">
         <SectionTitle title="About AshokSoft" subtitle="We design digital experiences that help brands stand out and grow." />
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-slate-600 leading-relaxed text-base sm:text-lg">
+=======
+  <div className="min-h-screen pt-24 sm:pt-28 bg-dark-bg px-4 sm:px-6 lg:px-8 text-white">
+    <div className="max-w-6xl mx-auto space-y-8 sm:space-y-14">
+      <section className="bg-dark-card/80 border border-dark-border rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-brand-blue">
+        <SectionTitle title="About AshokSoft" subtitle="We design digital experiences that help brands stand out and grow." />
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-gray-300 leading-relaxed text-base sm:text-lg">
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
           AshokSoft Tech is a full-service digital agency focused on building modern websites, mobile apps, automation, and brand
           solutions. Our team combines technical expertise, creative design, and business strategy to deliver measurable results.
         </motion.p>
@@ -29,8 +37,13 @@ const About = () => (
           },
         ].map((item) => (
           <div key={item.title} className="rounded-2xl sm:rounded-3xl border border-dark-border bg-dark-bg/70 p-5 sm:p-8">
+<<<<<<< HEAD
             <h3 className="text-xl font-semibold text-slate-900 mb-3">{item.title}</h3>
             <p className="text-slate-600 leading-relaxed">{item.description}</p>
+=======
+            <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+            <p className="text-gray-400 leading-relaxed">{item.description}</p>
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
           </div>
         ))}
       </section>
