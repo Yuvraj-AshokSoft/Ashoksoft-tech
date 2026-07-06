@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+<<<<<<< HEAD
+import { motion, AnimatePresence } from 'framer-motion';
+=======
 import { motion } from 'framer-motion';
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
 import { FiMenu, FiX, FiHome, FiChevronDown } from 'react-icons/fi';
 import { useAuth } from '../context/AuthContext';
 
@@ -92,6 +96,82 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+<<<<<<< HEAD
+      </div>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Sidebar Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-[280px] sm:w-[320px] bg-white border-l border-dark-border z-50 shadow-2xl p-6 flex flex-col lg:hidden"
+            >
+              {/* Header inside drawer */}
+              <div className="flex justify-between items-center mb-8 pb-4 border-b border-dark-border">
+                <span className="font-bold text-slate-800 tracking-wide text-lg">Menu</span>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-1 hover:bg-slate-100 rounded-lg text-slate-600 transition-colors"
+                >
+                  <FiX size={24} />
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="flex-1 overflow-y-auto space-y-2 pr-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200 ${
+                      location.pathname === link.path
+                        ? 'bg-brand-blue/10 text-brand-blue font-semibold'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-brand-blue'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      {link.isIcon ? (
+                        <FiHome className="text-lg" />
+                      ) : (
+                        <span className="font-medium">{link.name}</span>
+                      )}
+                    </div>
+                    {link.hasDropdown && <FiChevronDown className="opacity-70" />}
+                  </Link>
+                ))}
+              </div>
+
+              {/* CTA Button at bottom */}
+              <div className="mt-8 pt-4 border-t border-dark-border">
+                <Link
+                  to="/contact"
+                  className="block w-full text-center px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-cyan text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Get In Touch
+                </Link>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+=======
 
         {/* Mobile Menu */}
         {isOpen && (
@@ -126,6 +206,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </div>
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
     </motion.nav>
   );
 };

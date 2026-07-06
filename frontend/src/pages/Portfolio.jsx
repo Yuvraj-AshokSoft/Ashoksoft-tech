@@ -293,11 +293,24 @@ const Portfolio = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-sm font-semibold text-slate-500 uppercase mb-2">Description</h3>
+<<<<<<< HEAD
+                  <p className="text-slate-600 leading-relaxed">{selectedItem.description}</p>
+=======
                   <p className="text-slate-300 leading-relaxed">{selectedItem.description}</p>
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
                 </div>
 
                 <div>
                   <h3 className="text-sm font-semibold text-slate-500 uppercase mb-2">Details</h3>
+<<<<<<< HEAD
+                  <div className="space-y-2 text-sm text-slate-600">
+                    <p><span className="text-slate-500">Category:</span> {selectedItem.category}</p>
+                    {selectedItem.price > 0 && (
+                      <p><span className="text-slate-500">Price:</span> <span className="text-brand-blue font-bold">₹{selectedItem.price}</span></p>
+                    )}
+                    {selectedItem.technologies && selectedItem.technologies.length > 0 && (
+                      <p><span className="text-slate-500">Technologies:</span> {selectedItem.technologies.join(', ')}</p>
+=======
                   <div className="space-y-2 text-sm text-slate-300">
                     <p><span className="text-slate-400">Category:</span> {selectedItem.category}</p>
                     {selectedItem.price > 0 && (
@@ -305,6 +318,7 @@ const Portfolio = () => {
                     )}
                     {selectedItem.technologies && selectedItem.technologies.length > 0 && (
                       <p><span className="text-slate-400">Technologies:</span> {selectedItem.technologies.join(', ')}</p>
+>>>>>>> 81ed0365c0a3c6fe86b92557faa7a3287069b71d
                     )}
                   </div>
                 </div>
