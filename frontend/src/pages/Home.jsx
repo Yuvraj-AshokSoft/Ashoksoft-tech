@@ -319,10 +319,7 @@ const Home = () => {
       </section>
 
       <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 h-72 w-72 rounded-full bg-violet-600/10 blur-[120px]" />
-          <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[140px]" />
-        </div>
+
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
@@ -383,7 +380,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center mt-32"
           >
             <span className="font-semibold uppercase tracking-[4px] text-red-500">
               Consultation
@@ -510,7 +507,7 @@ const Home = () => {
 
 
       {/* ================= TECHNOLOGIES ================= */}
-      <section className="relative py-28 bg-gray-50 overflow-hidden">
+      <section className="relative py-28 bg-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <SectionTitle title="Technologies We Use" subtitle="We build with modern, scalable, and secure technologies" />
           
@@ -584,10 +581,7 @@ const Home = () => {
 
       {/* ===================== TESTIMONIALS ===================== */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-0 h-[350px] w-[350px] rounded-full bg-violet-600/10 blur-[140px]" />
-          <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-cyan-500/10 blur-[140px]" />
-        </div>
+
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div

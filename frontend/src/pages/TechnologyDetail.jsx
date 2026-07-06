@@ -1,28 +1,28 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiCheckCircle, FiArrowRight } from 'react-icons/fi';
+import { FiCheckCircle, FiArrowRight, FiCode } from 'react-icons/fi';
 import SectionTitle from '../components/SectionTitle';
 import Button from '../components/Button';
-import { servicesData } from '../data/servicesData';
+import { technologiesData } from '../data/technologiesData';
 
-const ServiceDetail = () => {
+const TechnologyDetail = () => {
   const { id } = useParams();
   
-  // Try to find the service in our robust static data, otherwise handle 404
-  const service = servicesData[id];
+  // Try to find the technology in our robust static data, otherwise handle 404
+  const tech = technologiesData[id];
 
   useEffect(() => {
-    // Scroll to top when changing services
+    // Scroll to top when changing technologies
     window.scrollTo(0, 0);
   }, [id]);
 
-  if (!service) {
+  if (!tech) {
     return (
       <div className="min-h-screen pt-40 bg-gray-50 flex flex-col items-center justify-center px-4 text-center">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Service Not Found</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Technology Not Found</h1>
         <p className="text-lg text-gray-600 mb-8 max-w-lg">
-          We couldn't find the specific service you're looking for. It might have been moved or doesn't exist.
+          We couldn't find the specific technology you're looking for. It might have been moved or doesn't exist.
         </p>
         <Link to="/">
           <Button>Back to Home</Button>
@@ -31,7 +31,7 @@ const ServiceDetail = () => {
     );
   }
 
-  const IconComponent = service.imageIcon;
+  const IconComponent = tech.imageIcon || FiCode;
 
   return (
     <div className="bg-white min-h-screen font-sans">
@@ -53,18 +53,18 @@ const ServiceDetail = () => {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0C8DA1]/10 text-[#0C8DA1] font-semibold text-sm mb-6">
                 <IconComponent className="text-lg" />
-                <span>Premium Service</span>
+                <span>Core Technology</span>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight">
-                {service.title}
+                {tech.title}
               </h1>
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-10">
-                {service.subtitle}
+                {tech.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/contact">
                   <Button size="lg" className="w-full sm:w-auto text-lg px-8 py-4 shadow-lg shadow-[#0C8DA1]/20">
-                    Get a Free Consultation
+                    Hire {tech.title} Developers
                   </Button>
                 </Link>
               </div>
@@ -94,9 +94,9 @@ const ServiceDetail = () => {
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Why We Use {tech.title}</h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              {service.description}
+              {tech.description}
             </p>
           </div>
         </div>
@@ -106,12 +106,12 @@ const ServiceDetail = () => {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle 
-            title="Why Choose Us?" 
-            subtitle={`The advantages of our ${service.title.toLowerCase()} service`} 
+            title={`The Power of ${tech.title}`} 
+            subtitle="Key advantages of building with this technology" 
           />
           
           <div className="grid md:grid-cols-3 gap-8 mt-12">
-            {service.benefits.map((benefit, idx) => (
+            {tech.benefits.map((benefit, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -137,13 +137,13 @@ const ServiceDetail = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                Comprehensive <span className="text-[#0C8DA1]">Solutions</span>
+                What We Build With <span className="text-[#0C8DA1]">{tech.title}</span>
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                We provide end-to-end services tailored to your exact requirements. Our expertise ensures that every aspect of your project is handled with precision and care.
+                Our expert developers leverage {tech.title} to deliver highly scalable, performant, and secure solutions tailored to your business needs.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
-                {service.offerings.map((offering, idx) => (
+                {tech.offerings.map((offering, idx) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, x: -10 }}
@@ -163,19 +163,10 @@ const ServiceDetail = () => {
             
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0C8DA1]/20 to-transparent rounded-3xl -rotate-3 scale-105" />
-              <div className="relative bg-gray-50 border border-gray-200 rounded-3xl p-8 sm:p-12 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Technologies We Master</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {service.technologies.map((tech, idx) => {
-                    const TechIcon = service.techIcons[idx % service.techIcons.length];
-                    return (
-                      <div key={idx} className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:border-[#0C8DA1] transition-colors">
-                        <TechIcon className="text-2xl text-[#0C8DA1]" />
-                        <span className="font-semibold text-gray-700">{tech}</span>
-                      </div>
-                    );
-                  })}
-                </div>
+              <div className="relative bg-gray-50 border border-gray-200 rounded-3xl p-8 sm:p-12 shadow-lg flex items-center justify-center flex-col text-center">
+                <IconComponent className="text-9xl text-[#0C8DA1] mb-6" strokeWidth={1} />
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Expert {tech.title} Team</h3>
+                <p className="text-gray-600">Years of hands-on experience deploying production-ready applications.</p>
               </div>
             </div>
           </div>
@@ -189,14 +180,14 @@ const ServiceDetail = () => {
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
-            Ready to transform your ideas into reality?
+            Looking for expert {tech.title} developers?
           </h2>
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            Let's discuss how our {service.title.toLowerCase()} expertise can drive your business forward.
+            Let's discuss how we can leverage this technology to build your next digital product.
           </p>
           <Link to="/contact">
             <button className="px-10 py-5 bg-[#0C8DA1] hover:bg-[#0A6E7E] text-white font-bold text-lg rounded-full shadow-[0_0_20px_rgba(12,141,161,0.4)] transition-all hover:scale-105 flex items-center gap-2 mx-auto">
-              Start Your Project <FiArrowRight className="text-xl" />
+              Schedule a Call <FiArrowRight className="text-xl" />
             </button>
           </Link>
         </div>
@@ -206,4 +197,4 @@ const ServiceDetail = () => {
   );
 };
 
-export default ServiceDetail;
+export default TechnologyDetail;

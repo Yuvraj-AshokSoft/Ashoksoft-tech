@@ -71,20 +71,20 @@ const Navbar = () => {
     ],
     categories: [
       {
-        title: 'Hire Mobile App Developers',
-        items: ['Hire iOS Developers', 'Hire Ionic Developers', 'Hire Android Developers', 'Hire Flutter App Developers', 'Hire Java Developers', 'Hire Swift Developers', 'Hire Kotlin Developers']
+        title: 'Hire Mobile Developers',
+        items: ['Hire React Native Developers', 'Hire Flutter Developers', 'Hire iOS Developers', 'Hire Android Developers']
       },
       {
-        title: 'Hire Open Source Developers',
-        items: ['Hire Wordpress Developers', 'Hire Laravel Developers', 'Hire Codeigniter Developers', 'Hire PHP Developers', 'Hire Django Developers', 'Hire Smart Contract Developers', 'Hire CMS Developers']
+        title: 'Hire Frontend Developers',
+        items: ['Hire React Developers', 'Hire Next.js Developers', 'Hire Vue.js Developers']
       },
       {
-        title: 'Hire Ecommerce Developers',
-        items: ['Hire Magento Developers', 'Hire OsCommerce Developers', 'Hire WooCommerce Developers', 'Hire Shopify Developers']
+        title: 'Hire Backend Developers',
+        items: ['Hire Node.js Developers', 'Hire Python Developers', 'Hire PHP Developers']
       },
       {
-        title: 'Hire JavaScript Developers',
-        items: ['Hire Angular JS Developers', 'Hire Node JS Developers', 'Hire Vue.js Developers', 'Hire React Native Developers']
+        title: 'Hire E-Commerce Developers',
+        items: ['Hire Shopify Developers', 'Hire WooCommerce Developers']
       }
     ]
   };
@@ -149,7 +149,10 @@ const Navbar = () => {
                           <ul className="space-y-3">
                             {column.items.map((item, itemIdx) => (
                               <li key={itemIdx}>
-                                <Link to="/services" className="text-gray-600 hover:text-[#0C8DA1] font-medium text-sm transition-colors block">
+                                <Link 
+                                  to={`/service/${item.toLowerCase().replace(/ & /g, '-and-').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} 
+                                  className="text-gray-600 hover:text-[#0C8DA1] font-medium text-sm transition-colors block"
+                                >
                                   {item}
                                 </Link>
                               </li>
@@ -174,7 +177,10 @@ const Navbar = () => {
                           <ul className="space-y-3">
                             {column.items.map((item, itemIdx) => (
                               <li key={itemIdx}>
-                                <Link to="/technologies" className="text-gray-600 hover:text-[#0C8DA1] font-medium text-sm transition-colors block">
+                                <Link 
+                                  to={`/technology/${item.toLowerCase().replace(/ & /g, '-and-').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} 
+                                  className="text-gray-600 hover:text-[#0C8DA1] font-medium text-sm transition-colors block"
+                                >
                                   {item}
                                 </Link>
                               </li>
@@ -217,7 +223,10 @@ const Navbar = () => {
                             <ul className="space-y-3">
                               {cat.items.map((item, itemIdx) => (
                                 <li key={itemIdx}>
-                                  <Link to="/virtual-team" className="text-gray-600 hover:text-[#0C8DA1] font-medium text-sm transition-colors block">
+                                  <Link 
+                                    to={`/hire/${item.replace(/^Hire /, '').toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]+/g, '')}`} 
+                                    className="text-gray-600 hover:text-[#0C8DA1] font-medium text-sm transition-colors block"
+                                  >
                                     {item}
                                   </Link>
                                 </li>
