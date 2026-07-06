@@ -12,6 +12,7 @@ import About from './pages/About.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Admin from './pages/Admin.jsx';
 import NotFound from './pages/NotFound.jsx';
+import Blogs from './pages/Blogs.jsx';
 import { ProtectedRoute } from './utils/ProtectedRoute.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 
@@ -24,6 +25,7 @@ const App = () => (
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Navigate to="/" />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/service/:id" element={<ServiceDetail />} />
         <Route path="/login" element={<Login />} />

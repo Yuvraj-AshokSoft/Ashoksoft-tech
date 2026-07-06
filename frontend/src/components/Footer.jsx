@@ -68,7 +68,7 @@ const Footer = () => {
               <a href="#" className="h-10 w-10 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1">
                 <FiTwitter size={18} />
               </a>
-              <a href="mailto:hello@ashoksoft.com" className="h-10 w-10 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1">
+              <a href="mailto:info@ashoksofttechnologies.com" className="h-10 w-10 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-brand-blue hover:text-white transition-all duration-300 hover:-translate-y-1">
                 <FiMail size={18} />
               </a>
             </div>

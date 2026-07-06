@@ -5,7 +5,7 @@ import { FiStar } from 'react-icons/fi';
 const TestimonialCard = ({ name, role, company, content, delay = 0 }) => {
   return (
     <motion.div
-      className="bg-white shadow-sm border border-gray-200 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+      className="bg-white shadow-sm border border-gray-200 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
@@ -22,7 +22,7 @@ const TestimonialCard = ({ name, role, company, content, delay = 0 }) => {
       <p className="text-gray-600 mb-8 leading-relaxed italic line-clamp-4">"{content}"</p>
 
       {/* Author */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mt-auto">
         <div className="h-10 w-10 rounded-full bg-[#0C8DA1]/10 flex items-center justify-center text-[#0C8DA1] font-bold text-lg">
           {name.charAt(0)}
         </div>

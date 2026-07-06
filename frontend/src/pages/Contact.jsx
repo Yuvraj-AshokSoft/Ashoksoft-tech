@@ -88,31 +88,36 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-28 bg-dark-bg px-3 sm:px-6 lg:px-8 text-slate-900 overflow-x-hidden">
-      <div className="w-full max-w-5xl mx-auto bg-dark-card/80 border border-dark-border rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-brand-cyan overflow-hidden">
-        <SectionTitle title="Contact Us" subtitle="Ready to start? Reach out and let's build your next digital experience." />
+    <div className="min-h-screen pt-28 bg-slate-50 px-3 sm:px-6 lg:px-8 text-slate-900 overflow-x-hidden">
+      <div className="w-full max-w-5xl mx-auto bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-lg overflow-hidden">
+        <SectionTitle title="Contact Us" subtitle="Let's Build Something Amazing Together" />
 
         <div className="grid min-w-0 gap-6 md:gap-8 md:grid-cols-2">
           <div className="min-w-0 space-y-5 sm:space-y-6">
             <div>
               <h2 className="text-2xl font-bold text-slate-900">Get in touch</h2>
               <p className="text-slate-600 mt-3">
-                Whether you need a website, app, automation workflow, or brand design, our team is ready to help.
+                Have an idea? Need a website? Looking for AI solutions? Want custom software? We're here to help.
               </p>
             </div>
 
-            <div className="rounded-2xl sm:rounded-3xl border border-dark-border bg-dark-bg/80 p-4 sm:p-6 min-w-0">
+            <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
               <p className="text-slate-600">Email</p>
-              <p className="text-slate-900 font-semibold break-words">ceo.ashoksoft.ai.technologies@gmail.com</p>
+              <p className="text-slate-900 font-semibold break-words">info@ashoksofttechnologies.com</p>
             </div>
 
-            <div className="rounded-2xl sm:rounded-3xl border border-dark-border bg-dark-bg/80 p-4 sm:p-6 min-w-0">
+            <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
               <p className="text-slate-600">Phone</p>
-              <p className="text-slate-900 font-semibold">9958426849</p>
+              <p className="text-slate-900 font-semibold">+91 XXXXX XXXXX</p>
+            </div>
+
+            <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
+              <p className="text-slate-600">Location</p>
+              <p className="text-slate-900 font-semibold">India</p>
             </div>
           </div>
 
-          <div className="min-w-0 rounded-2xl sm:rounded-3xl border border-dark-border bg-dark-bg/80 p-4 sm:p-6 lg:p-8">
+          <div className="min-w-0 rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 lg:p-8">
             {isAuthenticated ? (
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <p className="text-slate-600 mb-6">

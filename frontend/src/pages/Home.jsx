@@ -106,102 +106,53 @@ const industries = [
 
 const fallbackServices = [
   {
-    icon: "code",
-    slug: "web-development",
-    title: "Web Development",
-    description:
-      "Create stunning, responsive websites that engage users and drive conversions with modern technologies.",
+    icon: "cpu",
+    slug: "ai-solutions",
+    title: "Artificial Intelligence Solutions",
+    description: "AI-powered applications, chatbots, automation systems, machine learning solutions, and intelligent business tools."
   },
   {
     icon: "code",
-    slug: "app-development",
-    title: "App Development",
-    description:
-      "Build powerful mobile and web applications tailored to your business needs and user expectations.",
+    slug: "website-development",
+    title: "Website Development",
+    description: "Modern, responsive, SEO-friendly websites built using the latest technologies."
+  },
+  {
+    icon: "code",
+    slug: "mobile-app-development",
+    title: "Mobile App Development",
+    description: "Android and iOS applications designed for performance, scalability, and exceptional user experience."
+  },
+  {
+    icon: "design",
+    slug: "software-development",
+    title: "Software Development",
+    description: "Custom software solutions tailored to your business needs with secure and scalable architecture."
+  },
+  {
+    icon: "cpu",
+    slug: "cloud-solutions",
+    title: "Cloud Solutions",
+    description: "Cloud deployment, hosting, DevOps, server management, and scalable infrastructure."
+  },
+  {
+    icon: "chart",
+    slug: "robotics-automation",
+    title: "Robotics & Automation",
+    description: "AI-powered robotics, IoT projects, smart automation systems, and educational robotics solutions."
   },
   {
     icon: "design",
     slug: "ui-ux-design",
     title: "UI/UX Design",
-    description:
-      "Design beautiful, intuitive interfaces that enhance user experience and boost engagement metrics.",
-  },
-  {
-    icon: "cpu",
-    slug: "ai-automation",
-    title: "AI Automation",
-    description:
-      "Leverage artificial intelligence to automate processes and unlock new business opportunities.",
+    description: "Creative and user-focused interface designs that improve engagement and usability."
   },
   {
     icon: "chart",
-    slug: "branding",
-    title: "Branding",
-    description:
-      "Build a strong brand identity that resonates with your target audience and stands out.",
-  },
-];
-const ourServices = [
-  {
-    icon: FiSearch,
-    title: "Hire & Offshore",
-    description:
-      "Looking for trusted, experienced, and professional services? Take our offshore services or hire developers from us for your development.",
-    items: [
-      "Offshore Development Services",
-      "Hire Dedicated Developers",
-      "QA / Testing Services",
-      "IT Consulting",
-    ],
-  },
-  {
-    icon: FiCode,
-    title: "Frontend Development",
-    description:
-      "Incorporate the latest interactivity, multimedia, and user interface patterns on your website.",
-    items: [
-      "Angular JS Development",
-      "React JS Development",
-      "Vue JS Development",
-      "Node JS Development",
-      "Progressive Web App Development",
-    ],
-  },
-  {
-    icon: FiMonitor,
-    title: "Software & Web Development",
-    description:
-      "Get custom software development and web development services with modern technologies.",
-    items: [
-      "ASP.Net / MVC Development",
-      "C# / WPF Development",
-      "Windows Azure Development",
-      "PHP Web Development",
-    ],
-  },
-];
-
-const technologies = [
-  { name: "Angular JS", icon: FaAngular },
-  { name: "Python", icon: FaPython },
-  { name: "React JS", icon: FaReact },
-  { name: "ASP.NET MVC", icon: SiDotnet },
-  { name: "Vue JS", icon: FaVuejs },
-  { name: "C#", icon: SiCsharp },
-  { name: "Aurelia", icon: SiAurelia },
-  { name: "PHP", icon: FaPhp },
-  { name: "Bootstrap", icon: FaBootstrap },
-  { name: "Node.js", icon: FaNodeJs },
-  { name: "Android", icon: FaAndroid },
-  { name: "Laravel", icon: FaLaravel },
-  { name: "iOS", icon: FaApple },
-  { name: "Magento", icon: SiMagento },
-  { name: "WordPress", icon: FaWordpress },
-  { name: "Xamarin", icon: SiXamarin },
-  { name: "Ember", icon: SiEmberdotjs },
-  { name: "MEAN", icon: FaReact },
-  { name: "Azure", icon: SiMicrosoftazure },
-  { name: "CodeIgniter", icon: SiCodeigniter },
+    slug: "digital-marketing",
+    title: "Digital Marketing",
+    description: "SEO, social media marketing, branding, and digital growth strategies."
+  }
 ];
 
 const testimonials = [
@@ -230,25 +181,21 @@ const testimonials = [
 
 const faqItems = [
   {
-    question: "How long does a typical project take?",
-    answer:
-      "Project timelines vary based on complexity. Small websites take 4-8 weeks, while complex applications may take 3-6 months. We provide detailed timelines during the consultation phase.",
+    question: "What services do you provide?",
+    answer: "We provide AI solutions, software development, website development, mobile applications, cloud solutions, robotics, and digital transformation services."
   },
   {
-    question: "Do you provide ongoing support?",
-    answer:
-      "Yes, we offer comprehensive support packages including maintenance, updates, and technical support. All plans include at least 3 months of support.",
+    question: "Do you build custom software?",
+    answer: "Yes, every solution is customized according to business requirements."
   },
   {
-    question: "Can you work with existing systems?",
-    answer:
-      "Absolutely! We can integrate with your existing systems, migrate data, and ensure seamless transitions without disrupting your operations.",
+    question: "Do you provide maintenance?",
+    answer: "Yes, we offer ongoing support, updates, and maintenance after deployment."
   },
   {
-    question: "What technologies do you use?",
-    answer:
-      "We use modern, industry-standard technologies including React, Vue, Node.js, Python, and various cloud platforms. We choose the best tech stack for your specific needs.",
-  },
+    question: "Which technologies do you use?",
+    answer: "React, Node.js, MongoDB, Python, AI technologies, AWS, Firebase, and many more."
+  }
 ];
 const Home = () => {
   const [services, setServices] = useState(fallbackServices);
@@ -345,9 +292,11 @@ const Home = () => {
 
               <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-3">
                 {[
-                  { value: "50+", label: "Projects Delivered" },
-                  { value: "40+", label: "Satisfied Clients" },
-                  { value: "5+", label: "Years Experience" },
+                  { value: "50+", label: "Projects Completed" },
+                  { value: "30+", label: "Happy Clients" },
+                  { value: "15+", label: "Team Members" },
+                  { value: "25+", label: "Technologies" },
+                  { value: "98%", label: "Client Satisfaction" }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -502,10 +451,6 @@ const Home = () => {
       </section>
 
       <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-0">
-          <div className="absolute left-0 top-0 h-[450px] w-[450px] rounded-full bg-violet-600/10 blur-[160px]" />
-          <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[160px]" />
-        </div>
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
@@ -522,12 +467,14 @@ const Home = () => {
 
           <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {[
-              { title: "Expert Team", description: "Our team consists of seasoned professionals with years of experience in digital transformation and technology solutions." },
-              { title: "Quality Assurance", description: "We follow strict quality standards and best practices to ensure every project meets the highest industry standards." },
-              { title: "Client-Focused", description: "Your success is our success. We work closely with you to understand your goals and deliver exceptional results." },
-              { title: "Innovative Solutions", description: "We stay ahead of industry trends and leverage cutting-edge technologies to provide innovative solutions." },
-              { title: "On-Time Delivery", description: "We respect your time and budget. Our projects are delivered on schedule without compromising quality." },
-              { title: "Long-term Support", description: "We provide comprehensive ongoing support and maintenance to ensure your digital assets perform optimally." },
+              { title: "Experienced Development Team", description: "Our team consists of seasoned professionals with years of experience." },
+              { title: "AI-Driven Solutions", description: "We incorporate AI to make your systems smarter and more efficient." },
+              { title: "Scalable Architecture", description: "We build architectures that can grow with your business needs." },
+              { title: "Modern Technologies", description: "We utilize the latest stacks like React, Next.js, Node, Python, and AWS." },
+              { title: "Affordable Pricing", description: "High-quality solutions tailored to fit within your reasonable budget." },
+              { title: "On-Time Delivery", description: "We stick to strict timelines to ensure your project goes live when planned." },
+              { title: "Continuous Support", description: "Ongoing maintenance and updates to keep your systems running smoothly." },
+              { title: "Customer-Centric Approach", description: "Your goals are our priority, and we ensure transparent communication." },
             ].map((item, index) => (
               <motion.div
                 key={item.title}
@@ -561,84 +508,78 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= INDUSTRY EXPERIENCE ================= */}
 
-<section className="relative py-28 bg-white overflow-hidden" >
-
-  {/* Background Glow */}
-
-  <div className="absolute inset-0">
-
-    <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-brand-primary/10 blur-[140px]" />
-
-    <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-brand-secondary/10 blur-[140px]" />
-
-  </div>
-
-  <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-
-    <SectionTitle
-      title="Industry Experience"
-      subtitle="Delivering innovative software solutions across diverse industries with deep domain expertise and modern technologies."
-    />
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
-
-      {industries.map((industry, index) => (
-
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          viewport={{ once: true }}
-          whileHover={{ y: -10 }}
-          className="group bg-white rounded-[28px] border border-brand-border shadow-card p-8 hover:shadow-hover transition-all duration-500 "
-        >
-
-          {/* Icon */}
-
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-secondary flex items-center justify-center text-white text-3xl group-hover:scale-110 transition">
-
-            {industry.icon}
-
+      {/* ================= TECHNOLOGIES ================= */}
+      <section className="relative py-28 bg-gray-50 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionTitle title="Technologies We Use" subtitle="We build with modern, scalable, and secure technologies" />
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            {[
+              { category: "Frontend", items: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"], icon: <FiMonitor /> },
+              { category: "Backend", items: ["Node.js", "Express.js", "Python"], icon: <FiCode /> },
+              { category: "Database", items: ["MongoDB", "MySQL", "PostgreSQL"], icon: <FiBarChart /> },
+              { category: "Cloud", items: ["AWS", "Firebase", "Vercel"], icon: <FiCpu /> },
+              { category: "AI", items: ["OpenAI APIs", "Machine Learning", "Computer Vision", "NLP"], icon: <FiSearch /> },
+            ].map((techGroup, index) => (
+              <motion.div
+                key={techGroup.category}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-[28px] border border-gray-200 shadow-sm p-8 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-[#0C8DA1] flex items-center justify-center text-white text-3xl mb-6">
+                  {techGroup.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{techGroup.category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {techGroup.items.map(item => (
+                    <span key={item} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Title */}
-
-          <h3 className="mt-8 text-2xl font-bold text-brand-heading">
-
-            {industry.title}
-
-          </h3>
-
-          {/* Description */}
-
-          <p className="mt-5 text-brand-text leading-8">
-
-            {industry.description}
-
-          </p>
-
-          {/* Link */}
-
-          <button className="mt-8 flex items-center gap-2 font-semibold text-brand-primary group-hover:gap-4 transition-all">
-
-            Learn More
-
-            <FiArrowRight />
-
-          </button>
-
-        </motion.div>
-
-      ))}
-
-    </div>
-
-  </div>
-
-</section>
+      {/* ================= OUR PROCESS ================= */}
+      <section className="relative py-28 bg-white overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <SectionTitle title="Our Process" subtitle="How we turn your ideas into reality" />
+          
+          <div className="mt-16 flex flex-col md:flex-row flex-wrap justify-center items-stretch gap-6">
+            {[
+              { step: "1", title: "Discovery", desc: "Understanding business requirements." },
+              { step: "2", title: "Planning", desc: "Creating the project roadmap." },
+              { step: "3", title: "Design", desc: "Building intuitive UI/UX." },
+              { step: "4", title: "Development", desc: "Writing scalable and secure code." },
+              { step: "5", title: "Testing", desc: "Ensuring quality and reliability." },
+              { step: "6", title: "Deployment", desc: "Launching the product." },
+              { step: "7", title: "Support", desc: "Continuous maintenance and updates." },
+            ].map((process, index) => (
+              <motion.div
+                key={process.step}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex-1 min-w-[200px] bg-slate-50 border border-gray-200 rounded-2xl p-6 relative group hover:bg-[#0C8DA1] transition-colors duration-300"
+              >
+                <div className="w-12 h-12 rounded-full bg-[#0C8DA1] group-hover:bg-white text-white group-hover:text-[#0C8DA1] flex items-center justify-center font-bold text-xl mx-auto mb-4 transition-colors">
+                  {process.step}
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 group-hover:text-white mb-2">{process.title}</h4>
+                <p className="text-sm text-gray-600 group-hover:text-white/90">{process.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
 
       {/* ===================== TESTIMONIALS ===================== */}
@@ -666,10 +607,10 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.12 }}
                 viewport={{ once: true }}
-                className="group relative"
+                className="group relative h-full"
               >
                 <div className="absolute -inset-[1px] rounded-2xl bg-[#0C8DA1] opacity-0 blur-md transition duration-500 group-hover:opacity-20" />
-                <div className="relative">
+                <div className="relative h-full">
                   <TestimonialCard {...testimonial} delay={0} />
                 </div>
               </motion.div>
@@ -679,7 +620,6 @@ const Home = () => {
       </section>
 
       <section className="relative py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/40 to-transparent" />
         <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -705,10 +645,6 @@ const Home = () => {
       </section>
 
       <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-0">
-          <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-violet-600/20 via-fuchsia-500/15 to-cyan-500/20 blur-[180px]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:45px_45px]" />
-        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
