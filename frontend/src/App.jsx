@@ -22,6 +22,8 @@ import { ProtectedRoute } from './utils/ProtectedRoute.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 
 import Services from './pages/Services.jsx';
+import Technologies from './pages/Technologies.jsx';
+import VirtualTeam from './pages/VirtualTeam.jsx';
 
 const App = () => (
   <div className="min-h-screen bg-dark-bg text-slate-900 light-theme">
@@ -31,6 +33,8 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/technologies" element={<Technologies />} />
+        <Route path="/virtual-team" element={<VirtualTeam />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/team" element={<Team />} />
         <Route path="/partners" element={<Partners />} />

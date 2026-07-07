@@ -20,7 +20,7 @@ const blogData = [
     snippet: 'Businesses see advertisements and applications in the digital space to be of vital importance especially in the 2020s. When it comes to the adoption of mobile phones in particular, we are currently at 5.8 billion subscribers...',
     date: 'June 22, 2026',
     author: 'Ajanth',
-    image: 'https://images.unsplash.com/photo-1618477388954-7852f32655cb?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop'
   },
   {
     id: 3,

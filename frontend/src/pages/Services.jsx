@@ -22,7 +22,10 @@ import {
   FiShield,
   FiLayers,
   FiArrowRight,
-  FiSmile
+  FiSmile,
+  FiSmartphone,
+  FiCloud,
+  FiSettings
 } from 'react-icons/fi';
 
 import {
@@ -49,39 +52,39 @@ import {
 const fallbackServices = [
   {
     icon: FiCpu,
-    slug: "ai-solutions",
-    title: "Artificial Intelligence Solutions",
-    description: "AI-powered applications, chatbots, automation systems, machine learning solutions, and intelligent business tools."
-  },
-  {
-    icon: FiCode,
-    slug: "website-development",
-    title: "Website Development",
-    description: "Modern, responsive, SEO-friendly websites built using the latest technologies."
+    slug: "ai-development",
+    title: "AI Development",
+    description: "Chatbots, Computer Vision, NLP"
   },
   {
     icon: FiMonitor,
+    slug: "web-development",
+    title: "Web Development",
+    description: "React Website, E-commerce, Business Portals"
+  },
+  {
+    icon: FiSmartphone,
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    description: "Android and iOS applications designed for performance, scalability, and exceptional user experience."
+    description: "Android Apps, iOS Apps, Flutter Apps"
   },
   {
-    icon: FiPenTool,
-    slug: "software-development",
-    title: "Software Development",
-    description: "Custom software solutions tailored to your business needs with secure and scalable architecture."
-  },
-  {
-    icon: FiLayers,
+    icon: FiCloud,
     slug: "cloud-solutions",
     title: "Cloud Solutions",
-    description: "Cloud deployment, hosting, DevOps, server management, and scalable infrastructure."
+    description: "AWS, Azure, Google Cloud Integration"
+  },
+  {
+    icon: FiCpu,
+    slug: "robotics-iot",
+    title: "Robotics & IoT",
+    description: "Hardware Integration, Smart Devices, Automation"
   },
   {
     icon: FiBarChart,
-    slug: "ui-ux-design",
-    title: "UI/UX Design",
-    description: "Creative and user-focused interface designs that improve engagement and usability."
+    slug: "data-analytics",
+    title: "Data Analytics",
+    description: "Business Intelligence, Big Data, Predictive Analysis"
   }
 ];
 
@@ -130,15 +133,15 @@ const Services = () => {
     <div className="min-h-screen bg-slate-50 overflow-hidden">
       
       {/* 1. Our Services (Hero Section) */}
-      <section className="relative pt-32 pb-20 bg-dark-bg text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-transparent opacity-50"></div>
+      <section className="relative pt-32 pb-20 bg-[#051329] text-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0C8DA1]/20 to-transparent opacity-50"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-brand-cyan font-semibold tracking-wider uppercase text-sm mb-4 block">What We Do</span>
+            <span className="text-[#0C8DA1] font-semibold tracking-wider uppercase text-sm mb-4 block">What We Do</span>
             <h1 className="text-5xl md:text-7xl font-bold mb-6">Our Services</h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               We provide end-to-end IT solutions designed to accelerate your digital transformation and drive sustainable business growth.
@@ -151,8 +154,7 @@ const Services = () => {
       <section className="py-24 bg-slate-50 relative -mt-10 rounded-t-[3rem] z-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900">Premium Solutions</h2>
-            <div className="h-1 w-20 bg-brand-blue mx-auto mt-4 rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">Choose the Right Solution for Your Business</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -185,22 +187,28 @@ const Services = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-center">
             {technologies.map((tech, index) => {
               const TechIcon = tech.icon;
+              const slug = tech.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
               return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  transition={{ delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm w-full h-full"
-                >
-                  <TechIcon className={`text-5xl mb-3 ${tech.color || 'text-slate-700'}`} />
-                  <span className="text-sm font-semibold text-slate-700">{tech.name}</span>
-                </motion.div>
+                <Link to={`/technology/${slug}`} key={index}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -4 }}
+                    transition={{ delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    className="flex flex-row items-center p-4 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-[#0C8DA1]/50 transition-all duration-300 group"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-[#0C8DA1]/10 transition-colors duration-300">
+                      <TechIcon className={`text-2xl ${tech.color || 'text-slate-700'}`} />
+                    </div>
+                    <span className="ml-4 font-bold text-slate-800 text-lg tracking-wide group-hover:text-[#0C8DA1] transition-colors duration-300">
+                      {tech.name}
+                    </span>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>
@@ -208,7 +216,7 @@ const Services = () => {
       </section>
 
       {/* 4. Our Development Process */}
-      <section className="py-24 bg-dark-bg text-white">
+      <section className="py-24 bg-[#051329] text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-bold mb-4">Our Development Process</h2>

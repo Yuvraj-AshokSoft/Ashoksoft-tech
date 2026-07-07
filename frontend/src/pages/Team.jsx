@@ -1,44 +1,43 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiLinkedin, FiTwitter, FiGithub } from 'react-icons/fi';
-import SectionTitle from '../components/SectionTitle';
+import { FiLinkedin } from 'react-icons/fi';
 
 const teamMembers = [
   {
-    name: 'Ashok Kumar',
-    role: 'Founder & CEO',
-    bio: 'Visionary leader with 10+ years of experience in enterprise software development and business strategy.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ashok&backgroundColor=0C8DA1'
+    name: 'Pushpendra Chauhan',
+    role: 'CEO & Founder',
+    bio: 'Visionary leader with a passion for driving digital innovation and leading enterprise software development.',
+    image: '/pushpendra.png'
   },
   {
-    name: 'Sarah Jenkins',
-    role: 'Chief Technology Officer',
-    bio: 'Former FAANG engineer specializing in cloud architecture and highly scalable systems.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=0a7587'
+    name: 'Yashraj Chauhan',
+    role: 'Managing Director',
+    bio: 'Strategic thinker focused on expanding business horizons and managing operational excellence.',
+    image: '/yashraj.png'
   },
   {
-    name: 'David Chen',
-    role: 'Lead AI Engineer',
-    bio: 'Expert in machine learning models and NLP integrations with a passion for automation.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David&backgroundColor=0C8DA1'
+    name: 'Dr. Shubham Kumar Singh',
+    role: 'Guest Faculty',
+    bio: 'Academic expert providing technical mentorship and guiding our research and development initiatives.',
+    image: '/Shubham.jpeg'
   },
   {
-    name: 'Elena Rodriguez',
-    role: 'Head of Design',
-    bio: 'Award-winning UI/UX designer focused on creating intuitive, human-centric digital experiences.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Elena&backgroundColor=0a7587'
+    name: 'Krishnam',
+    role: 'Lead Software Engineer',
+    bio: 'Expert in scalable system architecture and bringing complex technology solutions to life.',
+    image: '/krishnam.png'
   },
   {
-    name: 'Marcus Johnson',
-    role: 'Lead Frontend Developer',
-    bio: 'React and Next.js specialist who obsesses over performance and pixel-perfect UIs.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&backgroundColor=0C8DA1'
+    name: 'Shrishti',
+    role: 'Frontend Developer',
+    bio: 'Passionate about creating intuitive, pixel-perfect, and highly responsive user interfaces.',
+    image: '/shrishti.png'
   },
   {
-    name: 'Priya Patel',
-    role: 'Product Manager',
-    bio: 'Bridging the gap between business requirements and technical execution with agile methodologies.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya&backgroundColor=0a7587'
+    name: 'Yuvraj',
+    role: 'Backend Developer',
+    bio: 'Specialist in robust database management, cloud integrations, and building secure APIs.',
+    image: '/yuvraj.png'
   }
 ];
 
@@ -48,22 +47,44 @@ const Team = () => {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen font-sans pt-24 sm:pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <SectionTitle 
-            title="Meet Our Team" 
-            subtitle="The passionate experts driving digital innovation" 
-          />
-          <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-            We are a diverse group of engineers, designers, and strategists united by a single goal: to build exceptional software that solves real-world problems.
-          </p>
+    <div className="bg-slate-50 min-h-screen font-sans">
+      {/* Banner Section */}
+      <div className="relative pt-32 pb-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-5xl font-extrabold text-[#161C2D] mb-4 uppercase tracking-wide"
+          >
+            Meet The Leadership
+          </motion.h1>
+          <motion.h3 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-2xl font-semibold text-[#0C8DA1] mb-6 flex items-center justify-center"
+          >
+            <span className="w-8 h-1 bg-[#0C8DA1] rounded-full mr-4 hidden sm:block"></span>
+            The people that propel us forward
+            <span className="w-8 h-1 bg-[#0C8DA1] rounded-full ml-4 hidden sm:block"></span>
+          </motion.h3>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto"
+          >
+            AshokSoft is led by a team of passionate, bold, and creative people.
+            Meet our cross-cultural team of IT & Engineering professionals who ensure the success of your
+            operations. Discover how our strong team of experienced and competent leaders can create a
+            difference for your business.
+          </motion.p>
         </div>
+      </div>
 
-        {/* Team Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {/* Team Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, idx) => (
             <motion.div 
               key={idx}
@@ -71,39 +92,32 @@ const Team = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-slate-50 rounded-3xl p-8 border border-gray-100 hover:border-[#0C8DA1] hover:shadow-xl transition-all duration-300 group text-center"
+              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300 flex flex-col items-center relative overflow-hidden group"
             >
-              <div className="relative w-40 h-40 mx-auto mb-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0C8DA1] to-[#0a7587] rounded-full rotate-6 group-hover:rotate-12 transition-transform duration-300" />
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-lg bg-white"
-                />
-              </div>
+              {/* Top right LinkedIn Icon */}
+              <a 
+                href="#" 
+                className="absolute top-4 right-4 bg-[#0C8DA1] text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#0a7587]"
+              >
+                <FiLinkedin className="text-xl" />
+              </a>
+
+              <img 
+                src={member.image} 
+                alt={member.name} 
+                className="w-32 h-32 object-cover rounded-full border-4 border-gray-50 shadow-md mb-6"
+              />
               
               <h3 className="text-2xl font-bold text-gray-900 mb-1">{member.name}</h3>
-              <p className="text-[#0C8DA1] font-semibold mb-4">{member.role}</p>
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <h6 className="text-[#0C8DA1] font-semibold mb-4 text-sm uppercase tracking-wide">{member.role}</h6>
+              <p className="text-gray-600 leading-relaxed text-center text-sm">
                 {member.bio}
               </p>
-              
-              <div className="flex justify-center gap-4 text-gray-400">
-                <a href="#" className="hover:text-[#0C8DA1] transition-colors p-2 hover:bg-[#0C8DA1]/10 rounded-full">
-                  <FiLinkedin className="text-xl" />
-                </a>
-                <a href="#" className="hover:text-[#0C8DA1] transition-colors p-2 hover:bg-[#0C8DA1]/10 rounded-full">
-                  <FiTwitter className="text-xl" />
-                </a>
-                <a href="#" className="hover:text-[#0C8DA1] transition-colors p-2 hover:bg-[#0C8DA1]/10 rounded-full">
-                  <FiGithub className="text-xl" />
-                </a>
-              </div>
             </motion.div>
           ))}
         </div>
-        
       </div>
+
     </div>
   );
 };

@@ -218,3 +218,178 @@ export const technologiesData = {
     offerings: ['Conversational AI', 'Text Classification', 'Document Summarization', 'Voice Recognition Systems'],
   }
 };
+
+// Map aliases for Navbar links that don't match exactly
+technologiesData['react-js'] = technologiesData['react'];
+technologiesData['node'] = technologiesData['node-js'];
+technologiesData['html5'] = technologiesData['html'];
+
+// Add missing technologies
+technologiesData['angular'] = {
+  title: 'Angular',
+  subtitle: 'Robust framework for enterprise applications',
+  description: 'We use Angular to build highly scalable and maintainable enterprise web applications with seamless two-way data binding.',
+  imageIcon: FiCode,
+  benefits: [
+    { title: 'Component-Based', description: 'Modular architecture for robust development.' },
+    { title: 'Enterprise Ready', description: 'Backed by Google and used by top companies.' },
+    { title: 'TypeScript First', description: 'Strong typing prevents runtime errors.' }
+  ],
+  offerings: ['Enterprise Web Apps', 'Single Page Applications']
+};
+
+technologiesData['vue-js'] = {
+  title: 'Vue.js',
+  subtitle: 'Progressive JavaScript framework',
+  description: 'Vue.js provides a flexible and progressive approach to building user interfaces, perfect for both simple widgets and complex single-page applications.',
+  imageIcon: FiLayers,
+  benefits: [
+    { title: 'Approachable', description: 'Gentle learning curve with powerful capabilities.' },
+    { title: 'Performant', description: 'Incredibly fast virtual DOM rendering.' },
+    { title: 'Versatile', description: 'Easy to integrate into existing projects.' }
+  ],
+  offerings: ['Interactive Dashboards', 'Lightweight Web Apps']
+};
+
+technologiesData['mean'] = {
+  title: 'MEAN Stack',
+  subtitle: 'Full-stack JavaScript development',
+  description: 'We utilize the MEAN stack (MongoDB, Express, Angular, Node.js) to build end-to-end JavaScript applications that are fast, robust, and highly scalable.',
+  imageIcon: FiServer,
+  benefits: [
+    { title: 'Unified Language', description: 'JavaScript from client to server.' },
+    { title: 'High Performance', description: 'Non-blocking I/O for speed.' },
+    { title: 'Scalable', description: 'Easily scales to handle increased traffic.' }
+  ],
+  offerings: ['Full-Stack Apps', 'RESTful APIs']
+};
+
+technologiesData['php'] = {
+  title: 'PHP',
+  subtitle: 'Server-side scripting language',
+  description: 'PHP powers a vast majority of the web. We use it to build dynamic, data-driven web applications and robust backend systems.',
+  imageIcon: FiCode,
+  benefits: [
+    { title: 'Widely Supported', description: 'Runs on almost all web servers.' },
+    { title: 'Cost Effective', description: 'Massive open-source ecosystem.' },
+    { title: 'Flexible', description: 'Easily integrates with HTML and databases.' }
+  ],
+  offerings: ['Dynamic Websites', 'Backend Systems']
+};
+
+technologiesData['laravel'] = {
+  title: 'Laravel',
+  subtitle: 'The PHP Framework for Web Artisans',
+  description: 'We leverage Laravel to build elegant, feature-rich web applications rapidly, taking advantage of its expressive syntax and powerful tools.',
+  imageIcon: FiLayers,
+  benefits: [
+    { title: 'Rapid Development', description: 'Built-in tools for authentication, routing, and caching.' },
+    { title: 'Secure', description: 'Protects against SQL injection and cross-site scripting.' },
+    { title: 'Robust Ecosystem', description: 'Access to a vast array of packages.' }
+  ],
+  offerings: ['Custom Web Applications', 'API Backends']
+};
+
+technologiesData['asp-net-mvc'] = {
+  title: 'ASP.NET MVC',
+  subtitle: 'Enterprise-grade web framework by Microsoft',
+  description: 'We use ASP.NET MVC to build secure, scalable, and high-performance enterprise applications integrated perfectly with the Microsoft ecosystem.',
+  imageIcon: FiServer,
+  benefits: [
+    { title: 'High Performance', description: 'Compiled code for blazing fast execution.' },
+    { title: 'Secure', description: 'Enterprise-level security features built-in.' },
+    { title: 'Scalable', description: 'Designed for massive enterprise workloads.' }
+  ],
+  offerings: ['Enterprise Solutions', 'Secure Web Portals']
+};
+
+technologiesData['react-native'] = {
+  title: 'React Native',
+  subtitle: 'Cross-platform mobile app development',
+  description: 'We build native mobile apps for iOS and Android using React Native, sharing code across platforms to reduce development time and cost.',
+  imageIcon: FiMonitor,
+  benefits: [
+    { title: 'Cross-Platform', description: 'Write once, deploy to both iOS and Android.' },
+    { title: 'Native Performance', description: 'Renders using native UI components.' },
+    { title: 'Faster Time to Market', description: 'Shared codebase accelerates development.' }
+  ],
+  offerings: ['iOS Apps', 'Android Apps']
+};
+
+technologiesData['ios'] = {
+  title: 'iOS Development',
+  subtitle: 'Premium native applications for Apple devices',
+  description: 'We craft high-performance, beautiful native applications for iOS using Swift and Objective-C to deliver the ultimate user experience on Apple devices.',
+  imageIcon: FiMonitor,
+  benefits: [
+    { title: 'High Quality', description: 'Adheres to strict Apple design guidelines.' },
+    { title: 'Performant', description: 'Optimized for Apple hardware.' },
+    { title: 'Secure', description: 'Industry-leading security standards.' }
+  ],
+  offerings: ['iPhone Apps', 'iPad Apps']
+};
+
+technologiesData['android'] = {
+  title: 'Android Development',
+  subtitle: 'Native applications for the world’s most popular mobile OS',
+  description: 'We build robust, scalable native Android applications using Kotlin and Java, reaching a massive global audience with performant software.',
+  imageIcon: FiMonitor,
+  benefits: [
+    { title: 'Massive Reach', description: 'Access to billions of Android users.' },
+    { title: 'Flexible', description: 'Highly customizable hardware integration.' },
+    { title: 'Performant', description: 'Optimized native code.' }
+  ],
+  offerings: ['Android Phone Apps', 'Android Tablet Apps']
+};
+
+technologiesData['azure'] = {
+  title: 'Microsoft Azure',
+  subtitle: 'Enterprise-grade cloud computing platform',
+  description: 'We utilize Microsoft Azure to build, deploy, and manage applications through Microsoft’s massive global network of data centers.',
+  imageIcon: FiCloud,
+  benefits: [
+    { title: 'Enterprise Integration', description: 'Seamless integration with Microsoft tools.' },
+    { title: 'Global Reach', description: 'Data centers worldwide.' },
+    { title: 'Secure', description: 'Industry-leading compliance.' }
+  ],
+  offerings: ['Cloud Infrastructure', 'DevOps']
+};
+
+technologiesData['magento'] = {
+  title: 'Magento',
+  subtitle: 'Powerful open-source e-commerce platform',
+  description: 'We build highly customizable and scalable e-commerce storefronts using Magento, providing unparalleled control over your online retail business.',
+  imageIcon: FiGlobe,
+  benefits: [
+    { title: 'Highly Customizable', description: 'Tailor every aspect of the shopping experience.' },
+    { title: 'Scalable', description: 'Handles massive product catalogs.' },
+    { title: 'Feature Rich', description: 'Built-in tools for marketing and SEO.' }
+  ],
+  offerings: ['E-Commerce Stores', 'B2B Commerce']
+};
+
+technologiesData['wordpress'] = {
+  title: 'WordPress',
+  subtitle: 'The world’s most popular content management system',
+  description: 'We develop custom WordPress themes and plugins, delivering powerful, easy-to-manage websites that are optimized for SEO and performance.',
+  imageIcon: FiLayout,
+  benefits: [
+    { title: 'Easy to Use', description: 'Intuitive interface for content management.' },
+    { title: 'SEO Friendly', description: 'Built-in tools for search engine optimization.' },
+    { title: 'Extensible', description: 'Massive ecosystem of plugins.' }
+  ],
+  offerings: ['Corporate Websites', 'Blogs']
+};
+
+technologiesData['bootstrap'] = {
+  title: 'Bootstrap',
+  subtitle: 'The most popular HTML, CSS, and JS library in the world',
+  description: 'We use Bootstrap to quickly design and customize responsive mobile-first sites, ensuring your web application looks great on all devices.',
+  imageIcon: FiMonitor,
+  benefits: [
+    { title: 'Responsive', description: 'Mobile-first grid system.' },
+    { title: 'Rapid Prototyping', description: 'Pre-built components speed up development.' },
+    { title: 'Consistent', description: 'Ensures visual consistency across browsers.' }
+  ],
+  offerings: ['Responsive Web Design', 'Admin Dashboards']
+};

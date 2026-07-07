@@ -28,6 +28,9 @@ import {
   FiShoppingBag,
   FiBriefcase,
   FiTruck,
+  FiSmartphone,
+  FiCloud,
+  FiSettings,
 } from "react-icons/fi";
 
 import {
@@ -63,6 +66,11 @@ const iconMap = {
   design: FiPenTool,
   cpu: FiCpu,
   chart: FiBarChart,
+  monitor: FiMonitor,
+  smartphone: FiSmartphone,
+  cloud: FiCloud,
+  settings: FiSettings,
+  "bar-chart": FiBarChart,
 };
 
 
@@ -109,51 +117,39 @@ const industries = [
 const fallbackServices = [
   {
     icon: "cpu",
-    slug: "ai-solutions",
-    title: "Artificial Intelligence Solutions",
-    description: "AI-powered applications, chatbots, automation systems, machine learning solutions, and intelligent business tools."
+    slug: "ai-development",
+    title: "AI Development",
+    description: "Chatbots, Computer Vision, NLP"
   },
   {
-    icon: "code",
-    slug: "website-development",
-    title: "Website Development",
-    description: "Modern, responsive, SEO-friendly websites built using the latest technologies."
+    icon: "monitor",
+    slug: "web-development",
+    title: "Web Development",
+    description: "React Website, E-commerce, Business Portals"
   },
   {
-    icon: "code",
+    icon: "smartphone",
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    description: "Android and iOS applications designed for performance, scalability, and exceptional user experience."
+    description: "Android Apps, iOS Apps, Flutter Apps"
   },
   {
-    icon: "design",
-    slug: "software-development",
-    title: "Software Development",
-    description: "Custom software solutions tailored to your business needs with secure and scalable architecture."
-  },
-  {
-    icon: "cpu",
+    icon: "cloud",
     slug: "cloud-solutions",
     title: "Cloud Solutions",
-    description: "Cloud deployment, hosting, DevOps, server management, and scalable infrastructure."
+    description: "AWS, Azure, Google Cloud Integration"
   },
   {
-    icon: "chart",
-    slug: "robotics-automation",
-    title: "Robotics & Automation",
-    description: "AI-powered robotics, IoT projects, smart automation systems, and educational robotics solutions."
+    icon: "settings",
+    slug: "robotics-iot",
+    title: "Robotics & IoT",
+    description: "Hardware Integration, Smart Devices, Automation"
   },
   {
-    icon: "design",
-    slug: "ui-ux-design",
-    title: "UI/UX Design",
-    description: "Creative and user-focused interface designs that improve engagement and usability."
-  },
-  {
-    icon: "chart",
-    slug: "digital-marketing",
-    title: "Digital Marketing",
-    description: "SEO, social media marketing, branding, and digital growth strategies."
+    icon: "bar-chart",
+    slug: "data-analytics",
+    title: "Data Analytics",
+    description: "Business Intelligence, Big Data, Predictive Analysis"
   }
 ];
 
@@ -403,10 +399,9 @@ ${consultationData.message}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <SectionTitle
-              title="Our Services"
-              subtitle="Comprehensive digital solutions tailored to your business needs"
-            />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center text-slate-900 mb-16 tracking-tight">
+              Choose the Right Solution for Your Business
+            </h2>
           </motion.div>
 
           {/* Service Cards */}
@@ -460,10 +455,10 @@ ${consultationData.message}
             <span className="font-semibold uppercase tracking-[4px] text-red-500">
               Consultation
             </span>
-            <h2 className="mt-4 text-5xl font-bold text-[#161C2D]">
+            <h2 className="mt-4 text-5xl font-extrabold text-[#161C2D]">
               Schedule A Free Consultation
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-500">
+            <p className="mx-auto mt-6 max-w-3xl text-lg font-medium leading-8 text-gray-600">
               Contact us today to schedule a free consultation and discover how AshokSoft Technologies can help transform your business with modern digital solutions.
             </p>
           </motion.div>
@@ -645,61 +640,56 @@ required
         </div>
       </section>
 
-
       {/* ================= TECHNOLOGIES ================= */}
-      <section className="relative py-28 bg-[#020b18] overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#0C8DA1]">
-              Technologies We Use
-            </h2>
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-              We build with modern, scalable, and secure technologies
-            </p>
-          </div>
+      <section className="relative py-28 bg-slate-50 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <SectionTitle 
+            title="Technologies We Use" 
+            subtitle="We build with modern, scalable, and secure technologies" 
+          />
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-16">
             {[
-              { name: "Angular", icon: <FaAngular className="w-8 h-8 text-white" /> },
-              { name: "React JS", icon: <FaReact className="w-8 h-8 text-white" /> },
-              { name: "Node", icon: <FaNodeJs className="w-8 h-8 text-white" /> },
-              { name: "Vue.Js", icon: <FaVuejs className="w-8 h-8 text-white" /> },
-              { name: "MEAN", icon: (
-                <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current text-white" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-3zm-1 17.9C7.4 18.7 5 15.1 5 11V6.4l6-2v15.5zm8-8.9c0 4.1-2.4 7.7-6 8.9V4.4l6 2V11z"/>
-                </svg>
-              )},
-              { name: "PHP", icon: <FaPhp className="w-8 h-8 text-white" /> },
-              { name: "Laravel", icon: <FaLaravel className="w-8 h-8 text-white" /> },
-              { name: "ASP.NET MVC", icon: <SiDotnet className="w-8 h-8 text-white" /> },
-              { name: "React Native", icon: <FaReact className="w-8 h-8 text-white" /> },
-              { name: "IOS", icon: <FaApple className="w-8 h-8 text-white" /> },
-              { name: "Android", icon: <FaAndroid className="w-8 h-8 text-white" /> },
-              { name: "Azure", icon: <SiMicrosoftazure className="w-8 h-8 text-white" /> },
-              { name: "Magento", icon: <SiMagento className="w-8 h-8 text-white" /> },
-              { name: "Wordpress", icon: <FaWordpress className="w-8 h-8 text-white" /> },
-              { name: "Bootstrap", icon: <FaBootstrap className="w-8 h-8 text-white" /> },
-              { name: "HTML5", icon: <FaHtml5 className="w-8 h-8 text-white" /> },
-            ].map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="flex items-center bg-[#051329] border border-[#0d2242] rounded-xl overflow-hidden shadow-md hover:border-[#0C8DA1]/50 hover:shadow-[0_0_15px_rgba(12,141,161,0.2)] transition-all duration-300"
-              >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#091b36] border-r border-[#0d2242] flex items-center justify-center shrink-0">
-                  {tech.icon}
-                </div>
-                <div className="flex-1 px-4 sm:px-6 py-4 text-left">
-                  <span className="text-white font-bold text-base sm:text-lg block tracking-wide">
-                    {tech.name}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+              { name: "Angular", icon: <FaAngular className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "React JS", icon: <FaReact className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Node", icon: <FaNodeJs className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Vue.Js", icon: <FaVuejs className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "MEAN", icon: <FaNodeJs className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "PHP", icon: <FaPhp className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Laravel", icon: <FaLaravel className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "ASP.NET MVC", icon: <SiDotnet className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "React Native", icon: <FaReact className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "IOS", icon: <FaApple className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Android", icon: <FaAndroid className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Azure", icon: <SiMicrosoftazure className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Magento", icon: <SiMagento className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Wordpress", icon: <FaWordpress className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "Bootstrap", icon: <FaBootstrap className="w-8 h-8 text-[#0C8DA1]" /> },
+              { name: "HTML5", icon: <FaHtml5 className="w-8 h-8 text-[#0C8DA1]" /> },
+            ].map((tech, index) => {
+              const slug = tech.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+              return (
+                <Link to={`/technology/${slug}`} key={tech.name} className="block group">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -4 }}
+                    className="flex items-center p-3 sm:p-4 bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:border-[#0C8DA1]/50 hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-50 rounded-lg border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-[#0C8DA1]/10 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <div className="flex-1 px-4 text-left">
+                      <span className="text-gray-900 font-bold text-base sm:text-lg block tracking-wide group-hover:text-[#0C8DA1] transition-colors duration-300">
+                        {tech.name}
+                      </span>
+                    </div>
+                  </motion.div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
