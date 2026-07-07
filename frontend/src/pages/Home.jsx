@@ -6,6 +6,7 @@ import ServiceCard from "../components/ServiceCard";
 import TestimonialCard from "../components/TestimonialCard";
 import FAQ from "../components/FAQ";
 import Button from "../components/Button";
+import { inquiryService } from "../services/api";
 
 
 
@@ -199,6 +200,77 @@ const faqItems = [
   }
 ];
 const Home = () => {
+
+
+  const [consultationData, setConsultationData] = useState({
+  date: "",
+  time: "",
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
+
+const [loading, setLoading] = useState(false);
+const [success, setSuccess] = useState("");
+const [error, setError] = useState("");
+
+
+const handleConsultationChange = (e) => {
+  const { name, value } = e.target;
+
+  setConsultationData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
+const handleConsultationSubmit = async (e) => {
+  e.preventDefault();
+
+  setLoading(true);
+  setError("");
+  setSuccess("");
+
+  try {
+    await inquiryService.createInquiry({
+      name: consultationData.name,
+      email: consultationData.email,
+      phone: consultationData.phone,
+
+      // Existing Inquiry model fields
+      companyName: "Consultation Request",
+      projectType: "Other",
+      budget: "Rs 500 - Rs 1,000",
+      timeline: "1-3 months",
+
+      description: `
+Meeting Date: ${consultationData.date}
+Meeting Time: ${consultationData.time}
+
+Message:
+${consultationData.message}
+      `,
+    });
+
+    setSuccess("Consultation request submitted successfully.");
+
+    setConsultationData({
+      date: "",
+      time: "",
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+  } catch (err) {
+    setError(
+      err.response?.data?.message || "Unable to submit consultation request."
+    );
+  }
+
+  setLoading(false);
+};
   const [services, setServices] = useState(fallbackServices);
 
   const heroHeadlines = [
@@ -414,36 +486,101 @@ const Home = () => {
               className="rounded-[35px] bg-white p-10 shadow-[0_20px_60px_rgba(0,0,0,.08)]"
             >
               <h3 className="mb-8 text-3xl font-bold">Schedule Meeting</h3>
-              <form className="space-y-6">
+              <form
+                className="space-y-6"
+               onSubmit={handleConsultationSubmit}
+                                       >
                 <div className="grid gap-5 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block font-medium">Date</label>
-                    <input type="date" className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500" />
+                    <input
+                   type="date"
+                    name="date"
+value={consultationData.date}
+onChange={handleConsultationChange}
+className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
+required
+/>
                   </div>
                   <div>
                     <label className="mb-2 block font-medium">Time</label>
-                    <input type="time" className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500" />
-                  </div>
+                 <input
+type="time"
+name="time"
+value={consultationData.time}
+onChange={handleConsultationChange}
+className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
+required
+/>             </div>
                 </div>
                 <div>
                   <label className="mb-2 block font-medium">Name</label>
-                  <input type="text" placeholder="Enter your name" className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500" />
+                 <input
+type="text"
+name="name"
+value={consultationData.name}
+onChange={handleConsultationChange}
+placeholder="Enter your name"
+className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
+required
+/>
                 </div>
                 <div>
                   <label className="mb-2 block font-medium">Email</label>
-                  <input type="email" placeholder="Enter your email" className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500" />
+                 <input
+type="email"
+name="email"
+value={consultationData.email}
+onChange={handleConsultationChange}
+placeholder="Enter your email"
+className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
+required
+/>
                 </div>
                 <div>
                   <label className="mb-2 block font-medium">Phone</label>
-                  <input type="tel" placeholder="Enter your phone number" className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500" />
+                  <input
+type="tel"
+name="phone"
+value={consultationData.phone}
+onChange={handleConsultationChange}
+placeholder="Enter your phone number"
+className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
+required
+/>
                 </div>
                 <div>
                   <label className="mb-2 block font-medium">Message</label>
-                  <textarea rows="4" placeholder="Write your message..." className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500" />
+                 <textarea
+rows="4"
+name="message"
+value={consultationData.message}
+onChange={handleConsultationChange}
+placeholder="Write your message..."
+className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
+required
+/>
                 </div>
-                <button type="submit" className="rounded-full bg-gradient-to-r from-red-500 to-red-400 px-10 py-4 font-semibold text-white shadow-lg transition hover:scale-105">
-                  Submit
-                </button>
+
+                {error && (
+  <p className="text-red-500 text-sm">
+    {error}
+  </p>
+)}
+
+{success && (
+  <p className="text-green-600 text-sm">
+    {success}
+  </p>
+)}
+
+               <button
+  type="submit"
+  disabled={loading}
+  className="rounded-full bg-gradient-to-r from-red-500 to-red-400 px-10 py-4 font-semibold text-white shadow-lg transition hover:scale-105 disabled:opacity-60"
+>
+  {loading ? "Submitting..." : "Submit"}
+</button>
               </form>
             </motion.div>
           </div>
