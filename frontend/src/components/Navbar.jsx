@@ -2,7 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX, FiHome, FiChevronDown, FiLayers, FiUser, FiUsers, FiTag } from 'react-icons/fi';
-import { SiAngular, SiReact, SiNodedotjs, SiVuedotjs, SiPhp, SiLaravel, SiDotnet, SiApple, SiAndroid, SiMicrosoftazure, SiMagento, SiWordpress, SiBootstrap, SiHtml5 } from 'react-icons/si';
+import {
+  FaAngular,
+  FaReact,
+  FaNodeJs,
+  FaVuejs,
+  FaPhp,
+  FaBootstrap,
+  FaLaravel,
+  FaApple,
+  FaAndroid,
+  FaWordpress,
+  FaHtml5,
+} from 'react-icons/fa';
+import { SiDotnet, SiMicrosoftazure, SiMagento } from 'react-icons/si';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
@@ -40,27 +53,27 @@ const Navbar = () => {
     }
   ];
 
-  const technologiesMegaMenu = [
-    {
-      title: 'Frontend',
-      items: ['React', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS']
-    },
-    {
-      title: 'Backend',
-      items: ['Node.js', 'Express.js', 'Python']
-    },
-    {
-      title: 'Database',
-      items: ['MongoDB', 'MySQL', 'PostgreSQL']
-    },
-    {
-      title: 'Cloud',
-      items: ['AWS', 'Firebase', 'Vercel']
-    },
-    {
-      title: 'AI',
-      items: ['OpenAI APIs', 'Machine Learning', 'Computer Vision', 'NLP']
-    }
+  const techList = [
+    { name: 'Angular', icon: <FaAngular className="w-6 h-6 text-white" /> },
+    { name: 'React JS', icon: <FaReact className="w-6 h-6 text-white" /> },
+    { name: 'Node', icon: <FaNodeJs className="w-6 h-6 text-white" /> },
+    { name: 'Vue.Js', icon: <FaVuejs className="w-6 h-6 text-white" /> },
+    { name: 'MEAN', icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current text-white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-3zm-1 17.9C7.4 18.7 5 15.1 5 11V6.4l6-2v15.5zm8-8.9c0 4.1-2.4 7.7-6 8.9V4.4l6 2V11z"/>
+      </svg>
+    )},
+    { name: 'PHP', icon: <FaPhp className="w-6 h-6 text-white" /> },
+    { name: 'Laravel', icon: <FaLaravel className="w-6 h-6 text-white" /> },
+    { name: 'ASP.NET MVC', icon: <SiDotnet className="w-6 h-6 text-white" /> },
+    { name: 'React Native', icon: <FaReact className="w-6 h-6 text-white" /> },
+    { name: 'IOS', icon: <FaApple className="w-6 h-6 text-white" /> },
+    { name: 'Android', icon: <FaAndroid className="w-6 h-6 text-white" /> },
+    { name: 'Azure', icon: <SiMicrosoftazure className="w-6 h-6 text-white" /> },
+    { name: 'Magento', icon: <SiMagento className="w-6 h-6 text-white" /> },
+    { name: 'Wordpress', icon: <FaWordpress className="w-6 h-6 text-white" /> },
+    { name: 'Bootstrap', icon: <FaBootstrap className="w-6 h-6 text-white" /> },
+    { name: 'HTML5', icon: <FaHtml5 className="w-6 h-6 text-white" /> },
   ];
 
   const virtualTeamMegaMenu = {
@@ -166,27 +179,23 @@ const Navbar = () => {
 
                 {/* Mega Menu for Technologies */}
                 {link.name === 'Technologies' && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl border-t-2 border-[#0C8DA1] border-x border-b border-gray-100 rounded-b-xl overflow-hidden cursor-default">
-                    <div className="grid grid-cols-5 gap-8 p-8 bg-gray-50/50">
-                      {technologiesMegaMenu.map((column, idx) => (
-                        <div key={idx}>
-                          <h3 className="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#0C8DA1]"></span>
-                            {column.title}
-                          </h3>
-                          <ul className="space-y-3">
-                            {column.items.map((item, itemIdx) => (
-                              <li key={itemIdx}>
-                                <Link 
-                                  to={`/technology/${item.toLowerCase().replace(/ & /g, '-and-').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`} 
-                                  className="text-gray-600 hover:text-[#0C8DA1] font-medium text-sm transition-colors block"
-                                >
-                                  {item}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[850px] bg-[#020b18] border border-[#0d2242] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl rounded-b-xl overflow-hidden cursor-default p-6">
+                    <div className="grid grid-cols-4 gap-4">
+                      {techList.map((tech, idx) => (
+                        <Link
+                          key={tech.name}
+                          to={`/technology/${tech.name.toLowerCase().replace(/ & /g, '-and-').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`}
+                          className="flex items-center bg-[#051329] border border-[#0d2242] rounded-lg overflow-hidden shadow-sm hover:border-[#0C8DA1]/50 hover:shadow-[0_0_10px_rgba(12,141,161,0.15)] transition-all duration-300 group/item"
+                        >
+                          <div className="w-12 h-12 bg-[#091b36] border-r border-[#0d2242] flex items-center justify-center shrink-0">
+                            {tech.icon}
+                          </div>
+                          <div className="flex-1 px-4 py-2 text-left">
+                            <span className="text-white font-semibold text-sm sm:text-base block tracking-wide group-hover/item:text-[#0C8DA1] transition-colors">
+                              {tech.name}
+                            </span>
+                          </div>
+                        </Link>
                       ))}
                     </div>
                   </div>

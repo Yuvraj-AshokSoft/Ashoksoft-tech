@@ -4,8 +4,8 @@ import Inquiry from '../models/Inquiry.js';
 // Create Inquiry
 export const createInquiry = async (req, res) => {
   try {
-    const name = req.body.name?.trim() || req.user.name;
-    const email = req.body.email?.trim().toLowerCase() || req.user.email;
+    const name = req.body.name?.trim() || req.user?.name;
+    const email = req.body.email?.trim().toLowerCase() || req.user?.email;
     const phone = req.body.phone?.trim();
     const companyName = req.body.companyName?.trim();
     const projectType = req.body.projectType;
@@ -23,7 +23,7 @@ export const createInquiry = async (req, res) => {
 
     // Create inquiry
     const inquiry = await Inquiry.create({
-      userId: req.user.id,
+      userId: req.user?.id || null,
       name,
       email,
       phone,

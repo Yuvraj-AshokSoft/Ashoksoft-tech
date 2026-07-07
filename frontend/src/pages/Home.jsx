@@ -41,6 +41,7 @@ import {
   FaLaravel,
   FaApple,
   FaWordpress,
+  FaHtml5,
 } from "react-icons/fa";
 
 import {
@@ -217,8 +218,10 @@ const Home = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await serviceService.getAllServices();
-        if (response && response.data) {
+        const response = await serviceService.getServices();
+        if (response && response.data && Array.isArray(response.data.services)) {
+          setServices(response.data.services);
+        } else if (response && response.data) {
           setServices(response.data);
         } else if (Array.isArray(response)) {
           setServices(response);
@@ -507,36 +510,56 @@ const Home = () => {
 
 
       {/* ================= TECHNOLOGIES ================= */}
-      <section className="relative py-28 bg-white overflow-hidden">
+      <section className="relative py-28 bg-[#020b18] overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionTitle title="Technologies We Use" subtitle="We build with modern, scalable, and secure technologies" />
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#0C8DA1]">
+              Technologies We Use
+            </h2>
+            <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
+              We build with modern, scalable, and secure technologies
+            </p>
+          </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-16">
             {[
-              { category: "Frontend", items: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"], icon: <FiMonitor /> },
-              { category: "Backend", items: ["Node.js", "Express.js", "Python"], icon: <FiCode /> },
-              { category: "Database", items: ["MongoDB", "MySQL", "PostgreSQL"], icon: <FiBarChart /> },
-              { category: "Cloud", items: ["AWS", "Firebase", "Vercel"], icon: <FiCpu /> },
-              { category: "AI", items: ["OpenAI APIs", "Machine Learning", "Computer Vision", "NLP"], icon: <FiSearch /> },
-            ].map((techGroup, index) => (
+              { name: "Angular", icon: <FaAngular className="w-8 h-8 text-white" /> },
+              { name: "React JS", icon: <FaReact className="w-8 h-8 text-white" /> },
+              { name: "Node", icon: <FaNodeJs className="w-8 h-8 text-white" /> },
+              { name: "Vue.Js", icon: <FaVuejs className="w-8 h-8 text-white" /> },
+              { name: "MEAN", icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current text-white" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-3zm-1 17.9C7.4 18.7 5 15.1 5 11V6.4l6-2v15.5zm8-8.9c0 4.1-2.4 7.7-6 8.9V4.4l6 2V11z"/>
+                </svg>
+              )},
+              { name: "PHP", icon: <FaPhp className="w-8 h-8 text-white" /> },
+              { name: "Laravel", icon: <FaLaravel className="w-8 h-8 text-white" /> },
+              { name: "ASP.NET MVC", icon: <SiDotnet className="w-8 h-8 text-white" /> },
+              { name: "React Native", icon: <FaReact className="w-8 h-8 text-white" /> },
+              { name: "IOS", icon: <FaApple className="w-8 h-8 text-white" /> },
+              { name: "Android", icon: <FaAndroid className="w-8 h-8 text-white" /> },
+              { name: "Azure", icon: <SiMicrosoftazure className="w-8 h-8 text-white" /> },
+              { name: "Magento", icon: <SiMagento className="w-8 h-8 text-white" /> },
+              { name: "Wordpress", icon: <FaWordpress className="w-8 h-8 text-white" /> },
+              { name: "Bootstrap", icon: <FaBootstrap className="w-8 h-8 text-white" /> },
+              { name: "HTML5", icon: <FaHtml5 className="w-8 h-8 text-white" /> },
+            ].map((tech, index) => (
               <motion.div
-                key={techGroup.category}
-                initial={{ opacity: 0, y: 40 }}
+                key={tech.name}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-[28px] border border-gray-200 shadow-sm p-8 hover:shadow-xl transition-all duration-300"
+                whileHover={{ y: -4 }}
+                className="flex items-center bg-[#051329] border border-[#0d2242] rounded-xl overflow-hidden shadow-md hover:border-[#0C8DA1]/50 hover:shadow-[0_0_15px_rgba(12,141,161,0.2)] transition-all duration-300"
               >
-                <div className="w-16 h-16 rounded-2xl bg-[#0C8DA1] flex items-center justify-center text-white text-3xl mb-6">
-                  {techGroup.icon}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#091b36] border-r border-[#0d2242] flex items-center justify-center shrink-0">
+                  {tech.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{techGroup.category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {techGroup.items.map(item => (
-                    <span key={item} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
-                      {item}
-                    </span>
-                  ))}
+                <div className="flex-1 px-4 sm:px-6 py-4 text-left">
+                  <span className="text-white font-bold text-base sm:text-lg block tracking-wide">
+                    {tech.name}
+                  </span>
                 </div>
               </motion.div>
             ))}

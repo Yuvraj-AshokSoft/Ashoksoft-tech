@@ -74,7 +74,7 @@ const Contact = () => {
         description: formData.description.trim(),
       });
 
-      setSuccess('Your inquiry was sent successfully. It is now visible in the admin dashboard.');
+      setSuccess('Your inquiry was sent successfully. We will get back to you shortly.');
       setFormData({
         ...getInitialForm(user),
         name: formData.name.trim() || user?.name || '',
@@ -103,12 +103,12 @@ const Contact = () => {
 
             <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
               <p className="text-slate-600">Email</p>
-              <p className="text-slate-900 font-semibold break-words">info@ashoksofttechnologies.com</p>
+              <p className="text-slate-900 font-semibold break-words">Ashoksoft.technologies@gmail.com</p>
             </div>
 
             <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
               <p className="text-slate-600">Phone</p>
-              <p className="text-slate-900 font-semibold">+91 XXXXX XXXXX</p>
+              <p className="text-slate-900 font-semibold">+91 72499 53396</p>
             </div>
 
             <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
@@ -118,154 +118,140 @@ const Contact = () => {
           </div>
 
           <div className="min-w-0 rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 lg:p-8">
-            {isAuthenticated ? (
-              <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              {isAuthenticated && (
                 <p className="text-slate-600 mb-6">
-                  You are logged in, so you can submit your request and our team will follow up shortly.
+                  You are logged in as {user?.name || 'user'}. Your inquiry will be linked to your account.
                 </p>
+              )}
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label className="block text-sm text-slate-600" htmlFor="name">Full Name</label>
-                    <input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="block text-sm text-slate-600" htmlFor="email">Email</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                      placeholder="you@example.com"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label className="block text-sm text-slate-600" htmlFor="phone">Phone</label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                      placeholder="+91 98765 43210"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="block text-sm text-slate-600" htmlFor="companyName">Company</label>
-                    <input
-                      id="companyName"
-                      name="companyName"
-                      value={formData.companyName}
-                      onChange={handleChange}
-                      className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                      placeholder="Company or brand name"
-                      required
-                    />
-                  </div>
-                </div>
-
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <label className="block text-sm text-slate-600" htmlFor="projectType">Project Type</label>
-                  <select
-                    id="projectType"
-                    name="projectType"
-                    value={formData.projectType}
+                  <label className="block text-sm text-slate-600" htmlFor="name">Full Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                    required
-                  >
-                    {projectTypes.map((projectType) => (
-                      <option key={projectType} value={projectType}>{projectType}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label className="block text-sm text-slate-600" htmlFor="budget">Budget</label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                      required
-                    >
-                      {budgetRanges.map((budget) => (
-                        <option key={budget} value={budget}>{budget}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="block text-sm text-slate-600" htmlFor="timeline">Timeline</label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleChange}
-                      className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                      required
-                    >
-                      {timelines.map((timeline) => (
-                        <option key={timeline} value={timeline}>{timeline}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="block text-sm text-slate-600" htmlFor="description">Message</label>
-                  <textarea
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
-                    rows="5"
-                    maxLength="2000"
-                    placeholder="Tell us about your project"
+                    placeholder="Your name"
                     required
                   />
                 </div>
 
-                {error && <p className="text-sm text-rose-600">{error}</p>}
-                {success && <p className="text-sm text-emerald-600">{success}</p>}
-
-                <Button type="submit" size="lg" loading={submitting}>Send Request</Button>
-              </form>
-            ) : (
-              <div className="space-y-6">
-                <p className="text-slate-600">
-                  Please log in or register to submit a project inquiry and track your request.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link to="/login">
-                    <Button size="lg">Login</Button>
-                  </Link>
-                  <Link to="/register">
-                    <Button variant="secondary" size="lg">Register</Button>
-                  </Link>
+                <div className="space-y-2">
+                  <label className="block text-sm text-slate-600" htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
+                    placeholder="you@example.com"
+                    required
+                  />
                 </div>
               </div>
-            )}
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="block text-sm text-slate-600" htmlFor="phone">Phone</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
+                    placeholder="+91 98765 43210"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm text-slate-600" htmlFor="companyName">Company</label>
+                  <input
+                    id="companyName"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
+                    placeholder="Company or brand name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm text-slate-600" htmlFor="projectType">Project Type</label>
+                <select
+                  id="projectType"
+                  name="projectType"
+                  value={formData.projectType}
+                  onChange={handleChange}
+                  className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
+                  required
+                >
+                  {projectTypes.map((projectType) => (
+                    <option key={projectType} value={projectType}>{projectType}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="block text-sm text-slate-600" htmlFor="budget">Budget</label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
+                    required
+                  >
+                    {budgetRanges.map((budget) => (
+                      <option key={budget} value={budget}>{budget}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm text-slate-600" htmlFor="timeline">Timeline</label>
+                  <select
+                    id="timeline"
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
+                    required
+                  >
+                    {timelines.map((timeline) => (
+                      <option key={timeline} value={timeline}>{timeline}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm text-slate-600" htmlFor="description">Message</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  className="w-full rounded-2xl border border-dark-border bg-white/90 px-4 py-3 text-slate-900 outline-none focus:border-brand-blue"
+                  rows="5"
+                  maxLength="2000"
+                  placeholder="Tell us about your project"
+                  required
+                />
+              </div>
+
+              {error && <p className="text-sm text-rose-600">{error}</p>}
+              {success && <p className="text-sm text-emerald-600">{success}</p>}
+
+              <Button type="submit" size="lg" loading={submitting}>Send Request</Button>
+            </form>
           </div>
         </div>
       </div>
