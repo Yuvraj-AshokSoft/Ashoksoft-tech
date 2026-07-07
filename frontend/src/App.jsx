@@ -21,6 +21,8 @@ import Blogs from './pages/Blogs.jsx';
 import { ProtectedRoute } from './utils/ProtectedRoute.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 
+import Services from './pages/Services.jsx';
+
 const App = () => (
   <div className="min-h-screen bg-dark-bg text-slate-900 light-theme">
     <Navbar />
@@ -28,7 +30,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Navigate to="/" />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/team" element={<Team />} />
         <Route path="/partners" element={<Partners />} />
