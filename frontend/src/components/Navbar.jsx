@@ -37,6 +37,7 @@ const Navbar = () => {
     { name: 'Services', path: '/services', hasDropdown: true },
     { name: 'Technologies', path: '/technologies', hasDropdown: true },
     { name: 'Virtual Team', path: '/virtual-team', hasDropdown: true },
+    { name: 'Events', path: '/events' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Blogs', path: '/blogs' },
     { name: 'About US', path: '/about', hasDropdown: true },
