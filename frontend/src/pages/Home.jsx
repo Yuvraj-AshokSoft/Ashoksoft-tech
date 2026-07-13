@@ -313,7 +313,7 @@ ${consultationData.message}
             playsInline
             className="absolute inset-0 w-full h-full object-cover opacity-50"
           >
-            <source src="/hero-video .mp4" type="video/mp4" />
+            <source src="/hero-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Dark Overlay for better text readability */}
@@ -829,7 +829,7 @@ required
                 viewport={{ once: true }}
                 className="mt-12 flex justify-center"
               >
-                <Link to="/contact">
+                <Link to="/contact?type=sales">
                   <button className="flex items-center rounded-full bg-white px-10 py-4 text-lg font-bold text-[#0C8DA1] transition-all hover:bg-gray-100 shadow-2xl shadow-black/20">
                     Get Started Now
                     <FiArrowRight className="ml-2" />

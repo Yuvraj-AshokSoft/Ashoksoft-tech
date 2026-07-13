@@ -376,7 +376,7 @@ const Services = () => {
             <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
               Let's discuss how our premium IT solutions can help you achieve your goals. Get in touch with our experts today.
             </p>
-            <Link to="/contact">
+            <Link to="/contact?type=sales">
               <button className="bg-red-500 hover:bg-red-600 text-white px-10 py-4 rounded-full text-lg font-bold transition-all shadow-lg shadow-red-500/30 flex items-center gap-2 mx-auto hover:scale-105">
                 Start Your Project <FiArrowRight />
               </button>

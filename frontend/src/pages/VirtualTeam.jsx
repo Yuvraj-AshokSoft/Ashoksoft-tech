@@ -72,7 +72,7 @@ const VirtualTeam = () => {
             <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10">
               Scale your development capacity instantly with our world-class dedicated teams. Get the expertise you need, exactly when you need it.
             </p>
-            <Link to="/contact">
+            <Link to="/contact?type=sales">
               <button className="bg-[#0C8DA1] hover:bg-[#097383] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg shadow-[#0C8DA1]/30">
                 Build Your Team Today
               </button>

@@ -97,7 +97,7 @@ const Partners = () => {
               </p>
               
               <div className="mt-8 flex flex-wrap gap-4 items-center">
-                <Link to="/contact">
+                <Link to="/contact?type=partnership">
                   <Button variant="primary" className="shadow-lg shadow-[#0C8DA1]/20">
                     Become a Partner <FiArrowRight className="ml-2" />
                   </Button>
@@ -287,7 +287,7 @@ const Partners = () => {
               <p className="text-gray-500 text-base sm:text-lg mb-8 leading-relaxed">
                 Are you an educational institution, technology provider, or training organization looking to collaborate? Let's join forces to bridge the gap between technology, education, and industry.
               </p>
-              <Link to="/contact">
+              <Link to="/contact?type=partnership">
                 <Button variant="primary" size="lg" className="shadow-lg shadow-[#0C8DA1]/20">
                   Let's Collaborate <FiArrowRight className="ml-2 text-lg" />
                 </Button>

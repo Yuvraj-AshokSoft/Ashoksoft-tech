@@ -9,8 +9,29 @@ import { technologiesData } from '../data/technologiesData';
 const TechnologyDetail = () => {
   const { id } = useParams();
   
-  // Try to find the technology in our robust static data, otherwise handle 404
-  const tech = technologiesData[id];
+  // Try to find the technology in our robust static data, otherwise dynamically generate a generic page
+  let tech = technologiesData[id];
+
+  if (!tech && id) {
+    // Generate a beautiful fallback page using the ID
+    const formattedTitle = id
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+      
+    tech = {
+      title: formattedTitle,
+      subtitle: `Expert ${formattedTitle} Development Services`,
+      description: `We leverage ${formattedTitle} to build highly scalable, performant, and secure solutions tailored to your business needs. Our expert team ensures industry best practices and rapid deployment.`,
+      imageIcon: null,
+      benefits: [
+        { title: 'High Performance', description: 'Optimized architectures ensuring blazing fast execution.' },
+        { title: 'Scalable Solutions', description: 'Designed to grow seamlessly alongside your enterprise.' },
+        { title: 'Robust Security', description: 'Built with industry-leading security standards and compliance.' }
+      ],
+      offerings: ['Custom Development', 'Consulting & Strategy', 'System Integration', 'Maintenance & Support']
+    };
+  }
 
   useEffect(() => {
     // Scroll to top when changing technologies
@@ -62,7 +83,7 @@ const TechnologyDetail = () => {
                 {tech.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact">
+                <Link to="/contact?type=sales">
                   <Button size="lg" className="w-full sm:w-auto text-lg px-8 py-4 shadow-lg shadow-[#0C8DA1]/20">
                     Hire {tech.title} Developers
                   </Button>
@@ -185,7 +206,7 @@ const TechnologyDetail = () => {
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             Let's discuss how we can leverage this technology to build your next digital product.
           </p>
-          <Link to="/contact">
+          <Link to="/contact?type=sales">
             <button className="px-10 py-5 bg-[#0C8DA1] hover:bg-[#0A6E7E] text-white font-bold text-lg rounded-full shadow-[0_0_20px_rgba(12,141,161,0.4)] transition-all hover:scale-105 flex items-center gap-2 mx-auto">
               Schedule a Call <FiArrowRight className="text-xl" />
             </button>

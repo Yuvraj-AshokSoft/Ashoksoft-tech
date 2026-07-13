@@ -96,7 +96,7 @@ const Career = () => {
                 </div>
                 
                 <div className="flex-shrink-0">
-                  <Link to="/contact">
+                  <Link to="/contact?type=careers">
                     <motion.button 
                       whileTap={{ scale: 0.95 }}
                       className="relative overflow-hidden w-full lg:w-auto px-8 py-4 bg-white border-2 border-[#0C8DA1] text-[#0C8DA1] font-bold rounded-xl hover:text-white hover:border-transparent hover:shadow-xl hover:shadow-[#0C8DA1]/20 transition-all duration-300 shadow-sm group/btn"
@@ -122,7 +122,7 @@ const Career = () => {
             
             <h4 className="text-3xl font-extrabold text-gray-900 mb-4 relative z-10 tracking-tight">Don't see a perfect fit?</h4>
             <p className="text-gray-600 mb-8 text-lg font-medium max-w-2xl mx-auto relative z-10 leading-loose">We are always looking for talented and passionate individuals. Send us an open application and let's talk!</p>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#0C8DA1] text-white font-bold rounded-xl shadow-lg hover:bg-[#0a7586] hover:shadow-xl hover:shadow-[#0C8DA1]/30 transition-all relative z-10">
+            <Link to="/contact?type=careers" className="inline-flex items-center gap-2 px-8 py-4 bg-[#0C8DA1] text-white font-bold rounded-xl shadow-lg hover:bg-[#0a7586] hover:shadow-xl hover:shadow-[#0C8DA1]/30 transition-all relative z-10">
               Drop us a line
             </Link>
           </motion.div>

@@ -279,17 +279,7 @@ const Portfolio = () => {
                         </div>
                       </div>
 
-                      <div className="pt-6">
-                        <Link to={`/portfolio`} className="inline-block">
-                          <motion.button 
-                            whileTap={{ scale: 0.95 }}
-                            className="relative overflow-hidden inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-[#0C8DA1] bg-white text-[#0C8DA1] font-bold transition-all duration-300 shadow-sm hover:text-white hover:border-transparent hover:shadow-xl hover:shadow-[#0C8DA1]/20 group/btn"
-                          >
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#0C8DA1] to-[#0a7586] scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-500 ease-out z-0" />
-                            <span className="relative z-10 flex items-center gap-2">View Project <FiArrowRight size={20} /></span>
-                          </motion.button>
-                        </Link>
-                      </div>
+
                     </div>
 
                   </motion.div>
@@ -327,7 +317,7 @@ const Portfolio = () => {
             transition={{ delay: 0.2 }}
             className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <Link to="/contact">
+            <Link to="/contact?type=sales">
               <motion.button
                 className="w-full sm:w-auto px-8 py-4 bg-white text-[#0C8DA1] font-bold rounded-full shadow-lg hover:shadow-xl transition-all text-lg flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
@@ -336,7 +326,7 @@ const Portfolio = () => {
                 Get Free Consultation
               </motion.button>
             </Link>
-            <Link to="/contact">
+            <Link to="/contact?type=sales">
               <motion.button
                 className="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
@@ -463,7 +453,7 @@ const Portfolio = () => {
                 )}
 
                 {/* CTA */}
-                <Link to="/contact" className="block">
+                <Link to="/contact?type=sales" className="block">
                   <motion.button
                     className="w-full px-6 py-4 bg-[#0C8DA1] text-white font-bold rounded-full hover:bg-[#0a7586] hover:shadow-lg hover:shadow-[#0C8DA1]/30 transition-all text-lg"
                     whileHover={{ scale: 1.02 }}

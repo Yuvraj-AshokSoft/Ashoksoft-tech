@@ -36,7 +36,7 @@ const Navbar = () => {
     { name: 'Home', path: '/', isIcon: true },
     { name: 'Services', path: '/services', hasDropdown: true },
     { name: 'Technologies', path: '/technologies', hasDropdown: true },
-    { name: 'Virtual Team', path: '/virtual-team', hasDropdown: true },
+    { name: 'Hire Developers', path: '/virtual-team', hasDropdown: true },
     { name: 'Events', path: '/events' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Blogs', path: '/blogs' },
@@ -234,8 +234,8 @@ const Navbar = () => {
                   </div>
                 )}
 
-                {/* Mega Menu for Virtual Team */}
-                {link.name === 'Virtual Team' && (
+                {/* Mega Menu for Hire Developers */}
+                {link.name === 'Hire Developers' && (
                   <div className="fixed top-[96px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[1100px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl border-t-2 border-[#0C8DA1] border-x border-b border-gray-100 rounded-b-xl overflow-hidden cursor-default">
                     <div className="p-8">
                       <h4 className="text-gray-900 font-bold mb-8 text-2xl text-center">Choose the Right Solution for Your Business</h4>

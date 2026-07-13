@@ -62,7 +62,7 @@ const ServiceDetail = () => {
                 {service.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact">
+                <Link to="/contact?type=sales">
                   <Button size="lg" className="w-full sm:w-auto text-lg px-8 py-4 shadow-lg shadow-[#0C8DA1]/20">
                     Get a Free Consultation
                   </Button>
@@ -168,11 +168,17 @@ const ServiceDetail = () => {
                 <div className="grid grid-cols-2 gap-4">
                   {service.technologies.map((tech, idx) => {
                     const TechIcon = service.techIcons[idx % service.techIcons.length];
+                    const techSlug = tech.toLowerCase().replace(/ & /g, '-and-').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                     return (
-                      <div key={idx} className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:border-[#0C8DA1] transition-colors">
-                        <TechIcon className="text-2xl text-[#0C8DA1]" />
-                        <span className="font-semibold text-gray-700">{tech}</span>
-                      </div>
+                      <Link to={`/technology/${techSlug}`} key={idx}>
+                        <motion.div 
+                          whileHover={{ y: -5 }}
+                          className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-[#0C8DA1] transition-all cursor-pointer h-full"
+                        >
+                          <TechIcon className="text-2xl text-[#0C8DA1]" />
+                          <span className="font-semibold text-gray-700">{tech}</span>
+                        </motion.div>
+                      </Link>
                     );
                   })}
                 </div>
@@ -194,7 +200,7 @@ const ServiceDetail = () => {
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             Let's discuss how our {service.title.toLowerCase()} expertise can drive your business forward.
           </p>
-          <Link to="/contact">
+          <Link to="/contact?type=sales">
             <button className="px-10 py-5 bg-[#0C8DA1] hover:bg-[#0A6E7E] text-white font-bold text-lg rounded-full shadow-[0_0_20px_rgba(12,141,161,0.4)] transition-all hover:scale-105 flex items-center gap-2 mx-auto">
               Start Your Project <FiArrowRight className="text-xl" />
             </button>

@@ -25,6 +25,9 @@ import Services from './pages/Services.jsx';
 import Technologies from './pages/Technologies.jsx';
 import VirtualTeam from './pages/VirtualTeam.jsx';
 import Events from './pages/Events.jsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
+import TermsOfService from './pages/TermsOfService.jsx';
+import CookiePolicy from './pages/CookiePolicy.jsx';
 
 const App = () => (
   <div className="min-h-screen bg-dark-bg text-slate-900 light-theme">
@@ -43,6 +46,9 @@ const App = () => (
         <Route path="/career" element={<Career />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
         <Route path="/service/:id" element={<ServiceDetail />} />
         <Route path="/technology/:id" element={<TechnologyDetail />} />
         <Route path="/hire/:id" element={<HireDeveloper />} />

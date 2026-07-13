@@ -32,10 +32,10 @@ const Footer = () => {
               <span className="absolute left-0 bottom-0 w-12 h-1 bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full"></span>
             </h4>
             <ul className="space-y-3">
-              <li><Link to="/services" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Web Development</Link></li>
-              <li><Link to="/services" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">App Development</Link></li>
-              <li><Link to="/services" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">UI/UX Design</Link></li>
-              <li><Link to="/services" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Digital Marketing</Link></li>
+              <li><Link to="/service/web-development" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Web Development</Link></li>
+              <li><Link to="/service/mobile-app-development" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">App Development</Link></li>
+              <li><Link to="/service/ui-ux-design" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">UI/UX Design</Link></li>
+              <li><Link to="/service/digital-marketing" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Digital Marketing</Link></li>
             </ul>
           </div>
 
@@ -46,9 +46,9 @@ const Footer = () => {
               <span className="absolute left-0 bottom-0 w-12 h-1 bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full"></span>
             </h4>
             <ul className="space-y-3">
-              <li><Link to="#" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Privacy Policy</Link></li>
-              <li><Link to="#" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Terms of Service</Link></li>
-              <li><Link to="#" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Cookie Policy</Link></li>
+              <li><Link to="/privacy" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Terms of Service</Link></li>
+              <li><Link to="/cookies" className="text-slate-600 hover:text-brand-blue hover:pl-2 transition-all duration-300">Cookie Policy</Link></li>
             </ul>
           </div>
 
@@ -81,8 +81,8 @@ const Footer = () => {
             © {currentYear} AshokSoft Technologies. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm text-slate-500">
-            <Link to="#" className="hover:text-brand-blue transition-colors">Terms</Link>
-            <Link to="#" className="hover:text-brand-blue transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-brand-blue transition-colors">Terms</Link>
+            <Link to="/privacy" className="hover:text-brand-blue transition-colors">Privacy</Link>
           </div>
         </div>
       </div>
