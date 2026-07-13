@@ -59,7 +59,7 @@ const Footer = () => {
               <span className="absolute left-0 bottom-0 w-12 h-1 bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full"></span>
             </h4>
             <div className="flex space-x-3">
-              <a href="https://www.linkedin.com/in/ashoksoft-technologies-3248673ba?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="h-10 w-10 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-[#0C8DA1] hover:text-white transition-all duration-300 hover:-translate-y-1">
+              <a href="https://www.linkedin.com/company/ashoksoft-technologies" target="_blank" rel="noopener noreferrer" className="h-10 w-10 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-[#0C8DA1] hover:text-white transition-all duration-300 hover:-translate-y-1">
                 <FiLinkedin size={18} />
               </a>
               <a href="https://www.instagram.com/ashoksoft_technologies?utm_source=qr&igsh=MWxzMmp6Ynpwemd0Nw==" target="_blank" rel="noopener noreferrer" className="h-10 w-10 bg-white shadow-sm border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-[#0C8DA1] hover:text-white transition-all duration-300 hover:-translate-y-1">
