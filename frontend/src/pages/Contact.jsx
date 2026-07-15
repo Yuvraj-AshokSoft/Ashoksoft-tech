@@ -84,6 +84,44 @@ const Contact = () => {
     return trimmed.split(/\s+/).length;
   };
 
+  const validateEmail = (email) => {
+    const emailTrimmed = email.trim().toLowerCase();
+    
+    // Basic RFC 5322 structure check
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+    if (!emailRegex.test(emailTrimmed)) {
+      return false;
+    }
+
+    const [localPart, domain] = emailTrimmed.split('@');
+
+    // Block common disposable, fake, or dummy domains
+    const blacklistedDomains = [
+      'abc.com', 'example.com', 'test.com', 'dummy.com', 'fake.com',
+      'mailinator.com', 'yopmail.com', 'tempmail.com', 'dispostable.com', 
+      'guerrillamail.com', 'sharklasers.com', '10minutemail.com', 'trashmail.com'
+    ];
+    if (blacklistedDomains.includes(domain)) {
+      return false;
+    }
+
+    // Block common dummy local parts
+    const blacklistedUsernames = [
+      'test', 'asdf', 'abc', 'dummy', 'fake', 'admin', 'user', 'testing', 
+      'test1', 'test2', '123456', 'qwerty', 'noreply', 'no-reply'
+    ];
+    if (blacklistedUsernames.includes(localPart) || localPart.length < 3) {
+      return false;
+    }
+
+    // Block sequential dummy keyboard walk patterns
+    if (/asdf|qwerty|12345|abcde/i.test(localPart)) {
+      return false;
+    }
+
+    return true;
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     let finalValue = value;
@@ -124,6 +162,12 @@ const Contact = () => {
     setSubmitting(true);
 
     // Form validations
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid, active real-time email address to proceed.');
+      setSubmitting(false);
+      return;
+    }
+
     if (activeTab === 'Sales Inquiry') {
       if (formData.description.trim().length < 20) {
         setError('Your message must be at least 20 characters long.');
@@ -134,16 +178,10 @@ const Contact = () => {
 
     if (activeTab === 'Careers') {
       const urlTrimmed = formData.portfolioUrl.trim();
-      // Regex for matching valid absolute URL starting with http:// or https://
-      const absoluteUrlRegex = /^https?:\/\/[^\s/$.?#].[^\s]*$/i;
-      // Regex for matching LinkedIn profile URL (can be absolute or just linkedin.com/...)
-      const linkedInRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/(in|pub|company)\/[A-Za-z0-9_-]+/i;
+      const linkedInRegex = /^https:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?$/i;
 
-      const isValidLinkedIn = linkedInRegex.test(urlTrimmed);
-      const isValidAbsolute = absoluteUrlRegex.test(urlTrimmed);
-
-      if (!isValidLinkedIn && !isValidAbsolute) {
-        setError('Please enter a valid LinkedIn profile URL or a valid absolute URL (starting with http:// or https://).');
+      if (!linkedInRegex.test(urlTrimmed)) {
+        setError('Please provide a valid, registered LinkedIn personal profile URL.');
         setSubmitting(false);
         return;
       }
@@ -213,6 +251,7 @@ const Contact = () => {
             <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
               <p className="text-slate-600">Phone</p>
               <p className="text-slate-900 font-semibold">+91 8218294664</p>
+              <p className="text-slate-900 font-semibold">+91 72499 53396</p>
             </div>
 
             <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
