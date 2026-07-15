@@ -220,19 +220,22 @@ const faqItems = [
     answer: "React, Node.js, MongoDB, Python, AI technologies, AWS, Firebase, and many more."
   }
 ];
-const bookedSlots = [
-  { date: "2026-07-16", time: "10:00" },
-  { date: "2026-07-16", time: "14:00" },
-  { date: "2026-07-17", time: "11:00" },
-  { date: "2026-07-17", time: "15:30" },
+const bookedMeetings = {
+  '2026-07-16': ['10:00', '14:00'],
+  '2026-07-20': ['10:00', '14:30'],
+  '2026-07-21': ['11:30', '16:00'],
+};
+
+const timeSlots = [
+  '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', 
+  '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', 
+  '17:00', '17:30', '18:00'
 ];
 
 const isSlotBooked = (date, time) => {
   if (!date || !time) return false;
   const formattedTime = time.substring(0, 5);
-  return bookedSlots.some(
-    (slot) => slot.date === date && slot.time.substring(0, 5) === formattedTime
-  );
+  return bookedMeetings[date]?.includes(formattedTime) || false;
 };
 
 const Home = () => {
@@ -264,10 +267,14 @@ const handleConsultationChange = (e) => {
 useEffect(() => {
   if (consultationData.date && consultationData.time) {
     if (isSlotBooked(consultationData.date, consultationData.time)) {
-      setError("This time slot is already booked. Please choose another time.");
+      setError("This time slot is already booked for the selected date. Please choose an upcoming available slot.");
+      setConsultationData((prev) => ({
+        ...prev,
+        time: "",
+      }));
     } else {
       setError((prev) =>
-        prev === "This time slot is already booked. Please choose another time."
+        prev === "This time slot is already booked for the selected date. Please choose an upcoming available slot."
           ? ""
           : prev
       );
@@ -282,7 +289,7 @@ const handleConsultationSubmit = async (e) => {
   setSuccess("");
 
   if (isSlotBooked(consultationData.date, consultationData.time)) {
-    setError("This time slot is already booked. Please choose another time.");
+    setError("This time slot is already booked for the selected date. Please choose an upcoming available slot.");
     return;
   }
 
@@ -553,21 +560,31 @@ ${consultationData.message}
                       name="date"
                       value={consultationData.date}
                       onChange={handleConsultationChange}
-                      min={new Date().toISOString().split('T')[0]}
+                      min={new Date().toLocaleDateString('en-CA')}
                       className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
                       required
                     />
                   </div>
                   <div>
                     <label className="mb-2 block font-medium">Time</label>
-                 <input
-type="time"
-name="time"
-value={consultationData.time}
-onChange={handleConsultationChange}
-className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
-required
-/>             </div>
+                    <select
+                      name="time"
+                      value={consultationData.time}
+                      onChange={handleConsultationChange}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500 bg-white"
+                      required
+                    >
+                      <option value="">Select a time slot</option>
+                      {timeSlots.map((time) => {
+                        const isBooked = bookedMeetings[consultationData.date]?.includes(time);
+                        return (
+                          <option key={time} value={time} disabled={isBooked}>
+                            {time} {isBooked ? '(Booked)' : ''}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
                 </div>
                 <div>
                   <label className="mb-2 block font-medium">Name</label>
