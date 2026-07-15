@@ -51,34 +51,58 @@ import {
 
 const fallbackServices = [
   {
-    icon: FiCpu,
-    slug: "ai-development",
-    title: "AI Development",
-    description: "Chatbots, Computer Vision, NLP"
-  },
-  {
     icon: FiMonitor,
-    slug: "web-development",
-    title: "Web Development",
-    description: "React Website, E-commerce, Business Portals"
+    slug: "website-development",
+    title: "Website Development",
+    description: "React Websites, E-commerce, CMS Portals"
   },
   {
     icon: FiSmartphone,
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    description: "Android Apps, iOS Apps, Flutter Apps"
+    description: "iOS & Android apps, Flutter"
+  },
+  {
+    icon: FiCode,
+    slug: "software-development",
+    title: "Software Development",
+    description: "Custom enterprise software, CRM, SaaS"
+  },
+  {
+    icon: FiPenTool,
+    slug: "ui-ux-design",
+    title: "UI/UX Design",
+    description: "Creative interface design, prototyping"
+  },
+  {
+    icon: FiCpu,
+    slug: "artificial-intelligence-solutions",
+    title: "Artificial Intelligence",
+    description: "Chatbots, Machine Learning, NLP"
   },
   {
     icon: FiCloud,
     slug: "cloud-solutions",
     title: "Cloud Solutions",
-    description: "AWS, Azure, Google Cloud Integration"
+    description: "AWS, Azure, Cloud Migration"
   },
   {
-    icon: FiCpu,
-    slug: "robotics-iot",
-    title: "Robotics & IoT",
-    description: "Hardware Integration, Smart Devices, Automation"
+    icon: FiSettings,
+    slug: "robotics-and-automation",
+    title: "Robotics & Automation",
+    description: "Smart device automation, IoT"
+  },
+  {
+    icon: FiBarChart,
+    slug: "digital-marketing",
+    title: "Digital Marketing",
+    description: "SEO, Social Media, Content Strategy"
+  },
+  {
+    icon: FiBookOpen,
+    slug: "ai-robotics-lab-setup",
+    title: "AI & Robotics Lab Setup",
+    description: "Robotics kits, STEM labs, school setups"
   },
   {
     icon: FiBarChart,

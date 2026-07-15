@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiMenu, FiX, FiHome, FiChevronDown, FiLayers, FiUser, FiUsers, FiTag, FiCpu, FiMonitor, FiSmartphone, FiCloud, FiSettings, FiBarChart2, FiArrowRight, FiCode, FiPenTool, FiBriefcase, FiHeart, FiGlobe } from 'react-icons/fi';
+import { FiMenu, FiX, FiHome, FiChevronDown, FiLayers, FiUser, FiUsers, FiTag, FiCpu, FiMonitor, FiSmartphone, FiCloud, FiSettings, FiBarChart2, FiArrowRight, FiCode, FiPenTool, FiBriefcase, FiHeart, FiGlobe, FiBookOpen } from 'react-icons/fi';
 import {
   FaAngular,
   FaReact,
@@ -36,7 +36,6 @@ const Navbar = () => {
     { name: 'Home', path: '/', isIcon: true },
     { name: 'Services', path: '/services', hasDropdown: true },
     { name: 'Technologies', path: '/technologies', hasDropdown: true },
-    { name: 'Hire Developers', path: '/virtual-team', hasDropdown: true },
     { name: 'Events', path: '/events' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Blogs', path: '/blogs' },
@@ -51,7 +50,9 @@ const Navbar = () => {
     { title: 'Artificial Intelligence', desc: 'AI and ML solutions', icon: FiCpu, link: '/service/artificial-intelligence-solutions', projects: ['Chatbots', 'Machine Learning', 'NLP'] },
     { title: 'Cloud Solutions', desc: 'AWS and Azure integration', icon: FiCloud, link: '/service/cloud-solutions', projects: ['AWS', 'Azure', 'Cloud Migration'] },
     { title: 'Robotics & Automation', desc: 'Smart device automation', icon: FiSettings, link: '/service/robotics-and-automation', projects: ['IoT', 'Smart Devices', 'Industrial Automation'] },
-    { title: 'Digital Marketing', desc: 'SEO and brand growth', icon: FiBarChart2, link: '/service/digital-marketing', projects: ['SEO', 'Social Media', 'Content Strategy'] }
+    { title: 'Digital Marketing', desc: 'SEO and brand growth', icon: FiBarChart2, link: '/service/digital-marketing', projects: ['SEO', 'Social Media', 'Content Strategy'] },
+    { title: 'AI & Robotics Lab Setup', desc: 'AI and robotics lab setup for schools', icon: FiBookOpen, link: '/service/ai-robotics-lab-setup', projects: ['STEM Labs', 'Robotics Kits', 'AI Training'] },
+    { title: 'Data Analytics', desc: 'Business Intelligence & Big Data', icon: FiBarChart2, link: '/service/data-analytics', projects: ['BI Solutions', 'Big Data', 'Predictive Analysis'] }
   ];
 
   const techList = [
@@ -75,45 +76,6 @@ const Navbar = () => {
     { name: 'Wordpress', icon: <FaWordpress className="w-6 h-6" /> },
     { name: 'Bootstrap', icon: <FaBootstrap className="w-6 h-6" /> },
     { name: 'HTML5', icon: <FaHtml5 className="w-6 h-6" /> },
-  ];
-
-  const businessSolutionsMenu = [
-    {
-      title: 'AI Development',
-      desc: 'Chatbots, Computer Vision, NLP',
-      icon: FiCpu,
-      link: '/service/ai-development'
-    },
-    {
-      title: 'Web Development',
-      desc: 'React Website, E-commerce, Business Portals',
-      icon: FiMonitor,
-      link: '/service/web-development'
-    },
-    {
-      title: 'Mobile App Development',
-      desc: 'Android Apps, iOS Apps, Flutter Apps',
-      icon: FiSmartphone,
-      link: '/service/mobile-app-development'
-    },
-    {
-      title: 'Cloud Solutions',
-      desc: 'AWS, Azure, Google Cloud Integration',
-      icon: FiCloud,
-      link: '/service/cloud-solutions'
-    },
-    {
-      title: 'Robotics & IoT',
-      desc: 'Hardware Integration, Smart Devices, Automation',
-      icon: FiSettings,
-      link: '/service/robotics-iot'
-    },
-    {
-      title: 'Data Analytics',
-      desc: 'Business Intelligence, Big Data, Predictive Analysis',
-      icon: FiBarChart2,
-      link: '/service/data-analytics'
-    }
   ];
 
   const aboutDropdown = [
@@ -174,7 +136,7 @@ const Navbar = () => {
                   <div className="fixed top-[96px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[1100px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl border-t-2 border-[#0C8DA1] border-x border-b border-gray-100 rounded-b-xl overflow-hidden cursor-default">
                     <div className="p-8">
                       <h4 className="text-gray-900 font-bold mb-8 text-2xl text-center">Our Core Services</h4>
-                      <div className="grid grid-cols-4 gap-6">
+                      <div className="grid grid-cols-3 gap-6">
                         {servicesMenu.map((service, idx) => (
                           <div key={idx} className="bg-gray-50 border border-gray-100 p-5 rounded-xl hover:border-[#0C8DA1] transition-all hover:shadow-lg flex flex-col group/service">
                             <div className="flex items-center gap-3 mb-3">
@@ -228,34 +190,6 @@ const Navbar = () => {
                               {tech.name}
                             </span>
                           </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Mega Menu for Hire Developers */}
-                {link.name === 'Hire Developers' && (
-                  <div className="fixed top-[96px] left-1/2 -translate-x-1/2 w-[95vw] max-w-[1100px] bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl border-t-2 border-[#0C8DA1] border-x border-b border-gray-100 rounded-b-xl overflow-hidden cursor-default">
-                    <div className="p-8">
-                      <h4 className="text-gray-900 font-bold mb-8 text-2xl text-center">Choose the Right Solution for Your Business</h4>
-                      <div className="grid grid-cols-3 gap-6">
-                        {businessSolutionsMenu.map((solution, idx) => (
-                          <div key={idx} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#0C8DA1] transition-all hover:shadow-lg flex flex-col group/solution">
-                            <div className="flex items-center gap-4 mb-4">
-                              <div className="flex-shrink-0 bg-white shadow-sm border border-gray-100 w-12 h-12 rounded-lg flex items-center justify-center text-[#0C8DA1] text-2xl group-hover/solution:bg-[#0C8DA1] group-hover/solution:text-white transition-colors">
-                                <solution.icon />
-                              </div>
-                              <h5 className="font-bold text-gray-900 text-lg">{solution.title}</h5>
-                            </div>
-                            <p className="text-sm text-gray-500 leading-relaxed mb-6 flex-grow">{solution.desc}</p>
-                            <Link 
-                              to={solution.link}
-                              className="inline-flex items-center text-sm font-semibold text-[#0C8DA1] group-hover/solution:text-gray-900 transition-colors mt-auto"
-                            >
-                              Learn More <FiArrowRight className="ml-2 group-hover/solution:translate-x-1 transition-transform" />
-                            </Link>
-                          </div>
                         ))}
                       </div>
                     </div>

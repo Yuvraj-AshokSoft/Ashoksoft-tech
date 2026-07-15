@@ -11,13 +11,55 @@ import {
   FiAward, 
   FiMessageCircle,
   FiMail,
-  FiImage
+  FiImage,
+  FiBookOpen,
+  FiArrowRight
 } from 'react-icons/fi';
+import eventsVectorHero from '../assets/events-vector-hero.png';
 
 const Events = () => {
+  const [events, setEvents] = React.useState([]);
+  const [email, setEmail] = React.useState('');
+  const [status, setStatus] = React.useState({ type: '', message: '' });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleCategoryClick = (e, link) => {
+    if (link.startsWith('#')) {
+      e.preventDefault();
+      const targetId = link.substring(1);
+      scrollToSection(targetId);
+    }
+  };
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setStatus({ type: '', message: '' });
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 800));
+      setStatus({ type: 'success', message: `Thank you! ${email} has been subscribed to updates.` });
+      setEmail('');
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+    }
+  };
 
   const eventCategories = [
     {
@@ -25,21 +67,21 @@ const Events = () => {
       subtitle: "Hands-on labs with real workflows",
       actionText: "Register for practical sessions",
       icon: <FiTool size={32} />,
-      link: "#"
+      link: "#upcoming-events"
     },
     {
-      title: "Company Events",
-      subtitle: "Inside AshokSoft updates & demos",
-      actionText: "Join our product showcases",
-      icon: <FiBriefcase size={32} />,
-      link: "#"
+      title: "School Events",
+      subtitle: "AI workshops, robotics workshops & IoT",
+      actionText: "Join our school workshops",
+      icon: <FiBookOpen size={32} />,
+      link: "/contact?type=partnership"
     },
     {
       title: "Tech Talks",
       subtitle: "Architecture deep dives & best practices",
       actionText: "Explore our tech practices",
       icon: <FiMonitor size={32} />,
-      link: "#"
+      link: "/technologies"
     }
   ];
 
@@ -67,61 +109,87 @@ const Events = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-[#051329] text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0C8DA1]/20 to-transparent opacity-50"></div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div className="bg-white min-h-screen font-sans pt-24 sm:pt-32 pb-20 relative overflow-hidden">
+      
+      {/* Floating Blobs (matching home screen blob animations) */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#0C8DA1]/5 rounded-full filter blur-3xl opacity-70 animate-blob pointer-events-none" />
+      <div className="absolute top-40 right-10 w-96 h-96 bg-[#F97316]/5 rounded-full filter blur-3xl opacity-70 animate-blob animation-delay-2000 pointer-events-none" />
+      <div className="absolute bottom-20 left-20 w-80 h-80 bg-[#0C8DA1]/5 rounded-full filter blur-3xl opacity-50 animate-blob animation-delay-4000 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Hero Section Split Layout */}
+        <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
+          
+          {/* Left Column: Heading and Text */}
+          <div className="lg:col-span-7 text-left">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
               <span className="text-[#0C8DA1] font-semibold tracking-wider uppercase text-sm mb-4 block">Events Hub</span>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-4">
                 Events That Inspire Innovation
               </h1>
-              <p className="text-lg text-gray-200 mb-8 max-w-lg">
+              <p className="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mb-8">
                 Explore workshops, webinars, technology sessions, client meetups, and community events where we share knowledge, build connections, and drive digital transformation.
               </p>
               
-              <div className="mb-8 relative">
+              <div className="mb-8 relative max-w-md">
                 <input 
                   type="text" 
                   placeholder="Search events, speakers, or topics" 
-                  className="w-full max-w-md px-6 py-4 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0C8DA1] shadow-lg"
+                  className="w-full px-6 py-4 rounded-xl text-gray-900 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0C8DA1] focus:border-transparent shadow-sm"
                 />
               </div>
 
-              <div className="flex flex-wrap gap-4">
-                <button className="px-8 py-3 rounded-xl border-2 border-[#0C8DA1] text-[#0C8DA1] font-semibold hover:bg-[#0C8DA1] hover:text-white transition-colors shadow-lg">
-                  Host an Event With Us
-                </button>
-                <button className="px-8 py-3 rounded-xl bg-[#0C8DA1] text-white font-semibold hover:bg-[#097586] transition-colors border-2 border-[#0C8DA1] shadow-lg">
+              <div className="flex flex-wrap gap-4 items-center">
+                <Link to="/contact?type=partnership">
+                  <button className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl shadow-lg shadow-[#0C8DA1]/15 text-white bg-[#0C8DA1] hover:bg-[#097586] transition-all duration-300">
+                    Host an Event With Us <FiArrowRight className="ml-2" />
+                  </button>
+                </Link>
+                <span className="text-gray-300 text-lg hidden sm:inline-block">|</span>
+                <button 
+                  onClick={() => scrollToSection('upcoming-events')}
+                  className="text-[#0C8DA1] font-semibold text-sm tracking-wider uppercase hover:text-[#097586] transition-colors"
+                >
                   Explore Events
                 </button>
               </div>
             </motion.div>
+          </div>
 
+          {/* Right Column: Dynamic floating illustration */}
+          <div className="lg:col-span-5 relative flex justify-center">
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative h-96 lg:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              className="relative w-full max-w-[420px] aspect-square rounded-[2rem] overflow-hidden shadow-hover border border-brand-border/40 bg-slate-50 flex items-center justify-center p-6"
             >
-              <img 
-                src="/events-hero.png" 
-                alt="Events at AshokSoft" 
-                className="w-full h-full object-cover"
+              {/* Radial glow background */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0C8DA1]/15 to-[#F97316]/5 opacity-40 blur-2xl rounded-[2rem]" />
+              
+              <motion.img 
+                src={eventsVectorHero} 
+                alt="Digital Events Illustration" 
+                className="w-full h-full object-contain relative z-10 rounded-2xl"
+                animate={{ y: [0, -12, 0] }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
               />
             </motion.div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Categories Section */}
-      <section className="py-24 bg-[#F8F9FA] relative z-20 -mt-10 rounded-t-[3rem]">
+      <section id="categories" className="py-24 bg-[#F8F9FA] relative z-20 -mt-10 rounded-t-[3rem]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Event Categories</h2>
@@ -130,10 +198,16 @@ const Events = () => {
             </p>
             
             <div className="flex justify-center gap-4">
-              <button className="px-8 py-3 rounded-xl border border-[#0C8DA1] font-semibold text-[#0C8DA1] hover:bg-[#0C8DA1] hover:text-white transition-colors shadow-sm">
+              <button 
+                onClick={() => scrollToSection('categories')}
+                className="px-8 py-3 rounded-xl border border-[#0C8DA1] font-semibold text-[#0C8DA1] hover:bg-[#0C8DA1] hover:text-white transition-colors shadow-sm"
+              >
                 Browse All
               </button>
-              <button className="px-8 py-3 rounded-xl bg-[#0C8DA1] text-white font-semibold hover:bg-[#097586] transition-colors shadow-sm">
+              <button 
+                onClick={() => scrollToSection('upcoming-events')}
+                className="px-8 py-3 rounded-xl bg-[#0C8DA1] text-white font-semibold hover:bg-[#097586] transition-colors shadow-sm"
+              >
                 View Events
               </button>
             </div>
@@ -154,7 +228,11 @@ const Events = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#0C8DA1] transition-colors">{category.title}</h3>
                 <p className="text-gray-600 mb-6 flex-grow">{category.subtitle}</p>
-                <Link to={category.link} className="mt-auto text-xl font-bold text-[#0C8DA1] group-hover:text-gray-900 transition-colors flex items-center gap-2">
+                <Link 
+                  to={category.link} 
+                  onClick={(e) => handleCategoryClick(e, category.link)}
+                  className="mt-auto text-xl font-bold text-[#0C8DA1] group-hover:text-gray-900 transition-colors flex items-center gap-2"
+                >
                   {category.actionText}
                 </Link>
               </motion.div>
@@ -172,12 +250,16 @@ const Events = () => {
               Bring your audience together with an enterprise-grade event experience—strategy, content, and delivery support.
             </p>
             <div className="flex justify-center gap-4">
-              <button className="px-8 py-3 rounded-xl border border-[#0C8DA1] font-semibold text-[#0C8DA1] hover:bg-[#0C8DA1] hover:text-white transition-colors shadow-sm">
-                Request a Proposal
-              </button>
-              <button className="px-8 py-3 rounded-xl bg-[#0C8DA1] text-white font-semibold hover:bg-[#097586] transition-colors shadow-sm">
-                Collaborate With Us
-              </button>
+              <Link to="/contact?type=sales">
+                <button className="px-8 py-3 rounded-xl border border-[#0C8DA1] font-semibold text-[#0C8DA1] hover:bg-[#0C8DA1] hover:text-white transition-colors shadow-sm">
+                  Request a Proposal
+                </button>
+              </Link>
+              <Link to="/contact?type=partnership">
+                <button className="px-8 py-3 rounded-xl bg-[#0C8DA1] text-white font-semibold hover:bg-[#097586] transition-colors shadow-sm">
+                  Collaborate With Us
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -232,7 +314,7 @@ const Events = () => {
       </section>
 
       {/* Upcoming Events Section (Placeholder) */}
-      <section className="py-24 bg-slate-50 relative z-10 border-t border-gray-100">
+      <section id="upcoming-events" className="py-24 bg-slate-50 relative z-10 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
@@ -246,21 +328,32 @@ const Events = () => {
             </button>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white border border-gray-200 border-dashed rounded-2xl py-24 flex flex-col items-center justify-center text-center shadow-sm hover:border-[#0C8DA1]/30 transition-colors group"
-          >
-            <div className="w-20 h-20 bg-slate-50 border border-gray-100 text-[#0C8DA1] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#0C8DA1]/10 transition-colors">
-              <FiCalendar size={36} />
+          {events.length === 0 ? (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-white border border-gray-200 border-dashed rounded-2xl py-24 flex flex-col items-center justify-center text-center shadow-sm hover:border-[#0C8DA1]/30 transition-colors group"
+            >
+              <div className="w-20 h-20 bg-slate-50 border border-gray-100 text-[#0C8DA1] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#0C8DA1]/10 transition-colors">
+                <FiCalendar size={36} />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-[#0C8DA1] transition-colors">More Events Coming Soon!</h3>
+              <p className="text-slate-500 max-w-md">
+                We are currently planning our next batch of exciting events. Stay tuned for school workshops, tech talks, and more.
+              </p>
+            </motion.div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {events.map((event, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{event.description}</p>
+                </div>
+              ))}
             </div>
-            <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-[#0C8DA1] transition-colors">More Events Coming Soon!</h3>
-            <p className="text-slate-500 max-w-md">
-              We are currently planning our next batch of exciting events. Stay tuned for workshops, tech talks, and more.
-            </p>
-          </motion.div>
+          )}
         </div>
       </section>
 
@@ -313,11 +406,13 @@ const Events = () => {
               Subscribe to our events newsletter to get early access to registration, exclusive speaker announcements, and special community discounts.
             </p>
             
-            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onSubmit={handleSubscribe}>
               <input 
                 type="email" 
                 placeholder="Enter your work email" 
                 className="flex-grow px-6 py-4 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0C8DA1]"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <button 
@@ -327,6 +422,11 @@ const Events = () => {
                 Subscribe
               </button>
             </form>
+            {status.message && (
+              <p className={`mt-4 text-sm font-semibold ${status.type === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                {status.message}
+              </p>
+            )}
           </motion.div>
         </div>
       </section>

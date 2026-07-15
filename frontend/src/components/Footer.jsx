@@ -4,12 +4,12 @@ import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiFacebook, FiInstagram } from
 import { motion } from 'framer-motion';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2025;
 
   return (
-    <footer className="bg-dark-bg border-t border-dark-border pt-16 pb-8 px-4 sm:px-6 lg:px-8 mt-20 font-sans">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-dark-bg border-t border-dark-border pt-16 mt-20 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
 
           {/* Company Column */}
           <div>
@@ -74,15 +74,18 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
-        {/* Divider & Copyright */}
-        <div className="border-t border-dark-border pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-slate-500 text-sm mb-4 md:mb-0">
-            © {currentYear} AshokSoft Technologies. All rights reserved.
+      </div>
+      
+      {/* Divider & Copyright Bottom Bar */}
+      <div className="border-t border-dark-border bg-[#0C8DA1] py-8 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-4 text-center">
+          <p className="text-sm font-medium">
+            {"\u00A9"} {currentYear} <span className="font-bold">AshokSoft Technologies</span>. All rights reserved.
           </p>
-          <div className="flex space-x-6 text-sm text-slate-500">
-            <Link to="/terms" className="hover:text-brand-blue transition-colors">Terms</Link>
-            <Link to="/privacy" className="hover:text-brand-blue transition-colors">Privacy</Link>
+          <div className="flex space-x-6 text-sm">
+            <Link to="/terms" className="text-white hover:text-white/80 transition-colors">Terms</Link>
+            <span className="text-white/40">|</span>
+            <Link to="/privacy" className="text-white hover:text-white/80 transition-colors">Privacy</Link>
           </div>
         </div>
       </div>

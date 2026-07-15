@@ -7,37 +7,43 @@ const teamMembers = [
     name: 'Pushpendra Chauhan',
     role: 'CEO & Founder',
     bio: 'Visionary leader with a passion for driving digital innovation and leading enterprise software development.',
-    image: '/pushpendra.png'
+    image: '/pushpendra.png',
+    linkedin: 'https://www.linkedin.com/in/pushpendra-chauhan-835538206?utm_source=share_via&utm_content=profile&utm_medium=member_android'
   },
   {
     name: 'Yashraj Chauhan',
     role: 'Managing Director',
     bio: 'Strategic thinker focused on expanding business horizons and managing operational excellence.',
-    image: '/yashraj.png'
+    image: '/yashraj.png',
+    linkedin: 'https://www.linkedin.com/in/yashraj-chauhan-62113b33b?utm_source=share_via&utm_content=profile&utm_medium=member_android'
   },
   {
     name: 'Dr. Shubham Kumar Singh',
     role: 'Guest Faculty',
     bio: 'Academic expert providing technical mentorship and guiding our research and development initiatives.',
-    image: '/Shubham.jpeg'
+    image: '/Shubham.jpeg',
+    linkedin: ''
   },
   {
     name: 'Krishnam',
     role: 'Lead Software Engineer',
     bio: 'Expert in scalable system architecture and bringing complex technology solutions to life.',
-    image: '/krishnam.png'
+    image: '/krishnam.png',
+    linkedin: 'https://www.linkedin.com/in/krishnam-133a9a329?utm_source=share_via&utm_content=profile&utm_medium=member_android'
   },
   {
     name: 'Shrishti',
     role: 'Frontend Developer',
     bio: 'Passionate about creating intuitive, pixel-perfect, and highly responsive user interfaces.',
-    image: '/shrishti.png'
+    image: '/shrishti.png',
+    linkedin: 'https://www.linkedin.com/in/shrishti-singh-8b7107381?utm_source=share_via&utm_content=profile&utm_medium=member_android'
   },
   {
     name: 'Yuvraj',
     role: 'Backend Developer',
     bio: 'Specialist in robust database management, cloud integrations, and building secure APIs.',
-    image: '/yuvraj.png'
+    image: '/yuvraj.png',
+    linkedin: 'https://www.linkedin.com/in/yuvraj-singh-996a23328/'
   }
 ];
 
@@ -94,13 +100,16 @@ const Team = () => {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300 flex flex-col items-center relative overflow-hidden group"
             >
-              {/* Top right LinkedIn Icon */}
-              <a 
-                href="#" 
-                className="absolute top-4 right-4 bg-[#0C8DA1] text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#0a7587]"
-              >
-                <FiLinkedin className="text-xl" />
-              </a>
+              {member.linkedin && (
+                <a 
+                  href={member.linkedin} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-4 right-4 bg-[#0C8DA1] text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-[#0a7587]"
+                >
+                  <FiLinkedin className="text-xl" />
+                </a>
+              )}
 
               <img 
                 src={member.image} 

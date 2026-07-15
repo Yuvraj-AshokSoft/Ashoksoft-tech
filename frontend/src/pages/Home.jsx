@@ -71,6 +71,7 @@ const iconMap = {
   cloud: FiCloud,
   settings: FiSettings,
   "bar-chart": FiBarChart,
+  book: FiBookOpen,
 };
 
 
@@ -116,37 +117,61 @@ const industries = [
 
 const fallbackServices = [
   {
-    icon: "cpu",
-    slug: "ai-development",
-    title: "AI Development",
-    description: "Chatbots, Computer Vision, NLP"
-  },
-  {
     icon: "monitor",
-    slug: "web-development",
-    title: "Web Development",
-    description: "React Website, E-commerce, Business Portals"
+    slug: "website-development",
+    title: "Website Development",
+    description: "React Websites, E-commerce, CMS Portals"
   },
   {
     icon: "smartphone",
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    description: "Android Apps, iOS Apps, Flutter Apps"
+    description: "iOS & Android apps, Flutter"
+  },
+  {
+    icon: "code",
+    slug: "software-development",
+    title: "Software Development",
+    description: "Custom enterprise software, CRM, SaaS"
+  },
+  {
+    icon: "design",
+    slug: "ui-ux-design",
+    title: "UI/UX Design",
+    description: "Creative interface design, prototyping"
+  },
+  {
+    icon: "cpu",
+    slug: "artificial-intelligence-solutions",
+    title: "Artificial Intelligence",
+    description: "Chatbots, Machine Learning, NLP"
   },
   {
     icon: "cloud",
     slug: "cloud-solutions",
     title: "Cloud Solutions",
-    description: "AWS, Azure, Google Cloud Integration"
+    description: "AWS, Azure, Cloud Migration"
   },
   {
     icon: "settings",
-    slug: "robotics-iot",
-    title: "Robotics & IoT",
-    description: "Hardware Integration, Smart Devices, Automation"
+    slug: "robotics-and-automation",
+    title: "Robotics & Automation",
+    description: "Smart device automation, IoT"
   },
   {
-    icon: "bar-chart",
+    icon: "chart",
+    slug: "digital-marketing",
+    title: "Digital Marketing",
+    description: "SEO, Social Media, Content Strategy"
+  },
+  {
+    icon: "book",
+    slug: "ai-robotics-lab-setup",
+    title: "AI & Robotics Lab Setup",
+    description: "Robotics kits, STEM labs, school setups"
+  },
+  {
+    icon: "chart",
     slug: "data-analytics",
     title: "Data Analytics",
     description: "Business Intelligence, Big Data, Predictive Analysis"
@@ -329,7 +354,7 @@ ${consultationData.message}
             >
               <div className="mb-6 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
                 <span className="text-sm font-medium text-white/90">
-                  Modern Solutions: Web • Mobile • AI • Branding
+                  Modern Solutions: Web • Mobile • AI • Branding • AI & Robotics Lab Installation for Schools
                 </span>
               </div>
               <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl xl:text-[80px] h-[180px] md:h-[240px] xl:h-[300px]">
