@@ -21,6 +21,7 @@ import { useAuth } from '../context/AuthContext';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState(null);
   const { isAuthenticated, user, logout } = useAuth();
   const location = useLocation();
 
@@ -31,6 +32,11 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMobileMenu = () => {
+    setIsOpen(!isOpen);
+    setActiveMobileDropdown(null);
+  };
 
   const navLinks = [
     { name: 'Home', path: '/', isIcon: true },
@@ -305,7 +311,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               className={`lg:hidden transition-colors ${isSolidNavbar ? 'text-slate-900' : 'text-white'} hover:text-brand-blue`}
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMobileMenu}
             >
               {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
             </button>
@@ -315,24 +321,108 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <motion.div
-            className="lg:hidden pb-4 pt-2 border-t border-dark-border bg-dark-bg absolute w-full left-0 px-4 sm:px-6 shadow-2xl rounded-b-2xl"
+            className="lg:hidden pb-6 pt-2 border-t border-dark-border bg-dark-bg absolute w-full left-0 px-4 sm:px-6 shadow-2xl rounded-b-2xl max-h-[calc(100vh-96px)] overflow-y-auto"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className="flex items-center justify-between px-4 py-3 text-slate-600 hover:text-brand-blue hover:bg-white rounded-lg mb-1"
-                onClick={() => setIsOpen(false)}
-              >
-                <div className="flex items-center space-x-2">
-                  {link.isIcon && <FiHome className="text-brand-blue text-lg" />}
-                  <span className="font-medium">{link.name}</span>
+            {navLinks.map((link) => {
+              const hasDropdown = link.hasDropdown;
+              const isDropdownOpen = activeMobileDropdown === link.name;
+              
+              return (
+                <div key={link.name} className="mb-1">
+                  {hasDropdown ? (
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => setActiveMobileDropdown(isDropdownOpen ? null : link.name)}
+                        className="w-full flex items-center justify-between px-4 py-3 text-slate-600 hover:text-brand-blue hover:bg-slate-50 rounded-lg transition-all"
+                      >
+                        <div className="flex items-center space-x-2">
+                          {link.isIcon && <FiHome className="text-brand-blue text-lg" />}
+                          <span className="font-medium">{link.name}</span>
+                        </div>
+                        <FiChevronDown className={`transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-brand-blue' : 'text-slate-400'}`} />
+                      </button>
+                      
+                      {/* Sub-links */}
+                      {isDropdownOpen && (
+                        <div className="pl-6 pr-2 py-1 space-y-1 bg-slate-50 rounded-lg mt-1 mb-2 border border-gray-100">
+                          {/* Parent overview link */}
+                          <Link
+                            to={link.path}
+                            className="block px-4 py-2.5 text-sm text-slate-600 hover:text-brand-blue hover:bg-white rounded-md transition-colors font-medium"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            Overview
+                          </Link>
+                          
+                          {/* Custom dropdown items based on link name */}
+                          {link.name === 'About US' && aboutDropdown.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.path}
+                              className="flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-600 hover:text-brand-blue hover:bg-white rounded-md transition-colors font-medium"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <subItem.icon className="text-brand-blue text-base flex-shrink-0" />
+                              <span>{subItem.name}</span>
+                            </Link>
+                          ))}
+                          
+                          {link.name === 'Services' && servicesMenu.map((subItem) => (
+                            <Link
+                              key={subItem.title}
+                              to={subItem.link}
+                              className="flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-600 hover:text-brand-blue hover:bg-white rounded-md transition-colors font-medium"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <subItem.icon className="text-brand-blue text-base flex-shrink-0" />
+                              <span>{subItem.title}</span>
+                            </Link>
+                          ))}
+                          
+                          {link.name === 'Technologies' && techList.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              to={`/technology/${subItem.name.toLowerCase().replace(/ & /g, '-and-').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`}
+                              className="flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-600 hover:text-brand-blue hover:bg-white rounded-md transition-colors font-medium"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <span className="text-brand-blue text-base flex-shrink-0">{subItem.icon}</span>
+                              <span>{subItem.name}</span>
+                            </Link>
+                          ))}
+                          
+                          {link.name === 'Hire Developers' && businessSolutionsMenu.map((subItem) => (
+                            <Link
+                              key={subItem.title}
+                              to={subItem.link}
+                              className="flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-600 hover:text-brand-blue hover:bg-white rounded-md transition-colors font-medium"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <subItem.icon className="text-brand-blue text-base flex-shrink-0" />
+                              <span>{subItem.title}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className="flex items-center justify-between px-4 py-3 text-slate-600 hover:text-brand-blue hover:bg-slate-50 rounded-lg"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <div className="flex items-center space-x-2">
+                        {link.isIcon && <FiHome className="text-brand-blue text-lg" />}
+                        <span className="font-medium">{link.name}</span>
+                      </div>
+                    </Link>
+                  )}
                 </div>
-                {link.hasDropdown && <FiChevronDown />}
-              </Link>
-            ))}
+              );
+            })}
             <div className="mt-4 px-4">
               <Link
                 to="/contact"

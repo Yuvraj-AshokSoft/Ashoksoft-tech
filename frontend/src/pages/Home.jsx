@@ -195,6 +195,21 @@ const faqItems = [
     answer: "React, Node.js, MongoDB, Python, AI technologies, AWS, Firebase, and many more."
   }
 ];
+const bookedSlots = [
+  { date: "2026-07-16", time: "10:00" },
+  { date: "2026-07-16", time: "14:00" },
+  { date: "2026-07-17", time: "11:00" },
+  { date: "2026-07-17", time: "15:30" },
+];
+
+const isSlotBooked = (date, time) => {
+  if (!date || !time) return false;
+  const formattedTime = time.substring(0, 5);
+  return bookedSlots.some(
+    (slot) => slot.date === date && slot.time.substring(0, 5) === formattedTime
+  );
+};
+
 const Home = () => {
 
 
@@ -221,12 +236,32 @@ const handleConsultationChange = (e) => {
   }));
 };
 
+useEffect(() => {
+  if (consultationData.date && consultationData.time) {
+    if (isSlotBooked(consultationData.date, consultationData.time)) {
+      setError("This time slot is already booked. Please choose another time.");
+    } else {
+      setError((prev) =>
+        prev === "This time slot is already booked. Please choose another time."
+          ? ""
+          : prev
+      );
+    }
+  }
+}, [consultationData.date, consultationData.time]);
+
 const handleConsultationSubmit = async (e) => {
   e.preventDefault();
 
-  setLoading(true);
   setError("");
   setSuccess("");
+
+  if (isSlotBooked(consultationData.date, consultationData.time)) {
+    setError("This time slot is already booked. Please choose another time.");
+    return;
+  }
+
+  setLoading(true);
 
   try {
     await inquiryService.createInquiry({
@@ -489,13 +524,14 @@ ${consultationData.message}
                   <div>
                     <label className="mb-2 block font-medium">Date</label>
                     <input
-                   type="date"
-                    name="date"
-value={consultationData.date}
-onChange={handleConsultationChange}
-className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
-required
-/>
+                      type="date"
+                      name="date"
+                      value={consultationData.date}
+                      onChange={handleConsultationChange}
+                      min={new Date().toISOString().split('T')[0]}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-red-500"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="mb-2 block font-medium">Time</label>
