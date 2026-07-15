@@ -19,15 +19,16 @@ const projectTypes = [
   'UI/UX Design',
   'AI Automation',
   'Branding',
+  'Digital marketing',
+  'AI workshop',
+  'robotics lab setup for schools',
   'Other',
 ];
 
 const budgetRanges = [
-  'Rs 500 - Rs 1,000',
-  'Rs 1,000 - Rs 2,500',
-  'Rs 2,500 - Rs 5,000',
-  'Rs 5,000 - Rs 10,000',
-  'Rs 10,000+',
+  'Rs 10,000 - Rs 25,000',
+  'Rs 25,000 - Rs 50,000',
+  'Rs 50,000+',
 ];
 
 const timelines = ['1-3 months', '3-6 months', '6-12 months', '12+ months'];
@@ -77,11 +78,35 @@ const Contact = () => {
     }));
   }, [user]);
 
+  const getWordCount = (text) => {
+    const trimmed = text.trim();
+    if (!trimmed) return 0;
+    return trimmed.split(/\s+/).length;
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
+    let finalValue = value;
+
+    if (name === 'phone') {
+      // Keep only digits and the plus sign
+      let cleanValue = value.replace(/[^\d+]/g, '');
+      // Ensure '+' is only allowed at the beginning
+      if (cleanValue.includes('+')) {
+        cleanValue = '+' + cleanValue.replace(/\+/g, '');
+      }
+      // Enforce maximum of 10 digits for the main number (excluding the leading +)
+      const digitsOnly = cleanValue.replace(/\+/g, '');
+      if (digitsOnly.length > 10) {
+        const truncatedDigits = digitsOnly.slice(0, 10);
+        cleanValue = cleanValue.startsWith('+') ? '+' + truncatedDigits : truncatedDigits;
+      }
+      finalValue = cleanValue;
+    }
+
     setFormData((current) => ({
       ...current,
-      [name]: value,
+      [name]: finalValue,
     }));
   };
 
@@ -97,6 +122,39 @@ const Contact = () => {
     setError('');
     setSuccess('');
     setSubmitting(true);
+
+    // Form validations
+    if (activeTab === 'Sales Inquiry') {
+      if (formData.description.trim().length < 20) {
+        setError('Your message must be at least 20 characters long.');
+        setSubmitting(false);
+        return;
+      }
+    }
+
+    if (activeTab === 'Careers') {
+      const urlTrimmed = formData.portfolioUrl.trim();
+      // Regex for matching valid absolute URL starting with http:// or https://
+      const absoluteUrlRegex = /^https?:\/\/[^\s/$.?#].[^\s]*$/i;
+      // Regex for matching LinkedIn profile URL (can be absolute or just linkedin.com/...)
+      const linkedInRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/(in|pub|company)\/[A-Za-z0-9_-]+/i;
+
+      const isValidLinkedIn = linkedInRegex.test(urlTrimmed);
+      const isValidAbsolute = absoluteUrlRegex.test(urlTrimmed);
+
+      if (!isValidLinkedIn && !isValidAbsolute) {
+        setError('Please enter a valid LinkedIn profile URL or a valid absolute URL (starting with http:// or https://).');
+        setSubmitting(false);
+        return;
+      }
+
+      const coverLetterWords = getWordCount(formData.description);
+      if (coverLetterWords > 300) {
+        setError('Your cover letter/experience description must not exceed 300 words.');
+        setSubmitting(false);
+        return;
+      }
+    }
 
     // Format the description to include the inquiry type and any specific fields
     let finalDescription = `[${activeTab.toUpperCase()}] ${formData.description.trim()}`;
@@ -154,12 +212,12 @@ const Contact = () => {
 
             <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
               <p className="text-slate-600">Phone</p>
-              <p className="text-slate-900 font-semibold">+91 72499 53396</p>
+              <p className="text-slate-900 font-semibold">+91 8218294664</p>
             </div>
 
             <div className="rounded-2xl sm:rounded-3xl border border-gray-200 bg-slate-50 p-4 sm:p-6 min-w-0">
               <p className="text-slate-600">Location</p>
-              <p className="text-slate-900 font-semibold">India</p>
+              <p className="text-slate-900 font-semibold">Noida, Uttar Pradesh, India</p>
             </div>
           </div>
 
@@ -333,6 +391,16 @@ const Contact = () => {
                   placeholder={activeTab === 'Careers' ? 'Tell us why you are a great fit' : 'Tell us about your project or inquiry'}
                   required
                 />
+                {activeTab === 'Careers' && (
+                  <div className="flex justify-between items-center text-xs mt-1">
+                    <span className={getWordCount(formData.description) > 300 ? "text-rose-600 font-semibold" : "text-slate-500"}>
+                      {getWordCount(formData.description)} / 300 words
+                    </span>
+                    {getWordCount(formData.description) > 300 && (
+                      <span className="text-rose-600 font-semibold">Exceeds 300 word limit!</span>
+                    )}
+                  </div>
+                )}
               </div>
 
               {error && <p className="text-sm text-rose-600">{error}</p>}
