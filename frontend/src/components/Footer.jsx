@@ -4,7 +4,7 @@ import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiFacebook, FiInstagram } from
 import { motion } from 'framer-motion';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2025;
 
   return (
     <footer className="bg-dark-bg border-t border-dark-border pt-16 pb-8 px-4 sm:px-6 lg:px-8 mt-20 font-sans">
@@ -76,11 +76,11 @@ const Footer = () => {
         </div>
         
         {/* Divider & Copyright */}
-        <div className="border-t border-dark-border pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="relative border-t border-dark-border pt-8 flex flex-col items-center justify-center">
           <p className="text-slate-500 text-sm mb-4 md:mb-0">
-            © {currentYear} AshokSoft Technologies. All rights reserved.
+            Â© {currentYear} AshokSoft Technologies. All rights reserved.
           </p>
-          <div className="flex space-x-6 text-sm text-slate-500">
+          <div className="flex space-x-6 text-sm text-slate-500 md:absolute md:right-0">
             <Link to="/terms" className="hover:text-brand-blue transition-colors">Terms</Link>
             <Link to="/privacy" className="hover:text-brand-blue transition-colors">Privacy</Link>
           </div>
